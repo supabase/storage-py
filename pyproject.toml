@@ -15,6 +15,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
+python = "^3.7"
 httpx = ">=0.19,<0.22"
 
 [tool.poetry.dev-dependencies]
