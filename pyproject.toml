@@ -2,7 +2,7 @@
 name = "storage"
 version = "0.0.1"
 description = "Supabase Storage client for Python."
-authors = ["Joel Lee <joel@joellee.org>", "Leon Fedden <leonfedden@gmail.com>"]
+authors = ["Joel Lee <joel@joellee.org>", "Leon Fedden <leonfedden@gmail.com>", "Daniel Reinón García <danielreinon@outlook.com>", "Leynier Gutiérrez González <leynier41@gmail.com>"]
 homepage = "https://github.com/supabase-community/storage-py"
 repository = "https://github.com/supabase-community/storage-py"
 documentation = "https://github.com/supabase-community/storage-py"
