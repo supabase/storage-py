@@ -1,10 +1,12 @@
 from __future__ import annotations
-from typing import TYPE_CHECKING, Any, Dict
+
+from typing import TYPE_CHECKING
 
 import pytest
 
 if TYPE_CHECKING:
     from supabase import Client
+
 
 @pytest.mark.skip(reason="missing permissions on test instance")
 def test_client_upload_file(supabase: Client) -> None:
@@ -33,4 +35,3 @@ def test_client_upload_file(supabase: Client) -> None:
     assert image_info is not None
     assert image_info.get("metadata", {}).get("mimetype") == mimetype
     storage_file.remove([filename])
-
