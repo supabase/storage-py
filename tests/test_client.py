@@ -1,3 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING, Any, Dict
+
+import pytest
+
+if TYPE_CHECKING:
+    from supabase import Client
+
 @pytest.mark.skip(reason="missing permissions on test instance")
 def test_client_upload_file(supabase: Client) -> None:
     """Ensure we can upload files to a bucket"""
