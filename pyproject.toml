@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "storage"
+version = "0.0.1"
+description = "Supabase Storage client for Python."
+authors = ["Joel Lee <joel@joellee.org>", "Leon Fedden <leonfedden@gmail.com>"]
+homepage = "https://github.com/supabase-community/storage-py"
+repository = "https://github.com/supabase-community/storage-py"
+documentation = "https://github.com/supabase-community/storage-py"
+readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[tool.poetry.dependencies]
+httpx = ">=0.19,<0.22"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.16.0"
+black = "^21.11b1"
+pytest = "^6.2.5"
+flake8 = "^4.0.1"
+isort = "^5.9.3"
+pytest-cov = "^3.0.0"
+commitizen = "^2.20.3"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.1"
+version_files = [
+    "storage/__init__.py",
+    "pyproject.toml:version"
+]
+tag_format = "v$version"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
