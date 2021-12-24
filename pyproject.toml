@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "storage"
-version = "0.0.1"
+version = "0.1.0"
 description = "Supabase Storage client for Python."
 authors = ["Joel Lee <joel@joellee.org>", "Leon Fedden <leonfedden@gmail.com>"]
 homepage = "https://github.com/supabase-community/storage-py"
@@ -29,7 +29,7 @@ commitizen = "^2.20.3"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.0.1"
+version = "0.1.0"
 version_files = [
     "storage/__init__.py",
     "pyproject.toml:version"
