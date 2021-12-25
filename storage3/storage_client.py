@@ -1,7 +1,7 @@
 from typing import Dict
 
-from storage.lib.storage_bucket_api import StorageBucketAPI
-from storage.lib.storage_file_api import StorageFileAPI
+from storage3.lib.storage_bucket_api import StorageBucketAPI
+from storage3.lib.storage_file_api import StorageFileAPI
 
 
 class SupabaseStorageClient(StorageBucketAPI):
