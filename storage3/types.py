@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Literal, TypedDict
 
-
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
 
@@ -25,7 +24,9 @@ class BaseBucket:
 
 
 # used in bucket.list method's option parameter
-_sortByType = TypedDict("_sortByType", {"column": str, "order": Literal["asc", "desc"]})
+class _sortByType(TypedDict):
+    column: str
+    order: Literal["asc", "desc"]
 
 
 class ListBucketFilesOptions(TypedDict):
