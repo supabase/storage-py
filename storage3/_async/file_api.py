@@ -110,7 +110,7 @@ class AsyncBucketActionsMixin:
         self,
         path: Optional[str] = None,
         options: Optional[ListBucketFilesOptions] = None,
-    ) -> dict[str, str]:
+    ) -> list[dict[str, str]]:
         """
         Lists all the files within a bucket.
 
