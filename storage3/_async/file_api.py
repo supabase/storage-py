@@ -1,14 +1,12 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional, Union
 
 from httpx import HTTPError, Response
 
-from storage3 import StorageException
-
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
-from ..utils import AsyncClient
+from ..utils import AsyncClient, StorageException
 
 __all__ = ["AsyncBucket"]
 
@@ -186,11 +184,11 @@ class AsyncBucketActionsMixin:
 # this class is returned by methods that fetch buckets, for example StorageBucketAPI.get_bucket
 # adding this mixin on the BaseBucket means that those bucket objects can also be used to
 # run methods like `upload` and `download`
-@dataclass
+@dataclass(repr=False)
 class AsyncBucket(BaseBucket, AsyncBucketActionsMixin):
-    _url: str
-    _headers: dict[str, str]
-    _client: AsyncClient
+    _url: str = field(repr=False)
+    _headers: dict[str, str] = field(repr=False)
+    _client: AsyncClient = field(repr=False)
 
 
 @dataclass

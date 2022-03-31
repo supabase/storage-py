@@ -4,10 +4,8 @@ from typing import Any, Optional
 
 from httpx import HTTPError, Response
 
-from storage3 import StorageException
-
 from ..types import RequestMethod
-from ..utils import AsyncClient
+from ..utils import AsyncClient, StorageException
 from .file_api import AsyncBucket
 
 __all__ = ["AsyncStorageBucketAPI"]
@@ -48,7 +46,7 @@ class AsyncStorageBucketAPI:
             for bucket in res.json()
         ]
 
-    async def get_bucket(self, id: str) -> Optional[AsyncBucket]:
+    async def get_bucket(self, id: str) -> AsyncBucket:
         """Retrieves the details of an existing storage bucket.
 
         Parameters
@@ -58,7 +56,7 @@ class AsyncStorageBucketAPI:
         """
         res = await self._request("GET", f"{self.url}/bucket/{id}")
         json = res.json()
-        return json or AsyncBucket(
+        return AsyncBucket(
             **json, _url=self.url, _headers=self.headers, _client=self._client
         )
 

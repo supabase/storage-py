@@ -6,7 +6,7 @@ from storage3._async import AsyncStorageClient
 from storage3._sync import SyncStorageClient
 
 __version__ = "0.1.1"
-__all__ = ["create_client", "StorageException"]
+__all__ = ["create_client"]
 
 
 @overload
@@ -30,7 +30,3 @@ def create_client(
         return AsyncStorageClient(url, headers)
     else:
         return SyncStorageClient(url, headers)
-
-
-class StorageException(Exception):
-    """Error raised when an operation on the storage API fails."""
