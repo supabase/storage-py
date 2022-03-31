@@ -27,6 +27,7 @@ isort = "^5.9.3"
 pytest-cov = "^3.0.0"
 commitizen = "^2.20.3"
 unasync-cli = "^0.0.9"
+python-dotenv = "^0.20.0"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
