@@ -4,9 +4,9 @@ from typing import Literal, Union, overload
 
 from storage3._async import AsyncStorageClient
 from storage3._sync import SyncStorageClient
+from storage3.utils import __version__
 
-__version__ = "0.1.1"
-__all__ = ["create_client"]
+__all__ = ["create_client", "__version__"]
 
 
 @overload

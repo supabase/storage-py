@@ -1,4 +1,4 @@
-from ..utils import SyncClient
+from ..utils import SyncClient, __version__
 from .bucket import SyncStorageBucketAPI
 from .file_api import SyncBucketProxy
 
@@ -11,7 +11,11 @@ class SyncStorageClient(SyncStorageBucketAPI):
     """Manage storage buckets and files."""
 
     def __init__(self, url: str, headers: dict[str, str]) -> None:
-        super().__init__(url, headers, SyncClient())
+        super().__init__(
+            url,
+            {"User-Agent": f"supabase-py/storage3 v{__version__}", **headers},
+            SyncClient(),
+        )
 
     def from_(self, id: str) -> SyncBucketProxy:
         """Run a storage file operation.
