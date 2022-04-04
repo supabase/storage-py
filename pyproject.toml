@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "storage3"
-version = "0.1.1"
+version = "0.2.0"
 description = "Supabase Storage client for Python."
 authors = ["Joel Lee <joel@joellee.org>", "Leon Fedden <leonfedden@gmail.com>", "Daniel Reinón García <danielreinon@outlook.com>", "Leynier Gutiérrez González <leynier41@gmail.com>"]
 homepage = "https://github.com/supabase-community/storage-py"
@@ -33,7 +33,7 @@ python-dotenv = "^0.20.0"
 name = "cz_conventional_commits"
 version = "0.1.0"
 version_files = [
-    "storage3/__init__.py",
+    "storage3/utils.py",
     "pyproject.toml:version"
 ]
 tag_format = "v$version"
