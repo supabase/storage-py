@@ -10,9 +10,13 @@ As it takes some effort to get the headers. We suggest that you use the storage 
 
 
 ```python3
-from storage3 import storage_client
+from storage3 import create_client
 
-storage_client = storage_client.SupabaseStorageClient('https://<your_supabase_id>.supabase.co/storage/v1)', {'apiKey': '<your_api_key>', 'Authorization': 'Bearer <an_auth_token>'})
+url = "https://<your_supabase_id>.supabase.co/storage/v1"
+key = "<your api key>"
 
-storage_client.list()
+# pass in is_async=True to create an async client
+storage_client = create_client(url, {'apiKey': key, 'Authorization': 'Bearer <an_auth_token>'}, is_async=False)
+
+storage_client.list_buckets()
 ```
