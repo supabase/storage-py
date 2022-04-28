@@ -7,8 +7,9 @@ import pytest
 import asyncio
 
 from storage3.utils import StorageException
-from storage3._async.file_api import SyncBucketProxy
+from .. import SyncBucketProxy
 from storage3 import SyncStorageClient
+from ..utils import SyncFinalizerFactory
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -19,9 +20,10 @@ if TYPE_CHECKING:
 temp_test_buckets_ids = []
 
 
-@pytest.fixture(scope="session")
-def event_loop():
-    return asyncio.get_event_loop()
+@pytest.fixture(scope="module")
+def event_loop() -> asyncio.AbstractEventLoop:
+    """Returns an event loop for the current thread"""
+    return asyncio.get_event_loop_policy().get_event_loop()
 
 
 @pytest.fixture(scope="module")
@@ -36,27 +38,23 @@ def uuid_factory() -> Callable[[], str]:
 @pytest.fixture(scope="module", autouse=True)
 def delete_left_buckets(
     request: pytest.FixtureRequest,
-    event_loop: asyncio.AbstractEventLoop,
     storage: SyncStorageClient,
 ):
     """Ensures no test buckets are left when a test that created a bucket fails"""
 
-    def finalizer():
-        def afinalizer():
-            for bucket_id in temp_test_buckets_ids:
-                try:
-                    storage.empty_bucket(bucket_id)
-                    storage.delete_bucket(bucket_id)
-                except StorageException as e:
-                    # Ignore 404 responses since they mean the bucket was already deleted
-                    response = e.args[0]
-                    if response["statusCode"] != 404:
-                        raise e
-                    continue
+    def afinalizer():
+        for bucket_id in temp_test_buckets_ids:
+            try:
+                storage.empty_bucket(bucket_id)
+                storage.delete_bucket(bucket_id)
+            except StorageException as e:
+                # Ignore 404 responses since they mean the bucket was already deleted
+                response = e.args[0]
+                if response["statusCode"] != 404:
+                    raise e
+                continue
 
-        event_loop.run_until_complete(afinalizer())
-
-    request.addfinalizer(finalizer)
+    request.addfinalizer(SyncFinalizerFactory(afinalizer).finalizer)
 
 
 @pytest.fixture(scope="module")
