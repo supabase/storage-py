@@ -1,3 +1,4 @@
+from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional, Union
@@ -6,7 +7,7 @@ from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
-from ..utils import StorageException, SyncClient
+from ..utils import SyncClient, StorageException
 
 __all__ = ["SyncBucket"]
 
@@ -65,8 +66,7 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _path = self._get_final_path(path)
-        public_url = f"{self._url}/object/public/{_path}"
-        return public_url
+        return f"{self._url}/object/public/{_path}"
 
     def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -124,7 +124,7 @@ class SyncBucketActionsMixin:
         extra_options = options or {}
         body = dict(DEFAULT_SEARCH_OPTIONS, **extra_options)
         extra_headers = {"Content-Type": "application/json"}
-        body["prefix"] = path if path else ""
+        body["prefix"] = path or ""
         response = self._request(
             "POST",
             f"{self._url}/object/list/{self.id}",
@@ -157,7 +157,8 @@ class SyncBucketActionsMixin:
         Parameters
         ----------
         path
-            The relative file path including the bucket ID. Should be of the format `bucket/folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+            The relative file path including the bucket ID. Should be of the format `bucket/folder/subfolder/filename.png`.
+            The bucket must already exist before attempting to upload.
         file
             The File object to be stored in the bucket. or a async generator of chunks
         file_options

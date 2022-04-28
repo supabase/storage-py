@@ -5,7 +5,7 @@ from typing import Any, Optional
 from httpx import HTTPError, Response
 
 from ..types import RequestMethod
-from ..utils import StorageException, SyncClient
+from ..utils import SyncClient, StorageException
 from .file_api import SyncBucket
 
 __all__ = ["SyncStorageBucketAPI"]
@@ -25,7 +25,9 @@ class SyncStorageBucketAPI:
         url: str,
         json: Optional[dict[Any, Any]] = None,
     ) -> Response:
-        response = self._client.request(method, url, headers=self.headers, json=json)
+        response = self._client.request(
+            method, url, headers=self.headers, json=json
+        )
         try:
             response.raise_for_status()
         except HTTPError:
