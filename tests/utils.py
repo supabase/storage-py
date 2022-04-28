@@ -1,6 +1,5 @@
 import asyncio
-
-from typing import Callable, Coroutine, Any
+from typing import Any, Callable, Coroutine
 
 
 class AsyncFinalizerFactory:

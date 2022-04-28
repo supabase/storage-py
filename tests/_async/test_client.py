@@ -1,14 +1,15 @@
 from __future__ import annotations
 
+import asyncio
 from typing import TYPE_CHECKING
 from uuid import uuid4
 
 import pytest
-import asyncio
 
-from storage3.utils import StorageException
-from .. import AsyncBucketProxy
 from storage3 import AsyncStorageClient
+from storage3.utils import StorageException
+
+from .. import AsyncBucketProxy
 from ..utils import AsyncFinalizerFactory
 
 if TYPE_CHECKING:
