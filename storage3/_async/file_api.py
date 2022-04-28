@@ -35,7 +35,7 @@ class AsyncBucketActionsMixin:
         try:
             response.raise_for_status()
         except HTTPError:
-            raise StorageException(response.json())
+            raise StorageException({**response.json(), "statusCode": response.status_code})
 
         return response
 
