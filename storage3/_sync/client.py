@@ -43,6 +43,15 @@ class SyncStorageClient(SyncStorageBucketAPI):
             timeout=timeout,
         )
 
+    def __enter__(self) -> SyncStorageClient:
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> None:
+        self.aclose()
+
+    def aclose(self) -> None:
+        self.session.aclose()
+
     def from_(self, id: str) -> SyncBucketProxy:
         """Run a storage file operation.
 
