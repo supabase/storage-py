@@ -17,8 +17,6 @@ class SyncBucketActionsMixin:
     """Functions needed to access the file API."""
 
     id: str
-    _url: str
-    _headers: dict[str, str]
     _client: SyncClient
 
     def _request(
@@ -31,12 +29,18 @@ class SyncBucketActionsMixin:
     ) -> Response:
         headers = headers or {}
         response = self._client.request(
-            method, url, headers={**self._headers, **headers}, json=json, files=files
+            method,
+            url,
+            headers={**self._client.headers, **headers},
+            json=json,
+            files=files,
         )
         try:
             response.raise_for_status()
         except HTTPError:
-            raise StorageException({**response.json(), "statusCode": response.status_code})
+            raise StorageException(
+                {**response.json(), "statusCode": response.status_code}
+            )
 
         return response
 
@@ -52,11 +56,11 @@ class SyncBucketActionsMixin:
         path = self._get_final_path(path)
         response = self._request(
             "POST",
-            f"{self._url}/object/sign/{path}",
+            f"{self._client.base_url}object/sign/{path}",
             json={"expiresIn": str(expires_in)},
         )
         data = response.json()
-        data["signedURL"] = f"{self._url}{data['signedURL']}"
+        data["signedURL"] = f"{self._client.base_url}{data['signedURL']}"
         return data
 
     def get_public_url(self, path: str) -> str:
@@ -67,7 +71,7 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _path = self._get_final_path(path)
-        return f"{self._url}/object/public/{_path}"
+        return f"{self._client.base_url}object/public/{_path}"
 
     def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -82,7 +86,7 @@ class SyncBucketActionsMixin:
         """
         res = self._request(
             "POST",
-            f"{self._url}/object/move",
+            f"{self._client.base_url}object/move",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,
@@ -102,7 +106,7 @@ class SyncBucketActionsMixin:
         """
         response = self._request(
             "DELETE",
-            f"{self._url}/object/{self.id}",
+            f"{self._client.base_url}object/{self.id}",
             json={"prefixes": paths},
         )
         return response.json()
@@ -128,7 +132,7 @@ class SyncBucketActionsMixin:
         body["prefix"] = path or ""
         response = self._request(
             "POST",
-            f"{self._url}/object/list/{self.id}",
+            f"{self._client.base_url}object/list/{self.id}",
             json=body,
             headers=extra_headers,
         )
@@ -145,7 +149,9 @@ class SyncBucketActionsMixin:
         """
         _path = self._get_final_path(path)
         response = self._request(
-            "GET", f"{self._url}/object/{_path}", headers=self._headers
+            "GET",
+            f"{self._client.base_url}object/{_path}",
+            headers=self._client.headers,
         )
         return response.content
 
@@ -167,14 +173,14 @@ class SyncBucketActionsMixin:
         """
         if file_options is None:
             file_options = {}
-        headers = dict(self._headers, **DEFAULT_FILE_OPTIONS, **file_options)
+        headers = dict(self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options)
         filename = path.rsplit("/", maxsplit=1)[-1]
         files = {"file": (filename, open(file, "rb"), headers["contentType"])}
         _path = self._get_final_path(path)
 
         return self._request(
             "POST",
-            f"{self._url}/object/{_path}",
+            f"{self._client.base_url}object/{_path}",
             files=files,
             headers=headers,
         )
@@ -188,8 +194,6 @@ class SyncBucketActionsMixin:
 # run methods like `upload` and `download`
 @dataclass(repr=False)
 class SyncBucket(BaseBucket, SyncBucketActionsMixin):
-    _url: str = field(repr=False)
-    _headers: dict[str, str] = field(repr=False)
     _client: SyncClient = field(repr=False)
 
 
@@ -198,6 +202,4 @@ class SyncBucketProxy(SyncBucketActionsMixin):
     # contains the minimum required fields needed to query the file API endpoints
     # this object is returned by the `StorageClient.from_`` method
     id: str
-    _url: str
-    _headers: dict[str, str]
     _client: SyncClient
