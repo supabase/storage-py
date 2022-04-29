@@ -81,7 +81,7 @@ class AsyncStorageBucketAPI:
             The unique identifier of the bucket you would like to empty.
         """
         res = await self._request(
-            "POST", f"{self._client.base_url}bucket/{id}/empty", json={}
+            "POST", f"/bucket/{id}/empty", json={}
         )
         return res.json()
 
