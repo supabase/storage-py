@@ -27,11 +27,10 @@ class SyncBucketActionsMixin:
         json: Optional[dict[Any, Any]] = None,
         files: Optional[Any] = None,
     ) -> Response:
-        headers = headers or {}
         response = self._client.request(
             method,
             url,
-            headers={**self._client.headers, **headers},
+            headers=headers,
             json=json,
             files=files,
         )
@@ -56,7 +55,7 @@ class SyncBucketActionsMixin:
         path = self._get_final_path(path)
         response = self._request(
             "POST",
-            f"{self._client.base_url}object/sign/{path}",
+            f"/object/sign/{path}",
             json={"expiresIn": str(expires_in)},
         )
         data = response.json()
@@ -71,7 +70,7 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}object/public/{_path}"
+        return f"{self._client.base_url}/object/public/{_path}"
 
     def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -86,7 +85,7 @@ class SyncBucketActionsMixin:
         """
         res = self._request(
             "POST",
-            f"{self._client.base_url}object/move",
+            "/object/move",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,
@@ -106,7 +105,7 @@ class SyncBucketActionsMixin:
         """
         response = self._request(
             "DELETE",
-            f"{self._client.base_url}object/{self.id}",
+            f"/object/{self.id}",
             json={"prefixes": paths},
         )
         return response.json()
@@ -132,7 +131,7 @@ class SyncBucketActionsMixin:
         body["prefix"] = path or ""
         response = self._request(
             "POST",
-            f"{self._client.base_url}object/list/{self.id}",
+            f"/object/list/{self.id}",
             json=body,
             headers=extra_headers,
         )
@@ -150,8 +149,7 @@ class SyncBucketActionsMixin:
         _path = self._get_final_path(path)
         response = self._request(
             "GET",
-            f"{self._client.base_url}object/{_path}",
-            headers=self._client.headers,
+            f"/object/{_path}",
         )
         return response.content
 
@@ -180,7 +178,7 @@ class SyncBucketActionsMixin:
 
         return self._request(
             "POST",
-            f"{self._client.base_url}object/{_path}",
+            f"/object/{_path}",
             files=files,
             headers=headers,
         )
