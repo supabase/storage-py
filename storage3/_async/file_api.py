@@ -106,7 +106,7 @@ class AsyncBucketActionsMixin:
         """
         response = await self._request(
             "DELETE",
-            f"{self._client.base_url}object/{self.id}",
+            f"/object/{self.id}",
             json={"prefixes": paths},
         )
         return response.json()
