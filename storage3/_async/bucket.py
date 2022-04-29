@@ -67,7 +67,7 @@ class AsyncStorageBucketAPI:
         """
         res = await self._request(
             "POST",
-            f"{self._client.base_url}bucket",
+            f"/bucket",
             json={"id": id, "name": name or id, "public": public},
         )
         return res.json()
