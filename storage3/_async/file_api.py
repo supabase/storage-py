@@ -150,8 +150,7 @@ class AsyncBucketActionsMixin:
         _path = self._get_final_path(path)
         response = await self._request(
             "GET",
-            f"{self._client.base_url}object/{_path}",
-            headers=self._client.headers,
+            f"/object/{_path}",
         )
         return response.content
 
