@@ -86,7 +86,7 @@ class AsyncBucketActionsMixin:
         """
         res = await self._request(
             "POST",
-            f"{self._client.base_url}object/move",
+            f"/object/move",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,
