@@ -36,7 +36,7 @@ class AsyncStorageBucketAPI:
     async def list_buckets(self) -> list[AsyncBucket]:
         """Retrieves the details of all storage buckets within an existing product."""
         # if the request doesn't error, it is assured to return a list
-        res = await self._request("GET", f"{self._client.base_url}bucket")
+        res = await self._request("GET", f"/bucket")
         return [AsyncBucket(**bucket, _client=self._client) for bucket in res.json()]
 
     async def get_bucket(self, id: str) -> AsyncBucket:
