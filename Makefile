@@ -5,7 +5,7 @@ install_poetry:
 	curl -sSL https://install.python-poetry.org | python -
 	poetry install
 
-tests: tests_only tests_pre_commit
+tests: install tests_pre_commit
 
 tests_pre_commit:
 	poetry run pre-commit run --all-files
