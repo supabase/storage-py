@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from typing import TYPE_CHECKING
 from uuid import uuid4
 
@@ -19,12 +18,6 @@ if TYPE_CHECKING:
 
 # Global variable to track the ids from the buckets created in the tests run
 temp_test_buckets_ids = []
-
-
-@pytest.fixture(scope="module")
-def event_loop() -> asyncio.AbstractEventLoop:
-    """Returns an event loop for the current thread"""
-    return asyncio.get_event_loop_policy().get_event_loop()
 
 
 @pytest.fixture(scope="module")
