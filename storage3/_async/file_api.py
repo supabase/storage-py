@@ -56,7 +56,7 @@ class AsyncBucketActionsMixin:
         path = self._get_final_path(path)
         response = await self._request(
             "POST",
-            f"{self._client.base_url}object/sign/{path}",
+            f"/object/sign/{path}",
             json={"expiresIn": str(expires_in)},
         )
         data = response.json()
