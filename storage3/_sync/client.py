@@ -14,13 +14,13 @@ class SyncStorageClient(SyncStorageBucketAPI):
 
     def __init__(self, url: str, key: str, headers: dict[str, str] = None) -> None:
         super().__init__(
-            url,
-            {
+            url=url,
+            headers={
                 "User-Agent": f"supabase-py/storage3 v{__version__}",
                 **self._get_auth_headers(key),
                 **(headers or {}),
             },
-            SyncClient(),
+            session=SyncClient(),
         )
 
     def from_(self, id: str) -> SyncBucketProxy:
