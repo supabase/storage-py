@@ -132,7 +132,7 @@ class AsyncBucketActionsMixin:
         body["prefix"] = path or ""
         response = await self._request(
             "POST",
-            f"{self._client.base_url}object/list/{self.id}",
+            f"/object/list/{self.id}",
             json=body,
             headers=extra_headers,
         )
