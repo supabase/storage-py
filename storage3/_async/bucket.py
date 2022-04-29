@@ -95,6 +95,6 @@ class AsyncStorageBucketAPI:
             The unique identifier of the bucket you would like to delete.
         """
         res = await self._request(
-            "DELETE", f"{self._client.base_url}bucket/{id}", json={}
+            "DELETE", f"/bucket/{id}", json={}
         )
         return res.json()
