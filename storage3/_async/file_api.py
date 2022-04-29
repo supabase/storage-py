@@ -27,11 +27,10 @@ class AsyncBucketActionsMixin:
         json: Optional[dict[Any, Any]] = None,
         files: Optional[Any] = None,
     ) -> Response:
-        headers = headers or {}
         response = await self._client.request(
             method,
             url,
-            headers={**self._client.headers, **headers},
+            headers=headers,
             json=json,
             files=files,
         )
@@ -86,7 +85,7 @@ class AsyncBucketActionsMixin:
         """
         res = await self._request(
             "POST",
-            f"/object/move",
+            "/object/move",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,

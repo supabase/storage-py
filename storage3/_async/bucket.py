@@ -36,7 +36,7 @@ class AsyncStorageBucketAPI:
     async def list_buckets(self) -> list[AsyncBucket]:
         """Retrieves the details of all storage buckets within an existing product."""
         # if the request doesn't error, it is assured to return a list
-        res = await self._request("GET", f"/bucket")
+        res = await self._request("GET", "/bucket")
         return [AsyncBucket(**bucket, _client=self._client) for bucket in res.json()]
 
     async def get_bucket(self, id: str) -> AsyncBucket:
@@ -67,7 +67,7 @@ class AsyncStorageBucketAPI:
         """
         res = await self._request(
             "POST",
-            f"/bucket",
+            "/bucket",
             json={"id": id, "name": name or id, "public": public},
         )
         return res.json()
@@ -80,9 +80,7 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to empty.
         """
-        res = await self._request(
-            "POST", f"/bucket/{id}/empty", json={}
-        )
+        res = await self._request("POST", f"/bucket/{id}/empty", json={})
         return res.json()
 
     async def delete_bucket(self, id: str) -> dict[str, str]:
@@ -94,7 +92,5 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to delete.
         """
-        res = await self._request(
-            "DELETE", f"/bucket/{id}", json={}
-        )
+        res = await self._request("DELETE", f"/bucket/{id}", json={})
         return res.json()
