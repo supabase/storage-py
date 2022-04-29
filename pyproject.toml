@@ -23,7 +23,7 @@ version = "0.2.0"
 httpx = ">=0.19,<0.22"
 python = "^3.7"
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.dev-dependencies]
 black = "^22.3.0"
 commitizen = "^2.20.3"
 flake8 = "^4.0.1"
