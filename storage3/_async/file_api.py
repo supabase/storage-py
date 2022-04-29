@@ -71,7 +71,7 @@ class AsyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}object/public/{_path}"
+        return f"{self._client.base_url}/object/public/{_path}"
 
     async def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
