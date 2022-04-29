@@ -47,7 +47,7 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to retrieve.
         """
-        res = await self._request("GET", f"{self._client.base_url}bucket/{id}")
+        res = await self._request("GET", f"/bucket/{id}")
         json = res.json()
         return AsyncBucket(**json, _client=self._client)
 
