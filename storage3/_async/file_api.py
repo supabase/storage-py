@@ -179,7 +179,7 @@ class AsyncBucketActionsMixin:
 
         return await self._request(
             "POST",
-            f"{self._client.base_url}object/{_path}",
+            f"/object/{_path}",
             files=files,
             headers=headers,
         )
