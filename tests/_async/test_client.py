@@ -14,7 +14,7 @@ from ..utils import AsyncFinalizerFactory
 
 if TYPE_CHECKING:
     from pathlib import Path
-    from typing import Any, Callable
+    from typing import Callable
 
 
 # Global variable to track the ids from the buckets created in the tests run
@@ -131,7 +131,7 @@ async def test_client_upload_file(
     options = {"content-type": mime_type}
 
     await storage_file_client.upload(bucket_file_path, file_path, options)
-    files: list[dict[str, Any]] = storage_file_client.list(bucket_folder)
+    files = await storage_file_client.list(bucket_folder)
     image_info = next((f for f in files if f.get("name") == file_name), None)
 
     assert files
