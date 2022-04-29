@@ -66,10 +66,10 @@ jobs:
         with:
           poetry-version: 1.2.0b1
 
-      # - name: Publish
-      #   env:
-      #     PYPI_USERNAME: __token__
-      #     PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-      #   run: |
-      #     poetry install
-      #     poetry publish --build -u $PYPI_USERNAME -p $PYPI_PASSWORD
+      - name: Publish
+        env:
+          PYPI_USERNAME: __token__
+          PYPI_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: |
+          poetry install
+          poetry publish --build -u $PYPI_USERNAME -p $PYPI_PASSWORD
