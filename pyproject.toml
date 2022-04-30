@@ -22,10 +22,11 @@ version = "0.2.0"
 [tool.poetry.dependencies]
 httpx = ">=0.19,<0.22"
 python = "^3.7"
+typing-extensions = "^4.2.0"
 
 [tool.poetry.dev-dependencies]
+python-semantic-release = "^7.28.1"
 black = "^22.3.0"
-commitizen = "^2.20.3"
 flake8 = "^4.0.1"
 isort = "^5.9.3"
 pre-commit = "^2.16.0"
@@ -35,14 +36,15 @@ pytest-cov = "^3.0.0"
 python-dotenv = "^0.20.0"
 unasync-cli = "^0.0.9"
 
-[tool.commitizen]
-name = "cz_conventional_commits"
-tag_format = "v$version"
-version = "0.1.0"
-version_files = [
-  "storage3/utils.py",
-  "pyproject.toml:version",
-]
+[tool.semantic_release]
+version_variable = "storage3/utils.py:__version__"
+version_toml = "pyproject.toml:tool.poetry.version"
+major_on_zero = false
+commit_subject = "chore(release): bump version to v{version}"
+build_command = "curl -sSL https://install.python-poetry.org | python - && export PATH=\"/github/home/.local/bin:$PATH\" && poetry install && poetry build"
+upload_to_repository = true
+branch = "main"
+changelog_components = "semantic_release.changelog.changelog_headers,semantic_release.changelog.compare_url"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
