@@ -16,7 +16,7 @@ url = "https://<your_supabase_id>.supabase.co/storage/v1"
 key = "<your api key>"
 
 # pass in is_async=True to create an async client
-storage_client = create_client(url, {'apiKey': key, 'Authorization': 'Bearer <an_auth_token>'}, is_async=False)
+storage_client = create_client(url, key, is_async=False)
 
 storage_client.list_buckets()
 ```

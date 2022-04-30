@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Optional, Union
@@ -15,8 +17,6 @@ class AsyncBucketActionsMixin:
     """Functions needed to access the file API."""
 
     id: str
-    _url: str
-    _headers: dict[str, str]
     _client: AsyncClient
 
     async def _request(
@@ -27,14 +27,19 @@ class AsyncBucketActionsMixin:
         json: Optional[dict[Any, Any]] = None,
         files: Optional[Any] = None,
     ) -> Response:
-        headers = headers or {}
         response = await self._client.request(
-            method, url, headers={**self._headers, **headers}, json=json, files=files
+            method,
+            url,
+            headers=headers,
+            json=json,
+            files=files,
         )
         try:
             response.raise_for_status()
         except HTTPError:
-            raise StorageException(response.json())
+            raise StorageException(
+                {**response.json(), "statusCode": response.status_code}
+            )
 
         return response
 
@@ -50,11 +55,11 @@ class AsyncBucketActionsMixin:
         path = self._get_final_path(path)
         response = await self._request(
             "POST",
-            f"{self._url}/object/sign/{path}",
+            f"/object/sign/{path}",
             json={"expiresIn": str(expires_in)},
         )
         data = response.json()
-        data["signedURL"] = f"{self._url}{data['signedURL']}"
+        data["signedURL"] = f"{self._client.base_url}{data['signedURL']}"
         return data
 
     def get_public_url(self, path: str) -> str:
@@ -65,8 +70,7 @@ class AsyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _path = self._get_final_path(path)
-        public_url = f"{self._url}/object/public/{_path}"
-        return public_url
+        return f"{self._client.base_url}/object/public/{_path}"
 
     async def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -81,7 +85,7 @@ class AsyncBucketActionsMixin:
         """
         res = await self._request(
             "POST",
-            f"{self._url}/object/move",
+            "/object/move",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,
@@ -101,7 +105,7 @@ class AsyncBucketActionsMixin:
         """
         response = await self._request(
             "DELETE",
-            f"{self._url}/object/{self.id}",
+            f"/object/{self.id}",
             json={"prefixes": paths},
         )
         return response.json()
@@ -124,10 +128,10 @@ class AsyncBucketActionsMixin:
         extra_options = options or {}
         body = dict(DEFAULT_SEARCH_OPTIONS, **extra_options)
         extra_headers = {"Content-Type": "application/json"}
-        body["prefix"] = path if path else ""
+        body["prefix"] = path or ""
         response = await self._request(
             "POST",
-            f"{self._url}/object/list/{self.id}",
+            f"/object/list/{self.id}",
             json=body,
             headers=extra_headers,
         )
@@ -144,7 +148,8 @@ class AsyncBucketActionsMixin:
         """
         _path = self._get_final_path(path)
         response = await self._request(
-            "GET", f"{self._url}/object/{_path}", headers=self._headers
+            "GET",
+            f"/object/{_path}",
         )
         return response.content
 
@@ -157,7 +162,8 @@ class AsyncBucketActionsMixin:
         Parameters
         ----------
         path
-            The relative file path including the bucket ID. Should be of the format `bucket/folder/subfolder/filename.png`. The bucket must already exist before attempting to upload.
+            The relative file path including the bucket ID. Should be of the format `bucket/folder/subfolder/filename.png`.
+            The bucket must already exist before attempting to upload.
         file
             The File object to be stored in the bucket. or a async generator of chunks
         file_options
@@ -165,14 +171,14 @@ class AsyncBucketActionsMixin:
         """
         if file_options is None:
             file_options = {}
-        headers = dict(self._headers, **DEFAULT_FILE_OPTIONS, **file_options)
+        headers = dict(self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options)
         filename = path.rsplit("/", maxsplit=1)[-1]
         files = {"file": (filename, open(file, "rb"), headers["contentType"])}
         _path = self._get_final_path(path)
 
         return await self._request(
             "POST",
-            f"{self._url}/object/{_path}",
+            f"/object/{_path}",
             files=files,
             headers=headers,
         )
@@ -186,8 +192,6 @@ class AsyncBucketActionsMixin:
 # run methods like `upload` and `download`
 @dataclass(repr=False)
 class AsyncBucket(BaseBucket, AsyncBucketActionsMixin):
-    _url: str = field(repr=False)
-    _headers: dict[str, str] = field(repr=False)
     _client: AsyncClient = field(repr=False)
 
 
@@ -196,6 +200,4 @@ class AsyncBucketProxy(AsyncBucketActionsMixin):
     # contains the minimum required fields needed to query the file API endpoints
     # this object is returned by the `StorageClient.from_`` method
     id: str
-    _url: str
-    _headers: dict[str, str]
     _client: AsyncClient

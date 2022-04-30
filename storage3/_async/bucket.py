@@ -14,9 +14,7 @@ __all__ = ["AsyncStorageBucketAPI"]
 class AsyncStorageBucketAPI:
     """This class abstracts access to the endpoint to the Get, List, Empty, and Delete operations on a bucket"""
 
-    def __init__(self, url: str, headers: dict[str, str], session: AsyncClient) -> None:
-        self.url = url
-        self.headers = headers
+    def __init__(self, session: AsyncClient) -> None:
         self._client = session
 
     async def _request(
@@ -25,26 +23,21 @@ class AsyncStorageBucketAPI:
         url: str,
         json: Optional[dict[Any, Any]] = None,
     ) -> Response:
-        response = await self._client.request(
-            method, url, headers=self.headers, json=json
-        )
+        response = await self._client.request(method, url, json=json)
         try:
             response.raise_for_status()
         except HTTPError:
-            raise StorageException(response.json())
+            raise StorageException(
+                {**response.json(), "statusCode": response.status_code}
+            )
 
         return response
 
     async def list_buckets(self) -> list[AsyncBucket]:
         """Retrieves the details of all storage buckets within an existing product."""
         # if the request doesn't error, it is assured to return a list
-        res = await self._request("GET", f"{self.url}/bucket")
-        return [
-            AsyncBucket(
-                **bucket, _url=self.url, _headers=self.headers, _client=self._client
-            )
-            for bucket in res.json()
-        ]
+        res = await self._request("GET", "/bucket")
+        return [AsyncBucket(**bucket, _client=self._client) for bucket in res.json()]
 
     async def get_bucket(self, id: str) -> AsyncBucket:
         """Retrieves the details of an existing storage bucket.
@@ -54,11 +47,9 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to retrieve.
         """
-        res = await self._request("GET", f"{self.url}/bucket/{id}")
+        res = await self._request("GET", f"/bucket/{id}")
         json = res.json()
-        return AsyncBucket(
-            **json, _url=self.url, _headers=self.headers, _client=self._client
-        )
+        return AsyncBucket(**json, _client=self._client)
 
     async def create_bucket(
         self, id: str, name: Optional[str] = None, public: bool = False
@@ -76,7 +67,7 @@ class AsyncStorageBucketAPI:
         """
         res = await self._request(
             "POST",
-            f"{self.url}/bucket",
+            "/bucket",
             json={"id": id, "name": name or id, "public": public},
         )
         return res.json()
@@ -89,7 +80,7 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to empty.
         """
-        res = await self._request("POST", f"{self.url}/bucket/{id}/empty", json={})
+        res = await self._request("POST", f"/bucket/{id}/empty", json={})
         return res.json()
 
     async def delete_bucket(self, id: str) -> dict[str, str]:
@@ -101,5 +92,5 @@ class AsyncStorageBucketAPI:
         id
             The unique identifier of the bucket you would like to delete.
         """
-        res = await self._request("DELETE", f"{self.url}/bucket/{id}", json={})
+        res = await self._request("DELETE", f"/bucket/{id}", json={})
         return res.json()
