@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2022-05-01)
+### Fix
+* Parity with js ([`19f1816`](https://github.com/supabase-community/storage-py/commit/19f1816d23671d576ddf23feab401d51aaf7b3e4))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.0...v0.3.1)**
+
 ## v0.3.0 (2022-04-30)
 ### Feature
 * Force version bump ([`62556c0`](https://github.com/supabase-community/storage-py/commit/62556c00a064c691df90be6f8c8a46cc1b772ba4))
