@@ -1,9 +1,5 @@
 from __future__ import annotations
 
-from typing import Union
-
-from httpx import Timeout
-
 from ..utils import AsyncClient, __version__
 from .bucket import AsyncStorageBucketAPI
 from .file_api import AsyncBucketProxy
@@ -19,28 +15,23 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
     def __init__(
         self,
         url: str,
-        key: str,
-        headers: dict[str, str] = None,
-        timeout: Union[int, float, Timeout] = 5,
+        headers: dict[str, str],
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
-            **self._get_auth_headers(key),
-            **(headers or {}),
+            **headers,
         }
-        self.session = self.create_session(url, headers, timeout)
+        self.session = self.create_session(url, headers)
         super().__init__(self.session)
 
     def create_session(
         self,
         base_url: str,
         headers: dict[str, str],
-        timeout: Union[int, float, Timeout],
     ) -> AsyncClient:
         return AsyncClient(
             base_url=base_url,
             headers=headers,
-            timeout=timeout,
         )
 
     async def __aenter__(self) -> AsyncStorageClient:
@@ -61,12 +52,3 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
             The unique identifier of the bucket
         """
         return AsyncBucketProxy(id, self._client)
-
-    @staticmethod
-    def _get_auth_headers(key: str) -> dict[str, str]:
-        """Helper method to get auth headers."""
-        # What's the corresponding method to get the token
-        return {
-            "apiKey": key,
-            "Authorization": f"Bearer {key}",
-        }

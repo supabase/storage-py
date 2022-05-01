@@ -25,5 +25,11 @@ async def storage() -> AsyncStorageClient:
     assert url is not None, "Must provide SUPABASE_TEST_URL environment variable"
     key = os.environ.get("SUPABASE_TEST_KEY")
     assert key is not None, "Must provide SUPABASE_TEST_KEY environment variable"
-    async with AsyncStorageClient(url, key) as client:
+    async with AsyncStorageClient(
+        url,
+        {
+            "apiKey": key,
+            "Authorization": f"Bearer {key}",
+        },
+    ) as client:
         yield client

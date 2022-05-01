@@ -25,5 +25,11 @@ def storage() -> SyncStorageClient:
     assert url is not None, "Must provide SUPABASE_TEST_URL environment variable"
     key = os.environ.get("SUPABASE_TEST_KEY")
     assert key is not None, "Must provide SUPABASE_TEST_KEY environment variable"
-    with SyncStorageClient(url, key) as client:
+    with SyncStorageClient(
+        url,
+        {
+            "apiKey": key,
+            "Authorization": f"Bearer {key}",
+        },
+    ) as client:
         yield client
