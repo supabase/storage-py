@@ -37,7 +37,6 @@ python-dotenv = "^0.20.0"
 Sphinx = "^4.5.0"
 sphinx-press-theme = "^0.8.0"
 unasync-cli = "^0.0.9"
-setuptools = "^62.2.0"
 
 [tool.semantic_release]
 version_variable = "storage3/utils.py:__version__"
