@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.2 (2022-05-16)
+### Fix
+* Don't create virtualenv in CI ([#7](https://github.com/supabase-community/storage-py/issues/7)) ([`2a85860`](https://github.com/supabase-community/storage-py/commit/2a8586082ff667c7b525bccf01df2c0e890f2b66))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.1...v0.3.2)**
+
 ## v0.3.1 (2022-05-01)
 ### Fix
 * Parity with js ([`19f1816`](https://github.com/supabase-community/storage-py/commit/19f1816d23671d576ddf23feab401d51aaf7b3e4))
