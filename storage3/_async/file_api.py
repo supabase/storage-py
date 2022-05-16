@@ -30,7 +30,7 @@ class AsyncBucketActionsMixin:
         response = await self._client.request(
             method,
             url,
-            headers=headers,
+            headers=headers or {},
             json=json,
             files=files,
         )
@@ -192,12 +192,12 @@ class AsyncBucketActionsMixin:
 # run methods like `upload` and `download`
 @dataclass(repr=False)
 class AsyncBucket(BaseBucket, AsyncBucketActionsMixin):
+    """Represents a storage bucket."""
     _client: AsyncClient = field(repr=False)
 
 
 @dataclass
 class AsyncBucketProxy(AsyncBucketActionsMixin):
-    # contains the minimum required fields needed to query the file API endpoints
-    # this object is returned by the `StorageClient.from_`` method
+    """A bucket proxy, this contains the minimum required fields to query the File API."""
     id: str
-    _client: AsyncClient
+    _client: AsyncClient = field(repr=False)

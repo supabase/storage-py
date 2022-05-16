@@ -14,9 +14,10 @@ from storage3 import create_client
 
 url = "https://<your_supabase_id>.supabase.co/storage/v1"
 key = "<your api key>"
+headers = {"apiKey": key, "Authorization": f"Bearer {key}"}
 
 # pass in is_async=True to create an async client
-storage_client = create_client(url, key, is_async=False)
+storage_client = create_client(url, headers, is_async=False)
 
 storage_client.list_buckets()
 ```
