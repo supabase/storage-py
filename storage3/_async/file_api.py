@@ -193,11 +193,13 @@ class AsyncBucketActionsMixin:
 @dataclass(repr=False)
 class AsyncBucket(BaseBucket, AsyncBucketActionsMixin):
     """Represents a storage bucket."""
+
     _client: AsyncClient = field(repr=False)
 
 
 @dataclass
 class AsyncBucketProxy(AsyncBucketActionsMixin):
     """A bucket proxy, this contains the minimum required fields to query the File API."""
+
     id: str
     _client: AsyncClient = field(repr=False)
