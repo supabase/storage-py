@@ -4,6 +4,7 @@ authors = [
   "Leon Fedden <leonfedden@gmail.com>",
   "Daniel Reinón García <danielreinon@outlook.com>",
   "Leynier Gutiérrez González <leynier41@gmail.com>",
+  "Anand Krishna <anand2312@proton.me>"
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
@@ -11,8 +12,8 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 description = "Supabase Storage client for Python."
-documentation = "https://github.com/supabase-community/storage-py"
-homepage = "https://github.com/supabase-community/storage-py"
+documentation = "https://supabase-community.github.io/storage-py"
+homepage = "https://supabase-community.github.io/storage-py"
 license = "MIT"
 name = "storage3"
 readme = "README.md"
@@ -27,13 +28,14 @@ typing-extensions = "^4.2.0"
 [tool.poetry.dev-dependencies]
 python-semantic-release = "^7.28.1"
 black = "^22.3.0"
-flake8 = "^4.0.1"
 isort = "^5.9.3"
 pre-commit = "^2.16.0"
 pytest = "^6.2.5"
 pytest-asyncio = "^0.18.3"
 pytest-cov = "^3.0.0"
 python-dotenv = "^0.20.0"
+Sphinx = "^4.5.0"
+sphinx-press-theme = "^0.8.0"
 unasync-cli = "^0.0.9"
 
 [tool.semantic_release]

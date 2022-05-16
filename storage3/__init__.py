@@ -13,22 +13,22 @@ __all__ = ["create_client", "__version__"]
 
 @overload
 def create_client(
-    url: str, key: str, headers: dict[str, str], *, is_async: Literal[True]
+    url: str, headers: dict[str, str], *, is_async: Literal[True]
 ) -> AsyncStorageClient:
     ...
 
 
 @overload
 def create_client(
-    url: str, key: str, headers: dict[str, str], *, is_async: Literal[False]
+    url: str, headers: dict[str, str], *, is_async: Literal[False]
 ) -> SyncStorageClient:
     ...
 
 
 def create_client(
-    url: str, key: str, headers: dict[str, str] = None, *, is_async: bool
+    url: str, headers: dict[str, str], *, is_async: bool
 ) -> Union[AsyncStorageClient, SyncStorageClient]:
     if is_async:
-        return AsyncStorageClient(url, key, headers)
+        return AsyncStorageClient(url, headers)
     else:
-        return SyncStorageClient(url, key, headers)
+        return SyncStorageClient(url, headers)

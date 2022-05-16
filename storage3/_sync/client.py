@@ -21,10 +21,10 @@ class SyncStorageClient(SyncStorageBucketAPI):
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
-        self.session = self.create_session(url, headers)
+        self.session = self._create_session(url, headers)
         super().__init__(self.session)
 
-    def create_session(
+    def _create_session(
         self,
         base_url: str,
         headers: dict[str, str],

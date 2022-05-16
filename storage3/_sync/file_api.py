@@ -30,7 +30,7 @@ class SyncBucketActionsMixin:
         response = self._client.request(
             method,
             url,
-            headers=headers,
+            headers=headers or {},
             json=json,
             files=files,
         )
@@ -192,12 +192,14 @@ class SyncBucketActionsMixin:
 # run methods like `upload` and `download`
 @dataclass(repr=False)
 class SyncBucket(BaseBucket, SyncBucketActionsMixin):
+    """Represents a storage bucket."""
+
     _client: SyncClient = field(repr=False)
 
 
 @dataclass
 class SyncBucketProxy(SyncBucketActionsMixin):
-    # contains the minimum required fields needed to query the file API endpoints
-    # this object is returned by the `StorageClient.from_`` method
+    """A bucket proxy, this contains the minimum required fields to query the File API."""
+
     id: str
-    _client: SyncClient
+    _client: SyncClient = field(repr=False)
