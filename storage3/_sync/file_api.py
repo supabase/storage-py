@@ -8,7 +8,7 @@ from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
-from ..utils import StorageException, SyncClient
+from ..utils import SyncClient, StorageException
 
 __all__ = ["SyncBucket"]
 
@@ -126,9 +126,8 @@ class SyncBucketActionsMixin:
             Search options, including `limit`, `offset`, and `sortBy`.
         """
         extra_options = options or {}
-        body = dict(DEFAULT_SEARCH_OPTIONS, **extra_options)
         extra_headers = {"Content-Type": "application/json"}
-        body["prefix"] = path or ""
+        body = {**DEFAULT_SEARCH_OPTIONS, **extra_options, "prefix": path or ""}
         response = self._request(
             "POST",
             f"/object/list/{self.id}",
@@ -167,13 +166,13 @@ class SyncBucketActionsMixin:
         file
             The File object to be stored in the bucket. or a async generator of chunks
         file_options
-            HTTP headers. For example `cacheControl`
+            HTTP headers. For example `cache-control`
         """
         if file_options is None:
             file_options = {}
-        headers = dict(self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options)
+        headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
         filename = path.rsplit("/", maxsplit=1)[-1]
-        files = {"file": (filename, open(file, "rb"), headers["contentType"])}
+        files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
         _path = self._get_final_path(path)
 
         return self._request(
