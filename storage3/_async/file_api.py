@@ -172,7 +172,7 @@ class AsyncBucketActionsMixin:
             file_options = {}
         headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
         filename = path.rsplit("/", maxsplit=1)[-1]
-        files = {"file": (filename, open(file, "rb"), headers.pop("contentType"))}
+        files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
         _path = self._get_final_path(path)
 
         return await self._request(
