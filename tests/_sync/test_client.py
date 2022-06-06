@@ -105,6 +105,7 @@ def file(tmp_path: Path, uuid_factory: Callable[[], str]) -> dict[str, str]:
         "bucket_folder": bucket_folder,
         "bucket_path": bucket_path,
         "mime_type": "image/svg+xml",
+        "file_content": file_content,
     }
 
 
@@ -119,14 +120,16 @@ def test_client_upload_file(
     file_name = file["name"]
     file_path = file["local_path"]
     mime_type = file["mime_type"]
+    file_content = file["file_content"]
     bucket_file_path = file["bucket_path"]
     bucket_folder = file["bucket_folder"]
     options = {"content-type": mime_type}
 
     storage_file_client.upload(bucket_file_path, file_path, options)
+
+    image = storage_file_client.download(bucket_file_path)
     files = storage_file_client.list(bucket_folder)
     image_info = next((f for f in files if f.get("name") == file_name), None)
 
-    assert files
-    assert image_info is not None
+    assert image == file_content
     assert image_info.get("metadata", {}).get("mimetype") == mime_type
