@@ -126,7 +126,7 @@ def test_client_upload_file(
     options = {"content-type": mime_type}
 
     storage_file_client.upload(bucket_file_path, file_path, options)
-    
+
     image = storage_file_client.download(bucket_file_path)
     files = storage_file_client.list(bucket_folder)
     image_info = next((f for f in files if f.get("name") == file_name), None)

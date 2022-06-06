@@ -8,7 +8,7 @@ from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
-from ..utils import SyncClient, StorageException
+from ..utils import StorageException, SyncClient
 
 __all__ = ["SyncBucket"]
 
