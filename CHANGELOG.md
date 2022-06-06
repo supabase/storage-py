@@ -2,6 +2,14 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.3 (2022-06-06)
+### Fix
+* Upload method ([`844561f`](https://github.com/supabase-community/storage-py/commit/844561f63d58ad869a4303941e7ef8194ae89154))
+* Use ** to merge dicts ([`2965ae7`](https://github.com/supabase-community/storage-py/commit/2965ae79857fd3b264384b0fbe8c7172744a9f12))
+* Poetry lock ([`4d2a73f`](https://github.com/supabase-community/storage-py/commit/4d2a73f7f8170ddeac5ef154fd3c14c7b7bfec71))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.2...v0.3.3)**
+
 ## v0.3.2 (2022-05-16)
 ### Fix
 * Don't create virtualenv in CI ([#7](https://github.com/supabase-community/storage-py/issues/7)) ([`2a85860`](https://github.com/supabase-community/storage-py/commit/2a8586082ff667c7b525bccf01df2c0e890f2b66))
