@@ -1,4 +1,5 @@
 from __future__ import annotations
+from time import sleep
 
 from typing import TYPE_CHECKING
 from uuid import uuid4
@@ -126,6 +127,8 @@ async def test_client_upload_file(
     options = {"content-type": mime_type}
 
     await storage_file_client.upload(bucket_file_path, file_path, options)
+    
+    sleep(3)
     
     image = await storage_file_client.download(bucket_file_path)
     files = await storage_file_client.list(bucket_folder)
