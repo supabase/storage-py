@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
 from time import sleep
 from typing import TYPE_CHECKING
 from uuid import uuid4
@@ -10,6 +11,7 @@ from storage3 import AsyncStorageClient
 from storage3.utils import StorageException
 
 from .. import AsyncBucketProxy
+from ..utils import AsyncClient as HttpxClient
 from ..utils import AsyncFinalizerFactory
 
 if TYPE_CHECKING:
@@ -52,6 +54,12 @@ async def delete_left_buckets(
     request.addfinalizer(AsyncFinalizerFactory(afinalizer).finalizer)
 
 
+async def bucket_factory(
+    storage: AsyncStorageClient, uuid_factory: Callable[[], str], public: bool
+) -> str:
+    """Creates a test bucket which will be used in the whole storage tests run and deleted at the end"""
+
+
 @pytest.fixture(scope="module")
 async def bucket(storage: AsyncStorageClient, uuid_factory: Callable[[], str]) -> str:
     """Creates a test bucket which will be used in the whole storage tests run and deleted at the end"""
@@ -72,13 +80,52 @@ async def bucket(storage: AsyncStorageClient, uuid_factory: Callable[[], str]) -
 
 
 @pytest.fixture(scope="module")
+async def public_bucket(
+    storage: AsyncStorageClient, uuid_factory: Callable[[], str]
+) -> str:
+    """Creates a test public bucket which will be used in the whole storage tests run and deleted at the end"""
+    bucket_id = uuid_factory()
+
+    # Store bucket_id in global list
+    global temp_test_buckets_ids
+    temp_test_buckets_ids.append(bucket_id)
+
+    await storage.create_bucket(id=bucket_id, public=True)
+
+    yield bucket_id
+
+    await storage.empty_bucket(bucket_id)
+    await storage.delete_bucket(bucket_id)
+
+    temp_test_buckets_ids.remove(bucket_id)
+
+
+@pytest.fixture(scope="module")
 def storage_file_client(storage: AsyncStorageClient, bucket: str) -> AsyncBucketProxy:
     """Creates the storage file client for the whole storage tests run"""
     yield storage.from_(bucket)
 
 
+@pytest.fixture(scope="module")
+def storage_file_client_public(
+    storage: AsyncStorageClient, public_bucket: str
+) -> AsyncBucketProxy:
+    """Creates the storage file client for the whole storage tests run"""
+    yield storage.from_(public_bucket)
+
+
+@dataclass
+class FileForTesting:
+    name: str
+    local_path: str
+    bucket_folder: str
+    bucket_path: str
+    mime_type: str
+    file_content: bytes
+
+
 @pytest.fixture
-def file(tmp_path: Path, uuid_factory: Callable[[], str]) -> dict[str, str]:
+def file(tmp_path: Path, uuid_factory: Callable[[], str]) -> FileForTesting:
     """Creates a different test file (same content but different path) for each test"""
     file_name = "test_image.svg"
     file_content = (
@@ -100,39 +147,72 @@ def file(tmp_path: Path, uuid_factory: Callable[[], str]) -> dict[str, str]:
     with open(file_path, "wb") as f:
         f.write(file_content)
 
-    return {
-        "name": file_name,
-        "local_path": str(file_path),
-        "bucket_folder": bucket_folder,
-        "bucket_path": bucket_path,
-        "mime_type": "image/svg+xml",
-        "file_content": file_content,
-    }
+    return FileForTesting(
+        name=file_name,
+        local_path=str(file_path),
+        bucket_folder=bucket_folder,
+        bucket_path=bucket_path,
+        mime_type="image/svg+xml",
+        file_content=file_content,
+    )
 
 
 # TODO: Test create_bucket, delete_bucket, empty_bucket, list_buckets, fileAPI.list before upload test
 
 
-async def test_client_upload_file(
-    storage_file_client: AsyncBucketProxy, file: dict[str, str]
+async def test_client_upload(
+    storage_file_client: AsyncBucketProxy, file: FileForTesting
 ) -> None:
     """Ensure we can upload files to a bucket"""
-
-    file_name = file["name"]
-    file_path = file["local_path"]
-    mime_type = file["mime_type"]
-    file_content = file["file_content"]
-    bucket_file_path = file["bucket_path"]
-    bucket_folder = file["bucket_folder"]
-    options = {"content-type": mime_type}
-
-    await storage_file_client.upload(bucket_file_path, file_path, options)
+    await storage_file_client.upload(
+        file.bucket_path, file.local_path, {"content-type": file.mime_type}
+    )
 
     sleep(3)
 
-    image = await storage_file_client.download(bucket_file_path)
-    files = await storage_file_client.list(bucket_folder)
-    image_info = next((f for f in files if f.get("name") == file_name), None)
+    image = await storage_file_client.download(file.bucket_path)
+    files = await storage_file_client.list(file.bucket_folder)
+    image_info = next((f for f in files if f.get("name") == file.name), None)
 
-    assert image == file_content
-    assert image_info.get("metadata", {}).get("mimetype") == mime_type
+    assert image == file.file_content
+    assert image_info.get("metadata", {}).get("mimetype") == file.mime_type
+
+
+async def test_client_create_signed_url(
+    storage_file_client: AsyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can create a signed url for a file in a bucket"""
+    await storage_file_client.upload(
+        file.bucket_path, file.local_path, {"content-type": file.mime_type}
+    )
+
+    sleep(3)
+
+    signed_url = (await storage_file_client.create_signed_url(file.bucket_path, 10))[
+        "signedURL"
+    ]
+
+    async with HttpxClient() as client:
+        response = await client.get(signed_url)
+    response.raise_for_status()
+
+    assert response.content == file.file_content
+
+
+async def test_client_get_public_url(
+    storage_file_client_public: AsyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can get the public url of a file in a bucket"""
+    await storage_file_client_public.upload(
+        file.bucket_path, file.local_path, {"content-type": file.mime_type}
+    )
+
+    sleep(3)
+
+    public_url = await storage_file_client_public.get_public_url(file.bucket_path)
+
+    async with HttpxClient() as client:
+        response = await client.get(public_url)
+    response.raise_for_status()
+
+    assert response.content == file.file_content
