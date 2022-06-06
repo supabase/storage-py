@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from time import sleep
 from typing import TYPE_CHECKING
 from uuid import uuid4
 
@@ -168,8 +167,6 @@ async def test_client_upload(
         file.bucket_path, file.local_path, {"content-type": file.mime_type}
     )
 
-    sleep(3)
-
     image = await storage_file_client.download(file.bucket_path)
     files = await storage_file_client.list(file.bucket_folder)
     image_info = next((f for f in files if f.get("name") == file.name), None)
@@ -185,8 +182,6 @@ async def test_client_create_signed_url(
     await storage_file_client.upload(
         file.bucket_path, file.local_path, {"content-type": file.mime_type}
     )
-
-    sleep(3)
 
     signed_url = (await storage_file_client.create_signed_url(file.bucket_path, 10))[
         "signedURL"
@@ -207,11 +202,9 @@ async def test_client_get_public_url(
         file.bucket_path, file.local_path, {"content-type": file.mime_type}
     )
 
-    sleep(3)
-
     public_url = await storage_file_client_public.get_public_url(file.bucket_path)
 
-    async with HttpxClient() as client:
+    async with HttpxClient(timeout=None) as client:
         response = await client.get(public_url)
     response.raise_for_status()
 
