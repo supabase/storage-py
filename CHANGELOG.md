@@ -2,6 +2,14 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.4 (2022-06-07)
+### Fix
+* Signed_url ([`c8cdf44`](https://github.com/supabase-community/storage-py/commit/c8cdf444090e7d9c6cd68ac4f31afb52921c3ea5))
+* Try no timeout as fix instead of sleep ([`68026be`](https://github.com/supabase-community/storage-py/commit/68026be058a5e5a0684d7bc174da674dfc6a137c))
+* Signed_url ([`bd2e09c`](https://github.com/supabase-community/storage-py/commit/bd2e09c28164b364ca919fd888019e837af3890f))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.3...v0.3.4)**
+
 ## v0.3.3 (2022-06-06)
 ### Fix
 * Upload method ([`844561f`](https://github.com/supabase-community/storage-py/commit/844561f63d58ad869a4303941e7ef8194ae89154))
