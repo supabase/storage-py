@@ -32,4 +32,5 @@ def storage() -> SyncStorageClient:
             "Authorization": f"Bearer {key}",
         },
     ) as client:
+        client.session.timeout = None
         yield client

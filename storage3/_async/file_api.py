@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 from httpx import HTTPError, Response
 
@@ -59,10 +59,12 @@ class AsyncBucketActionsMixin:
             json={"expiresIn": str(expires_in)},
         )
         data = response.json()
-        data["signedURL"] = f"{self._client.base_url}{data['signedURL']}"
+        data[
+            "signedURL"
+        ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    def get_public_url(self, path: str) -> str:
+    async def get_public_url(self, path: str) -> str:
         """
         Parameters
         ----------
