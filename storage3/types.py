@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+import dateutil.parser
 
 from typing_extensions import Literal, TypedDict
 
@@ -20,8 +21,8 @@ class BaseBucket:
     def __post_init__(self) -> None:
         # created_at and updated_at are returned by the API as ISO timestamps
         # so we convert them to datetime objects
-        self.created_at = datetime.fromisoformat(self.created_at)  # type: ignore
-        self.updated_at = datetime.fromisoformat(self.updated_at)  # type: ignore
+        self.created_at = dateutil.parser.isoparse(self.created_at)  # type: ignore
+        self.updated_at = dateutil.parser.isoparse(self.updated_at)  # type: ignore
 
 
 # used in bucket.list method's option parameter
