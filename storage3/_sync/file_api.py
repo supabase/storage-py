@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from io import BufferedReader, FileIO
 from pathlib import Path
 from typing import Any, Optional, Union, cast
 
@@ -174,9 +175,19 @@ class SyncBucketActionsMixin:
             file_options = {}
         headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
         filename = path.rsplit("/", maxsplit=1)[-1]
-        files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
-        _path = self._get_final_path(path)
 
+        if (
+            isinstance(file, BufferedReader)
+            or isinstance(file, bytes)
+            or isinstance(file, FileIO)
+        ):
+            # bytes or byte-stream-like object received
+            files = {"file": (filename, file, headers.pop("content-type"))}
+        else:
+            # str or pathlib.path received
+            files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
+
+        _path = self._get_final_path(path)
         return self._request(
             "POST",
             f"/object/{_path}",
