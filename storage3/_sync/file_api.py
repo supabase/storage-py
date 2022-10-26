@@ -176,10 +176,14 @@ class SyncBucketActionsMixin:
         headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
         filename = path.rsplit("/", maxsplit=1)[-1]
 
-        if isinstance(file, BufferedReader) or isinstance(file, bytes) or isinstance(file, FileIO):
+        if (
+            isinstance(file, BufferedReader)
+            or isinstance(file, bytes)
+            or isinstance(file, FileIO)
+        ):
             # bytes or byte-stream-like object received
             files = {"file": (filename, file, headers.pop("content-type"))}
-        else: 
+        else:
             # str or pathlib.path received
             files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
 
