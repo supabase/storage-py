@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
-import dateutil.parser
 
+import dateutil.parser
 from typing_extensions import Literal, TypedDict
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
