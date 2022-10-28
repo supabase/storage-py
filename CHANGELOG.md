@@ -1,6 +1,17 @@
 # Changelog
 
 <!--next-version-placeholder-->
+## v0.3.5 (2022-06-07)
+### Fix
+* Justinbarak patch 1 by @justinbarak in https://github.com/supabase-community/storage-py/pull/14
+* chore(deps-dev): bump pytest-asyncio from 0.18.3 to 0.19.0 by @dependabot in https://github.com/supabase-community/storage-py/pull/16
+* chore: bump httpx to 0.23 by @J0 in https://github.com/supabase-community/storage-py/pull/21
+* chore(deps): bump typing-extensions from 4.2.0 to 4.4.0 by @dependabot in https://github.com/supabase-community/storage-py/pull/18
+* chore(deps-dev): bump python-dotenv from 0.20.0 to 0.21.0 by @dependabot in https://github.com/supabase-community/storage-py/pull/17
+* chore(deps-dev): bump sphinx from 4.5.0 to 5.2.3 by @dependabot in https://github.com/supabase-community/storage-py/pull/15
+* chore: bump storage version by @J0 in https://github.com/supabase-community/storage-py/pull/22
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.4...v0.3.5)**
 
 ## v0.3.4 (2022-06-07)
 ### Fix
