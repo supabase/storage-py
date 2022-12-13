@@ -36,10 +36,12 @@ class ListBucketFilesOptions(TypedDict):
     offset: int
     sortBy: _sortByType
 
+
 class TransformOptions(TypedDict):
     height: Optional[float]
     width: Optional[float]
-    resize: Optional[Literal['cover'] | Literal['contain'] | Literal['fill']]
+    resize: Optional[Literal["cover"] | Literal["contain"] | Literal["fill"]]
+
 
 class CreateSignedURLOptions(TypedDict):
     download: Optional[str | bool]
