@@ -1,4 +1,5 @@
 from __future__ import annotations
+import urllib.parse
 
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
@@ -8,7 +9,7 @@ from typing import Any, Optional, Union, cast
 from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
-from ..types import BaseBucket, ListBucketFilesOptions, CreateSignedURLOptions, RequestMethod
+from ..types import BaseBucket, ListBucketFilesOptions, CreateSignedURLOptions, TransformOptions, RequestMethod
 from ..utils import AsyncClient, StorageException
 
 __all__ = ["AsyncBucket"]
@@ -75,15 +76,18 @@ class AsyncBucketActionsMixin:
 
         pass
 
-    async def get_public_url(self, path: str) -> str:
+    async def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
         Parameters
         ----------
         path
             file path, including the path and file name. For example `folder/image.png`.
         """
+        render_path = 'render/image/authenticated' if options.get('transform') else 'object'
+        transformation_query = urllib.parse.urlencode(options)
+        query_string = f"?{transformation_query}" if transformation_query else ''
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}object/public/{_path}"
+        return f"{self._client.base_url}{render_path}/public/{_path}/${query_string}"
 
     async def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -172,7 +176,7 @@ class AsyncBucketActionsMixin:
         )
         return response.json()
 
-    async def download(self, path: str) -> bytes:
+    async def download(self, path: str, options: TransformOptions={}) -> bytes:
         """
         Downloads a file.
 
@@ -181,10 +185,14 @@ class AsyncBucketActionsMixin:
         path
             The file path to be downloaded, including the path and file name. For example `folder/image.png`.
         """
+        render_path = 'render/image/authenticated' if options.get('transform') else 'object'
+        transformation_query = urllib.parse.urlencode(options)
+        query_string = f"?{transformation_query}" if transformation_query else ''
+
         _path = self._get_final_path(path)
         response = await self._request(
             "GET",
-            f"/object/{_path}",
+            f"{render_path}/{_path}{query_string}",
         )
         return response.content
 
