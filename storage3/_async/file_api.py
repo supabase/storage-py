@@ -8,7 +8,7 @@ from typing import Any, Optional, Union, cast
 from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
-from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
+from ..types import BaseBucket, ListBucketFilesOptions, CreateSignedURLOptions, RequestMethod
 from ..utils import AsyncClient, StorageException
 
 __all__ = ["AsyncBucket"]
@@ -44,7 +44,7 @@ class AsyncBucketActionsMixin:
 
         return response
 
-    async def create_signed_url(self, path: str, expires_in: int) -> dict[str, str]:
+    async def create_signed_url(self, path: str, expires_in: int, options: CreateSignedURLOptions = {}) -> dict[str, str]:
         """
         Parameters
         ----------
@@ -64,6 +64,16 @@ class AsyncBucketActionsMixin:
             "signedURL"
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
+
+    async def create_signed_urls(self, paths: List[str], expires_in: int, options: dict[str, str]) ->dict[str, str]:
+        response = await self._request("POST",
+                                       f"/object/sign/{self.bucket_id}",json={
+                                           "expires_in": expires_in,
+                                           "paths": paths})
+        # TODO(joel): add support for download option
+        return response.json()
+
+        pass
 
     async def get_public_url(self, path: str) -> str:
         """
@@ -96,6 +106,29 @@ class AsyncBucketActionsMixin:
             },
         )
         return res.json()
+
+    async def copy(self, from_path: str, to_path: str) -> dict[str, str]:
+        """
+        Copies an existing file to a new path in the same bucket.
+
+        Parameters
+        ----------
+        from_path
+            The original file path, including the current file name. For example `folder/image.png`.
+        to_path
+            The new file path, including the new file name. For example `folder/image-copy.png`.
+        """
+        res = await self._request(
+                "POST",
+                "/object/copy",
+                json={
+                    "bucketId": self.id,
+                    "sourceKey": from_path,
+                    "destinationKey": to_path
+                }
+            )
+        return res.json()
+
 
     async def remove(self, paths: list) -> dict[str, str]:
         """
@@ -198,6 +231,7 @@ class AsyncBucketActionsMixin:
 
     def _get_final_path(self, path: str) -> str:
         return f"{self.id}/{path}"
+
 
 
 # this class is returned by methods that fetch buckets, for example StorageBucketAPI.get_bucket

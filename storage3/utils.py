@@ -9,5 +9,6 @@ class SyncClient(BaseClient):
         self.close()
 
 
+
 class StorageException(Exception):
     """Error raised when an operation on the storage API fails."""

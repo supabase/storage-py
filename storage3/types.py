@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 import dateutil.parser
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, TypedDict, Union, Optional
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
@@ -35,3 +35,12 @@ class ListBucketFilesOptions(TypedDict):
     limit: int
     offset: int
     sortBy: _sortByType
+
+class TransformOptions(TypedDict):
+    height: Optional[float]
+    width: Optional[float]
+    resize: Optional[Literal['cover'] | Literal['contain'] | Literal['fill']]
+
+class CreateSignedURLOptions(TypedDict):
+    download: Optional[str | bool]
+    transform: Optional[TransformOptions]
