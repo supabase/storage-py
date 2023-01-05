@@ -1,6 +1,13 @@
 # Changelog
 
 <!--next-version-placeholder-->
+
+## v0.3.6 (2023-01-05)
+### Fix
+* Datetime and upload file type ([#12](https://github.com/supabase-community/storage-py/issues/12)) ([`a926a06`](https://github.com/supabase-community/storage-py/commit/a926a068234e68afbf8039fc7f71565397dfea86))
+* Remove trailing "/" in `get_public_url` ([`8bf407c`](https://github.com/supabase-community/storage-py/commit/8bf407c5fc2bca401a673d42d0f9a82b7b9e80bb))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.5...v0.3.6)**
 ## v0.3.5 (2022-06-07)
 ### Fix
 * Justinbarak patch 1 by @justinbarak in https://github.com/supabase-community/storage-py/pull/14
