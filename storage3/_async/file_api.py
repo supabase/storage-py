@@ -74,17 +74,6 @@ class AsyncBucketActionsMixin:
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    async def create_signed_urls(
-        self, paths: List[str], expires_in: int, options: dict[str, str]
-    ) -> dict[str, str]:
-        response = await self._request(
-            "POST",
-            f"/object/sign/{self.bucket_id}",
-            json={"expires_in": expires_in, "paths": paths},
-        )
-        return response.json()
-
-
     async def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
         Parameters

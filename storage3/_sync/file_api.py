@@ -74,19 +74,6 @@ class SyncBucketActionsMixin:
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    def create_signed_urls(
-        self, paths: List[str], expires_in: int, options: dict[str, str]
-    ) -> dict[str, str]:
-        response = self._request(
-            "POST",
-            f"/object/sign/{self.bucket_id}",
-            json={"expires_in": expires_in, "paths": paths},
-        )
-        # TODO(joel): add support for download option
-        return response.json()
-
-        pass
-
     def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
         Parameters
