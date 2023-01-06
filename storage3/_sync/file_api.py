@@ -74,7 +74,7 @@ class SyncBucketActionsMixin:
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
+    def get_public_url(self, path: str, options: TransformOptions = None) -> str:
         """
         Parameters
         ----------
