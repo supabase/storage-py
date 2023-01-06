@@ -1,6 +1,6 @@
 from __future__ import annotations
-import urllib.parse
 
+import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
 from pathlib import Path
@@ -11,10 +11,10 @@ from httpx import HTTPError, Response
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import (
     BaseBucket,
-    ListBucketFilesOptions,
     CreateSignedURLOptions,
-    TransformOptions,
+    ListBucketFilesOptions,
     RequestMethod,
+    TransformOptions,
 )
 from ..utils import SyncClient, StorageException
 
@@ -82,7 +82,7 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         render_path = (
-             "render/image/authenticated" if options.get("transform") else "object"
+            "render/image/authenticated" if options.get("transform") else "object"
         )
         transformation_query = urllib.parse.urlencode(options)
         query_string = f"/?{transformation_query}" if transformation_query else ""

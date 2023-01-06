@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional, Union
 
 import dateutil.parser
 from typing_extensions import Literal, TypedDict
-from typing import Union, Optional
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
@@ -45,5 +45,5 @@ class TransformOptions(TypedDict):
 
 
 class CreateSignedURLOptions(TypedDict):
-    download: Optional[Union[str,bool]]
+    download: Optional[Union[str, bool]]
     transform: Optional[TransformOptions]
