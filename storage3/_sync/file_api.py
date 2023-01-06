@@ -74,18 +74,19 @@ class SyncBucketActionsMixin:
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    def get_public_url(self, path: str, options: TransformOptions = None) -> str:
+    def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
         Parameters
         ----------
         path
             file path, including the path and file name. For example `folder/image.png`.
         """
-        render_path = (
-            "render/image/authenticated" if options.get("transform") else "object"
-        )
-        transformation_query = urllib.parse.urlencode(options)
-        query_string = f"?{transformation_query}" if transformation_query else ""
+        render_path = "object"
+        # render_path = (
+        #     "render/image/authenticated" if options.get("transform") else "object"
+        # )
+        # transformation_query = urllib.parse.urlencode(options)
+        # query_string = f"?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
         return f"{self._client.base_url}{render_path}/public/{_path}/{query_string}"
 
