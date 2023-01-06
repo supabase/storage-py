@@ -2,7 +2,8 @@ from dataclasses import dataclass
 from datetime import datetime
 
 import dateutil.parser
-from typing_extensions import Literal, TypedDict, Union, Optional
+from typing_extensions import Literal, TypedDict
+from typing import Union, Optional
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
