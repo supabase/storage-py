@@ -81,15 +81,13 @@ class SyncBucketActionsMixin:
         path
             file path, including the path and file name. For example `folder/image.png`.
         """
-        render_path = "object"
-        # render_path = (
-        #     "render/image/authenticated" if options.get("transform") else "object"
-        # )
-        # transformation_query = urllib.parse.urlencode(options)
-        # query_string = f"?{transformation_query}" if transformation_query else ""
-        query_string = ""
+        render_path = (
+             "render/image/authenticated" if options.get("transform") else "object"
+        )
+        transformation_query = urllib.parse.urlencode(options)
+        query_string = f"/?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}{render_path}/public/{_path}"
+        return f"{self._client.base_url}{render_path}/public/{_path}{query_string}"
 
     def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
