@@ -82,10 +82,8 @@ class AsyncBucketActionsMixin:
             f"/object/sign/{self.bucket_id}",
             json={"expires_in": expires_in, "paths": paths},
         )
-        # TODO(joel): add support for download option
         return response.json()
 
-        pass
 
     async def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
