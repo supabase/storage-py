@@ -87,7 +87,7 @@ class AsyncBucketActionsMixin:
         transformation_query = urllib.parse.urlencode(options)
         query_string = f"?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}{render_path}/public/{_path}/${query_string}"
+        return f"{self._client.base_url}{render_path}/public/{_path}/{query_string}"
 
     async def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
