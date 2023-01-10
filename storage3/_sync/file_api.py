@@ -16,7 +16,7 @@ from ..types import (
     RequestMethod,
     TransformOptions,
 )
-from ..utils import SyncClient, StorageException
+from ..utils import StorageException, SyncClient
 
 __all__ = ["SyncBucket"]
 
@@ -81,9 +81,7 @@ class SyncBucketActionsMixin:
         path
             file path, including the path and file name. For example `folder/image.png`.
         """
-        render_path = (
-            "render/image" if options.get("transform") else "object"
-        )
+        render_path = "render/image" if options.get("transform") else "object"
         transformation_query = urllib.parse.urlencode(options)
         query_string = f"?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
