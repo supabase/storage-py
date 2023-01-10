@@ -2,6 +2,29 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2023-01-10)
+### Feature
+* Add transform options to signed_url,download, and public_url ([`122b2a3`](https://github.com/supabase-community/storage-py/commit/122b2a3403dfa1fa33dd384b2a7c42e9f3094f9e))
+* Add copy and transform option type ([`6be51ee`](https://github.com/supabase-community/storage-py/commit/6be51ee4a5bedabce6a25d05b9a38ae65f40efef))
+
+### Fix
+* Add stray / ([`27b6bcd`](https://github.com/supabase-community/storage-py/commit/27b6bcd85866a152a1804679cb27f726a50d2bf3))
+* Remove stray / ([`216cf36`](https://github.com/supabase-community/storage-py/commit/216cf3667479380fb893e16b4bd47d31f5a2b641))
+* Update render_path for get_public_url ([`0272f1b`](https://github.com/supabase-community/storage-py/commit/0272f1b5dd787b8a51727c1c9de3116c15b124b6))
+* Run black ([`42a9ed3`](https://github.com/supabase-community/storage-py/commit/42a9ed3f8f4e3d8e66f065f2ec64936a95b422b5))
+* Handle stray / ([`dd72fd6`](https://github.com/supabase-community/storage-py/commit/dd72fd6758f975e8d1f1ba56765c21ac846cf62c))
+* Handle stray / ([`604e804`](https://github.com/supabase-community/storage-py/commit/604e804e73583cd396829d41ecb8f3baf789f754))
+* Remove query params ([`1feb825`](https://github.com/supabase-community/storage-py/commit/1feb82590a9f3ca025da41da82e8089f7835783f))
+* Add query string param ([`72d299d`](https://github.com/supabase-community/storage-py/commit/72d299d4257265099e44c6b9e821fa3ca86d19ab))
+* Strip out transformation changes ([`686b7fa`](https://github.com/supabase-community/storage-py/commit/686b7fa03007ee6dddc2bd96492a171bddf7de82))
+* Remove stray $ ([`f0c8fdc`](https://github.com/supabase-community/storage-py/commit/f0c8fdcf69cd397e31c24091ae10550d65e0cb97))
+* Switch from | to Union ([`f4005fd`](https://github.com/supabase-community/storage-py/commit/f4005fd672bc86bb694f2ddf50e202be7beb6370))
+* Import Union, Optional from typing instead of typing-extensions ([`c5e5aba`](https://github.com/supabase-community/storage-py/commit/c5e5abaa8f7830cbfcd1caeafcd5d3c2140f2f0d))
+* Omit infra changes ([`9b967ce`](https://github.com/supabase-community/storage-py/commit/9b967ce41d3598a68b08cbad45435a26fc0d5f0b))
+* Add transform options on public url and download ([`7352f61`](https://github.com/supabase-community/storage-py/commit/7352f6128a1bd52e863dea0cf8db6f53519e6c78))
+
+**[See all commits in this version](https://github.com/supabase-community/storage-py/compare/v0.3.6...v0.4.0)**
+
 ## v0.3.6 (2023-01-05)
 ### Fix
 * Datetime and upload file type ([#12](https://github.com/supabase-community/storage-py/issues/12)) ([`a926a06`](https://github.com/supabase-community/storage-py/commit/a926a068234e68afbf8039fc7f71565397dfea86))

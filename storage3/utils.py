@@ -1,7 +1,7 @@
 from httpx import AsyncClient as AsyncClient  # noqa: F401
 from httpx import Client as BaseClient
 
-__version__ = "0.3.6"
+__version__ = "0.4.0"
 
 
 class SyncClient(BaseClient):
