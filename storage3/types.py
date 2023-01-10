@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional, Union
 
 import dateutil.parser
 from typing_extensions import Literal, TypedDict
@@ -35,3 +36,14 @@ class ListBucketFilesOptions(TypedDict):
     limit: int
     offset: int
     sortBy: _sortByType
+
+
+class TransformOptions(TypedDict):
+    height: Optional[float]
+    width: Optional[float]
+    resize: Optional[Union[Literal["cover"], Literal["contain"], Literal["fill"]]]
+
+
+class CreateSignedURLOptions(TypedDict):
+    download: Optional[Union[str, bool]]
+    transform: Optional[TransformOptions]

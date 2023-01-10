@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
 from pathlib import Path
@@ -8,7 +9,13 @@ from typing import Any, Optional, Union, cast
 from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
-from ..types import BaseBucket, ListBucketFilesOptions, RequestMethod
+from ..types import (
+    BaseBucket,
+    CreateSignedURLOptions,
+    ListBucketFilesOptions,
+    RequestMethod,
+    TransformOptions,
+)
 from ..utils import AsyncClient, StorageException
 
 __all__ = ["AsyncBucket"]
@@ -44,7 +51,9 @@ class AsyncBucketActionsMixin:
 
         return response
 
-    async def create_signed_url(self, path: str, expires_in: int) -> dict[str, str]:
+    async def create_signed_url(
+        self, path: str, expires_in: int, options: CreateSignedURLOptions = {}
+    ) -> dict[str, str]:
         """
         Parameters
         ----------
@@ -65,15 +74,18 @@ class AsyncBucketActionsMixin:
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
 
-    async def get_public_url(self, path: str) -> str:
+    async def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
         """
         Parameters
         ----------
         path
             file path, including the path and file name. For example `folder/image.png`.
         """
+        render_path = "render/image" if options.get("transform") else "object"
+        transformation_query = urllib.parse.urlencode(options)
+        query_string = f"?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
-        return f"{self._client.base_url}object/public/{_path}"
+        return f"{self._client.base_url}{render_path}/public/{_path}{query_string}"
 
     async def move(self, from_path: str, to_path: str) -> dict[str, str]:
         """
@@ -89,6 +101,28 @@ class AsyncBucketActionsMixin:
         res = await self._request(
             "POST",
             "/object/move",
+            json={
+                "bucketId": self.id,
+                "sourceKey": from_path,
+                "destinationKey": to_path,
+            },
+        )
+        return res.json()
+
+    async def copy(self, from_path: str, to_path: str) -> dict[str, str]:
+        """
+        Copies an existing file to a new path in the same bucket.
+
+        Parameters
+        ----------
+        from_path
+            The original file path, including the current file name. For example `folder/image.png`.
+        to_path
+            The new file path, including the new file name. For example `folder/image-copy.png`.
+        """
+        res = await self._request(
+            "POST",
+            "/object/copy",
             json={
                 "bucketId": self.id,
                 "sourceKey": from_path,
@@ -139,7 +173,7 @@ class AsyncBucketActionsMixin:
         )
         return response.json()
 
-    async def download(self, path: str) -> bytes:
+    async def download(self, path: str, options: TransformOptions = {}) -> bytes:
         """
         Downloads a file.
 
@@ -148,10 +182,16 @@ class AsyncBucketActionsMixin:
         path
             The file path to be downloaded, including the path and file name. For example `folder/image.png`.
         """
+        render_path = (
+            "render/image/authenticated" if options.get("transform") else "object"
+        )
+        transformation_query = urllib.parse.urlencode(options)
+        query_string = f"?{transformation_query}" if transformation_query else ""
+
         _path = self._get_final_path(path)
         response = await self._request(
             "GET",
-            f"/object/{_path}",
+            f"{render_path}/{_path}{query_string}",
         )
         return response.content
 
