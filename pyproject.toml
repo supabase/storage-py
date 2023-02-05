@@ -22,7 +22,7 @@ version = "0.5.0"
 
 [tool.poetry.dependencies]
 httpx = "^0.23"
-python = "^3.7"
+python = "^3.8"
 typing-extensions = "^4.2.0"
 python-dateutil = "^2.8.2"
 
