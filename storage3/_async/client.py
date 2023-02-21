@@ -3,12 +3,12 @@ from __future__ import annotations
 from ..utils import AsyncClient, __version__
 from .bucket import AsyncStorageBucketAPI
 from .file_api import AsyncBucketProxy
+from storage3.constants import DEFAULT_TIMEOUT
 
 __all__ = [
     "AsyncStorageClient",
 ]
 
-DEFAULT_TIMEOUT = 5
 
 
 class AsyncStorageClient(AsyncStorageBucketAPI):

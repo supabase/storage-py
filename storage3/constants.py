@@ -11,3 +11,5 @@ DEFAULT_FILE_OPTIONS = {
     "content-type": "text/plain;charset=UTF-8",
     "x-upsert": "false",
 }
+
+DEFAULT_TIMEOUT = 5
