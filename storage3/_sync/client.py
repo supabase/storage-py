@@ -8,6 +8,8 @@ __all__ = [
     "SyncStorageClient",
 ]
 
+DEFAULT_TIMEOUT = 5
+
 
 class SyncStorageClient(SyncStorageBucketAPI):
     """Manage storage buckets and files."""
@@ -16,22 +18,25 @@ class SyncStorageClient(SyncStorageBucketAPI):
         self,
         url: str,
         headers: dict[str, str],
+        timeout: int = DEFAULT_TIMEOUT
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
-        self.session = self._create_session(url, headers)
+        self.session = self._create_session(url, headers, timeout)
         super().__init__(self.session)
 
     def _create_session(
         self,
         base_url: str,
         headers: dict[str, str],
+        timeout: int
     ) -> SyncClient:
         return SyncClient(
             base_url=base_url,
             headers=headers,
+            timeout=timeout
         )
 
     def __enter__(self) -> SyncStorageClient:

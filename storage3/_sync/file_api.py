@@ -16,7 +16,7 @@ from ..types import (
     RequestMethod,
     TransformOptions,
 )
-from ..utils import StorageException, SyncClient
+from ..utils import SyncClient, StorageException
 
 __all__ = ["SyncBucket"]
 

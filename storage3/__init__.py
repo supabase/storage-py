@@ -26,9 +26,9 @@ def create_client(
 
 
 def create_client(
-    url: str, headers: dict[str, str], *, is_async: bool
+    url: str, headers: dict[str, str], *, is_async: bool, timeout: int = DEFAULT_TIMEOUT
 ) -> Union[AsyncStorageClient, SyncStorageClient]:
     if is_async:
-        return AsyncStorageClient(url, headers)
+        return AsyncStorageClient(url, headers, timeout)
     else:
-        return SyncStorageClient(url, headers)
+        return SyncStorageClient(url, headers, timeout)
