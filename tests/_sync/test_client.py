@@ -79,7 +79,9 @@ def bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -> str:
 
 
 @pytest.fixture(scope="module")
-def public_bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -> str:
+def public_bucket(
+    storage: SyncStorageClient, uuid_factory: Callable[[], str]
+) -> str:
     """Creates a test public bucket which will be used in the whole storage tests run and deleted at the end"""
     bucket_id = uuid_factory()
 

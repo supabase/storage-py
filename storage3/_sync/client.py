@@ -1,24 +1,21 @@
 from __future__ import annotations
 
+from storage3.constants import DEFAULT_TIMEOUT
+
 from ..utils import SyncClient, __version__
 from .bucket import SyncStorageBucketAPI
 from .file_api import SyncBucketProxy
-from storage3.constants import DEFAULT_TIMEOUT
 
 __all__ = [
     "SyncStorageClient",
 ]
 
 
-
 class SyncStorageClient(SyncStorageBucketAPI):
     """Manage storage buckets and files."""
 
     def __init__(
-        self,
-        url: str,
-        headers: dict[str, str],
-        timeout: int = DEFAULT_TIMEOUT
+        self, url: str, headers: dict[str, str], timeout: int = DEFAULT_TIMEOUT
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
@@ -28,16 +25,9 @@ class SyncStorageClient(SyncStorageBucketAPI):
         super().__init__(self.session)
 
     def _create_session(
-        self,
-        base_url: str,
-        headers: dict[str, str],
-        timeout: int
+        self, base_url: str, headers: dict[str, str], timeout: int
     ) -> SyncClient:
-        return SyncClient(
-            base_url=base_url,
-            headers=headers,
-            timeout=timeout
-        )
+        return SyncClient(base_url=base_url, headers=headers, timeout=timeout)
 
     def __enter__(self) -> SyncStorageClient:
         return self

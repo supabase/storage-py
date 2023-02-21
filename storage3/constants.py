@@ -12,4 +12,4 @@ DEFAULT_FILE_OPTIONS = {
     "x-upsert": "false",
 }
 
-DEFAULT_TIMEOUT = 5
+DEFAULT_TIMEOUT = 20
