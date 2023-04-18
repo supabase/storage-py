@@ -164,7 +164,8 @@ class AsyncBucketActionsMixin:
         """
         extra_options = options or {}
         extra_headers = {"Content-Type": "application/json"}
-        body = {**DEFAULT_SEARCH_OPTIONS, **extra_options, "prefix": path or ""}
+        body = {**DEFAULT_SEARCH_OPTIONS, **
+                extra_options, "prefix": path or ""}
         response = await self._request(
             "POST",
             f"/object/list/{self.id}",
@@ -183,7 +184,8 @@ class AsyncBucketActionsMixin:
             The file path to be downloaded, including the path and file name. For example `folder/image.png`.
         """
         render_path = (
-            "render/image/authenticated" if options.get("transform") else "object"
+            "render/image/authenticated" if options.get(
+                "transform") else "object"
         )
         transformation_query = urllib.parse.urlencode(options)
         query_string = f"?{transformation_query}" if transformation_query else ""
@@ -196,7 +198,7 @@ class AsyncBucketActionsMixin:
         return response.content
 
     async def upload(
-        self, path: str, file: Union[str, Path], file_options: Optional[dict] = None
+        self, path: str, file: Union[BufferedReader, bytes, FileIO, str, Path], file_options: Optional[dict] = None
     ) -> Response:
         """
         Uploads a file to an existing bucket.
@@ -213,7 +215,8 @@ class AsyncBucketActionsMixin:
         """
         if file_options is None:
             file_options = {}
-        headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
+        headers = {**self._client.headers, **
+                   DEFAULT_FILE_OPTIONS, **file_options}
         filename = path.rsplit("/", maxsplit=1)[-1]
 
         if (
@@ -225,7 +228,8 @@ class AsyncBucketActionsMixin:
             files = {"file": (filename, file, headers.pop("content-type"))}
         else:
             # str or pathlib.path received
-            files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
+            files = {"file": (filename, open(file, "rb"),
+                              headers.pop("content-type"))}
 
         _path = self._get_final_path(path)
 
