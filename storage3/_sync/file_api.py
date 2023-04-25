@@ -196,7 +196,10 @@ class SyncBucketActionsMixin:
         return response.content
 
     def upload(
-        self, path: str, file: Union[str, Path], file_options: Optional[dict] = None
+        self,
+        path: str,
+        file: Union[BufferedReader, bytes, FileIO, str, Path],
+        file_options: Optional[dict] = None,
     ) -> Response:
         """
         Uploads a file to an existing bucket.
