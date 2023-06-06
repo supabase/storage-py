@@ -21,3 +21,10 @@ storage_client = create_client(url, headers, is_async=False)
 
 storage_client.list_buckets()
 ```
+
+### Uploading files
+When uploading files, make sure to set the correct mimetype by using the `file_options` argument:
+```py
+storage_client.from_("bucket").upload("/folder/file.png", file_object, {"content-type": "image/png"})
+```
+If no mime type is given, the default `text/plain` will be used.

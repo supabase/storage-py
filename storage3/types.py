@@ -18,8 +18,8 @@ class BaseBucket:
     public: bool
     created_at: datetime
     updated_at: datetime
-    file_size_limit: int
-    allowed_mime_types: str
+    file_size_limit: Optional[int]
+    allowed_mime_types: Optional[int]
 
     def __post_init__(self) -> None:
         # created_at and updated_at are returned by the API as ISO timestamps
@@ -49,3 +49,10 @@ class TransformOptions(TypedDict):
 class CreateSignedURLOptions(TypedDict):
     download: Optional[Union[str, bool]]
     transform: Optional[TransformOptions]
+
+
+FileOptions = TypedDict(
+    "FileOptions",
+    {"cache-control": str, "content-type": str, "x-upsert": str},
+    total=False,
+)
