@@ -12,6 +12,7 @@ from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import (
     BaseBucket,
     CreateSignedURLOptions,
+    FileOptions,
     ListBucketFilesOptions,
     RequestMethod,
     TransformOptions,
@@ -203,7 +204,7 @@ class AsyncBucketActionsMixin:
         self,
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
-        file_options: Optional[dict] = None,
+        file_options: Optional[FileOptions] = None,
     ) -> Response:
         """
         Uploads a file to an existing bucket.
@@ -216,7 +217,11 @@ class AsyncBucketActionsMixin:
         file
             The File object to be stored in the bucket. or a async generator of chunks
         file_options
-            HTTP headers. For example `cache-control`
+            HTTP headers.
+            The expected keys are:
+            `cache-control`: The number of seconds the asset is cached in the browser and in the Supabase CDN.
+            `content-type`: This SHOULD be set properly, otherwise the default value of text/plain will be used.
+            `x-upsert`: If set to true, the file will be updated if it already exists.
         """
         if file_options is None:
             file_options = {}

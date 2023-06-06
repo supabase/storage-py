@@ -12,6 +12,7 @@ from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..types import (
     BaseBucket,
     CreateSignedURLOptions,
+    FileOptions,
     ListBucketFilesOptions,
     RequestMethod,
     TransformOptions,
@@ -164,7 +165,11 @@ class SyncBucketActionsMixin:
         """
         extra_options = options or {}
         extra_headers = {"Content-Type": "application/json"}
-        body = {**DEFAULT_SEARCH_OPTIONS, **extra_options, "prefix": path or ""}
+        body = {
+            **DEFAULT_SEARCH_OPTIONS,
+            **extra_options,
+            "prefix": path or "",
+        }
         response = self._request(
             "POST",
             f"/object/list/{self.id}",
@@ -199,7 +204,7 @@ class SyncBucketActionsMixin:
         self,
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
-        file_options: Optional[dict] = None,
+        file_options: Optional[FileOptions] = None,
     ) -> Response:
         """
         Uploads a file to an existing bucket.
@@ -212,11 +217,19 @@ class SyncBucketActionsMixin:
         file
             The File object to be stored in the bucket. or a async generator of chunks
         file_options
-            HTTP headers. For example `cache-control`
+            HTTP headers.
+            The expected keys are:
+            `cache-control`: The number of seconds the asset is cached in the browser and in the Supabase CDN.
+            `content-type`: This SHOULD be set properly, otherwise the default value of text/plain will be used.
+            `x-upsert`: If set to true, the file will be updated if it already exists.
         """
         if file_options is None:
             file_options = {}
-        headers = {**self._client.headers, **DEFAULT_FILE_OPTIONS, **file_options}
+        headers = {
+            **self._client.headers,
+            **DEFAULT_FILE_OPTIONS,
+            **file_options,
+        }
         filename = path.rsplit("/", maxsplit=1)[-1]
 
         if (
@@ -228,7 +241,13 @@ class SyncBucketActionsMixin:
             files = {"file": (filename, file, headers.pop("content-type"))}
         else:
             # str or pathlib.path received
-            files = {"file": (filename, open(file, "rb"), headers.pop("content-type"))}
+            files = {
+                "file": (
+                    filename,
+                    open(file, "rb"),
+                    headers.pop("content-type"),
+                )
+            }
 
         _path = self._get_final_path(path)
 
