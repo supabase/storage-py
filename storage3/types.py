@@ -18,8 +18,8 @@ class BaseBucket:
     public: bool
     created_at: datetime
     updated_at: datetime
-    file_size_limit: Optional[int] = None
-    allowed_mime_types: Optional[int] = None
+    file_size_limit: Optional[int]
+    allowed_mime_types: Optional[int]
 
     def __post_init__(self) -> None:
         # created_at and updated_at are returned by the API as ISO timestamps
