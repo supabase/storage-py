@@ -4,7 +4,7 @@ from typing import Any, Optional
 
 from httpx import HTTPError, Response
 
-from ..types import RequestMethod
+from ..types import CreateOrUpdateBucketOptions, RequestMethod
 from ..utils import AsyncClient, StorageException
 from .file_api import AsyncBucket
 
@@ -52,7 +52,10 @@ class AsyncStorageBucketAPI:
         return AsyncBucket(**json, _client=self._client)
 
     async def create_bucket(
-        self, id: str, name: Optional[str] = None, public: bool = False
+        self,
+        id: str,
+        name: Optional[str] = None,
+        options: Optional[CreateOrUpdateBucketOptions] = None,
     ) -> dict[str, str]:
         """Creates a new storage bucket.
 
@@ -62,14 +65,35 @@ class AsyncStorageBucketAPI:
             A unique identifier for the bucket you are creating.
         name
             A name for the bucket you are creating. If not passed, the id is used as the name as well.
-        public
-            Whether the bucket you are creating should be publicly accessible. Defaults to False.
+        options
+            Extra options to send while creating the bucket. Valid options are `public`, `file_size_limit` and
+            `allowed_mime_types`.
         """
+        json: dict[str, Any] = {"id": id, "name": name or id}
+        if options:
+            json.update(**options)
         res = await self._request(
             "POST",
             "/bucket",
-            json={"id": id, "name": name or id, "public": public},
+            json=json,
         )
+        return res.json()
+
+    async def update_bucket(
+        self, id: str, options: CreateOrUpdateBucketOptions
+    ) -> dict[str, str]:
+        """Update a storage bucket.
+
+        Parameters
+        ----------
+        id
+            The unique identifier of the bucket you would like to update.
+        options
+            The properties you want to update. Valid options are `public`, `file_size_limit` and
+            `allowed_mime_types`.
+        """
+        json = {"id": id, "name": id, **options}
+        res = await self._request("PUT", f"/bucket/{id}", json=json)
         return res.json()
 
     async def empty_bucket(self, id: str) -> dict[str, str]:

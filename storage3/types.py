@@ -19,7 +19,7 @@ class BaseBucket:
     created_at: datetime
     updated_at: datetime
     file_size_limit: Optional[int]
-    allowed_mime_types: Optional[int]
+    allowed_mime_types: Optional[list[str]]
 
     def __post_init__(self) -> None:
         # created_at and updated_at are returned by the API as ISO timestamps
@@ -32,6 +32,12 @@ class BaseBucket:
 class _sortByType(TypedDict):
     column: str
     order: Literal["asc", "desc"]
+
+
+class CreateOrUpdateBucketOptions(TypedDict, total=False):
+    public: bool
+    file_size_limit: int
+    allowed_mime_types: list[str]
 
 
 class ListBucketFilesOptions(TypedDict):
