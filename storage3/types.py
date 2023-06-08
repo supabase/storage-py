@@ -41,9 +41,11 @@ class ListBucketFilesOptions(TypedDict):
 
 
 class TransformOptions(TypedDict):
-    height: Optional[float]
-    width: Optional[float]
+    height: Optional[int]
+    width: Optional[int]
     resize: Optional[Union[Literal["cover"], Literal["contain"], Literal["fill"]]]
+    format: Optional[Union[Literal["origin"], Literal["avif"]]]
+    quality: Optional[int]
 
 
 class CreateSignedURLOptions(TypedDict):

@@ -9,14 +9,8 @@ from typing import Any, Optional, Union, cast
 from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
-from ..types import (
-    BaseBucket,
-    CreateSignedURLOptions,
-    FileOptions,
-    ListBucketFilesOptions,
-    RequestMethod,
-    TransformOptions,
-)
+from ..types import (BaseBucket, CreateSignedURLOptions, FileOptions,
+                     ListBucketFilesOptions, RequestMethod, TransformOptions)
 from ..utils import StorageException, SyncClient
 
 __all__ = ["SyncBucket"]
@@ -62,17 +56,66 @@ class SyncBucketActionsMixin:
             file path to be downloaded, including the current file name.
         expires_in
             number of seconds until the signed URL expires.
+        options
+            options to be passed for downloading or transforming the file.
         """
+        headers = {}
+        token = self._client.headers.get("Authorization")
+        if token:
+            headers["Authorization"] = token
+
+        json = {"expiresIn": str(expires_in)}
+        if options.get("download"):
+            json.update({"download": options["download"]})
+        if options.get("transform"):
+            json.update({"transform": options["transform"]})
+
         path = self._get_final_path(path)
         response = self._request(
             "POST",
             f"/object/sign/{path}",
-            json={"expiresIn": str(expires_in)},
+            headers=headers,
+            json=json,
         )
         data = response.json()
         data[
             "signedURL"
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        return data
+
+    def create_signed_urls(
+        self, paths: list[str], expires_in: int, options: CreateSignedURLOptions = {}
+    ) -> list[dict[str, str]]:
+        """
+        Parameters
+        ----------
+        path
+            file path to be downloaded, including the current file name.
+        expires_in
+            number of seconds until the signed URL expires.
+        options
+            options to be passed for downloading the file.
+        """
+        headers = {}
+        token = self._client.headers.get("Authorization")
+        if token:
+            headers["Authorization"] = token
+
+        json = {"paths": paths, "expiresIn": str(expires_in)}
+        if options.get("download"):
+            json.update({"download": options["download"]})
+
+        response = self._request(
+            "POST",
+            f"/object/sign/{self.id}",
+            headers=headers,
+            json=json,
+        )
+        data = response.json()
+        for item in data:
+            item[
+                "signedURL"
+            ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
         return data
 
     def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
