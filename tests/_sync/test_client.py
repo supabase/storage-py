@@ -87,7 +87,7 @@ def public_bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -
     global temp_test_buckets_ids
     temp_test_buckets_ids.append(bucket_id)
 
-    storage.create_bucket(id=bucket_id, public=True)
+    storage.create_bucket(id=bucket_id, options={"public": True})
 
     yield bucket_id
 

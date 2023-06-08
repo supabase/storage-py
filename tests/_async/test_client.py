@@ -89,7 +89,7 @@ async def public_bucket(
     global temp_test_buckets_ids
     temp_test_buckets_ids.append(bucket_id)
 
-    await storage.create_bucket(id=bucket_id, public=True)
+    await storage.create_bucket(id=bucket_id, options={"public": True})
 
     yield bucket_id
 
