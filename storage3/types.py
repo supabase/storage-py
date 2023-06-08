@@ -40,17 +40,21 @@ class ListBucketFilesOptions(TypedDict):
     sortBy: _sortByType
 
 
-class TransformOptions(TypedDict):
-    height: Optional[int]
-    width: Optional[int]
-    resize: Optional[Union[Literal["cover"], Literal["contain"], Literal["fill"]]]
-    format: Optional[Union[Literal["origin"], Literal["avif"]]]
-    quality: Optional[int]
+class TransformOptions(TypedDict, total=False):
+    height: int
+    width: int
+    resize: Literal["cover", "contain", "fill"]
+    format: Literal["origin", "avif"]
+    quality: int
 
 
-class CreateSignedURLOptions(TypedDict):
-    download: Optional[Union[str, bool]]
-    transform: Optional[TransformOptions]
+class CreateSignedURLOptions(TypedDict, total=False):
+    download: Union[str, bool]
+    transform: TransformOptions
+
+
+class CreateSignedURLsOptions(TypedDict):
+    download: Union[str, bool]
 
 
 FileOptions = TypedDict(

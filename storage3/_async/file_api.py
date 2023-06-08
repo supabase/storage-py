@@ -9,8 +9,15 @@ from typing import Any, Optional, Union, cast
 from httpx import HTTPError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
-from ..types import (BaseBucket, CreateSignedURLOptions, FileOptions,
-                     ListBucketFilesOptions, RequestMethod, TransformOptions)
+from ..types import (
+    BaseBucket,
+    CreateSignedURLOptions,
+    CreateSignedURLsOptions,
+    FileOptions,
+    ListBucketFilesOptions,
+    RequestMethod,
+    TransformOptions,
+)
 from ..utils import AsyncClient, StorageException
 
 __all__ = ["AsyncBucket"]
@@ -59,11 +66,6 @@ class AsyncBucketActionsMixin:
         options
             options to be passed for downloading or transforming the file.
         """
-        headers = {}
-        token = self._client.headers.get("Authorization")
-        if token:
-            headers["Authorization"] = token
-
         json = {"expiresIn": str(expires_in)}
         if options.get("download"):
             json.update({"download": options["download"]})
@@ -74,7 +76,6 @@ class AsyncBucketActionsMixin:
         response = await self._request(
             "POST",
             f"/object/sign/{path}",
-            headers=headers,
             json=json,
         )
         data = response.json()
@@ -82,9 +83,9 @@ class AsyncBucketActionsMixin:
             "signedURL"
         ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
         return data
-    
+
     async def create_signed_urls(
-        self, paths: list[str], expires_in: int, options: CreateSignedURLOptions = {}
+        self, paths: list[str], expires_in: int, options: CreateSignedURLsOptions = {}
     ) -> list[dict[str, str]]:
         """
         Parameters
@@ -96,11 +97,6 @@ class AsyncBucketActionsMixin:
         options
             options to be passed for downloading the file.
         """
-        headers = {}
-        token = self._client.headers.get("Authorization")
-        if token:
-            headers["Authorization"] = token
-
         json = {"paths": paths, "expiresIn": str(expires_in)}
         if options.get("download"):
             json.update({"download": options["download"]})
@@ -108,7 +104,6 @@ class AsyncBucketActionsMixin:
         response = await self._request(
             "POST",
             f"/object/sign/{self.id}",
-            headers=headers,
             json=json,
         )
         data = response.json()
