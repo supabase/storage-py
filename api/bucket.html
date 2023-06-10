@@ -152,6 +152,21 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> – file path to be downloaded, including the current file name.</p></li>
 <li><p><strong>expires_in</strong> – number of seconds until the signed URL expires.</p></li>
+<li><p><strong>options</strong> – options to be passed for downloading or transforming the file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage3._async.file_api.AsyncBucket.create_signed_urls">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_signed_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CreateSignedURLsOptions</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#storage3._async.file_api.AsyncBucket.create_signed_urls" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – file path to be downloaded, including the current file name.</p></li>
+<li><p><strong>expires_in</strong> – number of seconds until the signed URL expires.</p></li>
+<li><p><strong>options</strong> – options to be passed for downloading the file.</p></li>
 </ul>
 </dd>
 </dl>
@@ -265,6 +280,21 @@ The expected keys are:
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> – file path to be downloaded, including the current file name.</p></li>
 <li><p><strong>expires_in</strong> – number of seconds until the signed URL expires.</p></li>
+<li><p><strong>options</strong> – options to be passed for downloading or transforming the file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="storage3._async.file_api.AsyncBucketProxy.create_signed_urls">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_signed_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paths</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CreateSignedURLsOptions</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#storage3._async.file_api.AsyncBucketProxy.create_signed_urls" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – file path to be downloaded, including the current file name.</p></li>
+<li><p><strong>expires_in</strong> – number of seconds until the signed URL expires.</p></li>
+<li><p><strong>options</strong> – options to be passed for downloading the file.</p></li>
 </ul>
 </dd>
 </dl>
