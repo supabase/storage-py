@@ -155,6 +155,7 @@ def file(tmp_path: Path, uuid_factory: Callable[[], str]) -> FileForTesting:
         file_content=file_content,
     )
 
+
 @pytest.fixture
 def multi_file(tmp_path: Path, uuid_factory: Callable[[], str]) -> list[FileForTesting]:
     """Creates multiple test files (same content, same bucket/folder path, different file names)"""
@@ -183,21 +184,25 @@ def multi_file(tmp_path: Path, uuid_factory: Callable[[], str]) -> list[FileForT
     with open(file_path_2, "wb") as f:
         f.write(file_content)
 
-    return [FileForTesting(
-        name=file_name_1,
-        local_path=str(file_path_1),
-        bucket_folder=bucket_folder,
-        bucket_path=bucket_path_1,
-        mime_type="image/svg+xml",
-        file_content=file_content,
-    ), FileForTesting(
-        name=file_name_2,
-        local_path=str(file_path_2),
-        bucket_folder=bucket_folder,
-        bucket_path=bucket_path_2,
-        mime_type="image/svg+xml",
-        file_content=file_content,
-    )]
+    return [
+        FileForTesting(
+            name=file_name_1,
+            local_path=str(file_path_1),
+            bucket_folder=bucket_folder,
+            bucket_path=bucket_path_1,
+            mime_type="image/svg+xml",
+            file_content=file_content,
+        ),
+        FileForTesting(
+            name=file_name_2,
+            local_path=str(file_path_2),
+            bucket_folder=bucket_folder,
+            bucket_path=bucket_path_2,
+            mime_type="image/svg+xml",
+            file_content=file_content,
+        ),
+    ]
+
 
 # TODO: Test create_bucket, delete_bucket, empty_bucket, list_buckets, fileAPI.list before upload test
 
@@ -235,6 +240,7 @@ async def test_client_create_signed_url(
     response.raise_for_status()
 
     assert response.content == file.file_content
+
 
 async def test_client_create_signed_urls(
     storage_file_client: AsyncBucketProxy, multi_file: list[FileForTesting]
