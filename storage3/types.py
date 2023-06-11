@@ -36,6 +36,12 @@ class _sortByType(TypedDict):
     order: Literal["asc", "desc"]
 
 
+class SignedUploadURL(TypedDict):
+    signed_url: str
+    token: str
+    path: str
+
+
 class CreateOrUpdateBucketOptions(TypedDict, total=False):
     public: bool
     file_size_limit: int
