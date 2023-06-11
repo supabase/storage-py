@@ -30,6 +30,7 @@ author = "Anand Krishna, Daniel Reinón García, Joel Lee, Leynier Gutiérrez Go
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx_toolbox.more_autodoc.autotypeddict",
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.extlinks",

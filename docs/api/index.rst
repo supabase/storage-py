@@ -12,3 +12,4 @@ API Reference
 
       Client <client>
       Bucket <bucket>
+      Types <types>
