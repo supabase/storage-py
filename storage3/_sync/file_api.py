@@ -67,7 +67,7 @@ class SyncBucketActionsMixin:
         response = self._request("POST", f"/object/upload/sign/{_path}")
         data = response.json()
         full_url: urllib.parse.ParseResult = urllib.parse.urlparse(
-            self._client.base_url + data["url"]
+            str(self._client.base_url) + data["url"]
         )
         query_params = urllib.parse.parse_qs(full_url.query)
         if not query_params.get("token"):

@@ -221,6 +221,20 @@ def test_client_upload(
     assert image_info.get("metadata", {}).get("mimetype") == file.mime_type
 
 
+@pytest.mark.parametrize(
+    "path", ["foobar.txt", "example/nested.jpg", "/leading/slash.png"]
+)
+def test_client_create_signed_upload_url(
+    storage_file_client: SyncBucketProxy, path: str
+) -> None:
+    """Ensure we can create signed URLs to upload files to a bucket"""
+    data = storage_file_client.create_signed_upload_url(path)
+    assert data["path"] == path
+    assert data["token"]
+    expected_url = f"{storage_file_client._client.base_url}/object/upload/sign/{storage_file_client.id}/{path.lstrip('/')}"
+    assert data["signed_url"].startswith(expected_url)
+
+
 def test_client_create_signed_url(
     storage_file_client: SyncBucketProxy, file: FileForTesting
 ) -> None:
