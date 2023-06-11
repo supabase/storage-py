@@ -237,6 +237,20 @@ async def test_client_create_signed_upload_url(
     assert data["signed_url"].startswith(expected_url)
 
 
+async def test_client_upload_to_signed_url(
+    storage_file_client: AsyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can upload to a signed URL"""
+    data = await storage_file_client.create_signed_upload_url(file.bucket_path)
+    assert data["path"]
+    upload_result = await storage_file_client.upload_to_signed_url(
+        data["path"], data["token"], file.file_content, {"content-type": file.mime_type}
+    )
+    upload_data = upload_result.json()
+    assert upload_data
+    assert upload_data.get("error") is None
+
+
 async def test_client_create_signed_url(
     storage_file_client: AsyncBucketProxy, file: FileForTesting
 ) -> None:
