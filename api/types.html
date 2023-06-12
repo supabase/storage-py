@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+      <title>Types</title>
+    
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/theme.css " type="text/css" />
+      
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+
+      
+      <!-- bundled in js (rollup iife) -->
+      <!-- <script src="../_static/theme-vendors.js"></script> -->
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="&lt;no title&gt;" href="../examples/index.html" />
+  <link rel="prev" title="Bucket" href="bucket.html" /> 
+  </head>
+
+  <body>
+    <div id="app">
+    <div class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">storage-py</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#installation">Contents:</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 ">
+            
+              <a href="index.html" class="reference internal ">   API Reference</a>
+            
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 ">
+            
+              <a href="../examples/index.html" class="reference internal ">   Examples</a>
+            
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">API Reference</a> &raquo;</li>
+    
+    <li>Types</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="bucket.html"
+       title="previous chapter">← Bucket</a>
+  </li>
+  <li class="next">
+    <a href="../examples/index.html"
+       title="next chapter">&lt;no title&gt; →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main" v-pre>
+            
+  <section id="types">
+<h1>Types<a class="headerlink" href="#types" title="Permalink to this heading">¶</a></h1>
+<p>The structures of the data returned or required by various API calls are described here.</p>
+<section id="responses">
+<h2>Responses<a class="headerlink" href="#responses" title="Permalink to this heading">¶</a></h2>
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.SignedUploadURL">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">SignedUploadURL</span></span><a class="headerlink" href="#storage3.types.SignedUploadURL" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Required Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signed_url</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p><strong>token</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.CreateOrUpdateBucketOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">CreateOrUpdateBucketOptions</span></span><a class="headerlink" href="#storage3.types.CreateOrUpdateBucketOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>public</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>)</p></li>
+<li><p><strong>file_size_limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p><strong>allowed_mime_types</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>])</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.ListBucketFilesOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">ListBucketFilesOptions</span></span><a class="headerlink" href="#storage3.types.ListBucketFilesOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Required Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p><strong>sortBy</strong> (<a class="reference internal" href="#storage3.types._sortByType" title="storage3.types._sortByType"><code class="xref py py-class docutils literal notranslate"><span class="pre">_sortByType</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.TransformOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">TransformOptions</span></span><a class="headerlink" href="#storage3.types.TransformOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>height</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p><strong>width</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+<li><p><strong>resize</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'cover'</span></code>, <code class="docutils literal notranslate"><span class="pre">'contain'</span></code>, <code class="docutils literal notranslate"><span class="pre">'fill'</span></code>])</p></li>
+<li><p><strong>format</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'origin'</span></code>, <code class="docutils literal notranslate"><span class="pre">'avif'</span></code>])</p></li>
+<li><p><strong>quality</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.CreateSignedURLOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">CreateSignedURLOptions</span></span><a class="headerlink" href="#storage3.types.CreateSignedURLOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>download</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>])</p></li>
+<li><p><strong>transform</strong> (<a class="reference internal" href="#storage3.types.TransformOptions" title="storage3.types.TransformOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformOptions</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.CreateSignedURLsOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">CreateSignedURLsOptions</span></span><a class="headerlink" href="#storage3.types.CreateSignedURLsOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Required Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>download</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>])</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types.FileOptions">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">FileOptions</span></span><a class="headerlink" href="#storage3.types.FileOptions" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Optional Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cache-control</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p><strong>content-type</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p><strong>x-upsert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class typeddict">
+<dt class="sig sig-object py" id="storage3.types._sortByType">
+<em class="property"><span class="pre">typeddict</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storage3.types.</span></span><span class="sig-name descname"><span class="pre">_sortByType</span></span><a class="headerlink" href="#storage3.types._sortByType" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">typing.TypedDict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Required Keys<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>)</p></li>
+<li><p><strong>order</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'asc'</span></code>, <code class="docutils literal notranslate"><span class="pre">'desc'</span></code>])</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="bucket.html"
+       title="previous chapter">← Bucket</a>
+  </li>
+  <li class="next">
+    <a href="../examples/index.html"
+       title="next chapter">&lt;no title&gt; →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Anand Krishna, Daniel Reinón García, Joel Lee, Leynier Gutiérrez González.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.0.1 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a> 0.8.0.
+</div>
+            </div>
+          </div>
+      </page>
+    </div></div>
+    
+    
+  </body>
+</html>
