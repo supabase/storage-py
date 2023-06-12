@@ -16,6 +16,7 @@ from ..types import (
     FileOptions,
     ListBucketFilesOptions,
     RequestMethod,
+    SignedUploadURL,
     TransformOptions,
 )
 from ..utils import AsyncClient, StorageException
@@ -52,6 +53,93 @@ class AsyncBucketActionsMixin:
             )
 
         return response
+
+    async def create_signed_upload_url(self, path: str) -> SignedUploadURL:
+        """
+        Creates a signed upload URL.
+
+        Parameters
+        ----------
+        path
+            The file path, including the file name. For example `folder/image.png`.
+        """
+        _path = self._get_final_path(path)
+        response = await self._request("POST", f"/object/upload/sign/{_path}")
+        data = response.json()
+        full_url: urllib.parse.ParseResult = urllib.parse.urlparse(
+            str(self._client.base_url) + data["url"]
+        )
+        query_params = urllib.parse.parse_qs(full_url.query)
+        if not query_params.get("token"):
+            raise StorageException("No token sent by the API")
+        return {
+            "signed_url": full_url.geturl(),
+            "token": query_params["token"][0],
+            "path": path,
+        }
+
+    async def upload_to_signed_url(
+        self,
+        path: str,
+        token: str,
+        file: Union[BufferedReader, bytes, FileIO, str, Path],
+        file_options: Optional[FileOptions] = None,
+    ) -> Response:
+        """
+        Upload a file with a token generated from :meth:`.create_signed_url`
+
+        Parameters
+        ----------
+        path
+            The file path, including the file name
+        token
+            The token generated from :meth:`.create_signed_url`
+        file
+            The file contents or a file-like object to upload
+        file_options
+            Additional options for the uploaded file
+        """
+        _path = self._get_final_path(path)
+        _url = urllib.parse.urlparse(f"/object/upload/sign/{_path}")
+        query_params = urllib.parse.urlencode({"token": token})
+        final_url = f"{_url.geturl()}?{query_params}"
+
+        if file_options is None:
+            file_options = {}
+
+        cache_control = file_options.get("cache-control")
+        if cache_control:
+            file_options["cache-control"] = f"max-age={cache_control}"
+
+        headers = {
+            **self._client.headers,
+            **DEFAULT_FILE_OPTIONS,
+            **file_options,
+        }
+        filename = path.rsplit("/", maxsplit=1)[-1]
+
+        if (
+            isinstance(file, BufferedReader)
+            or isinstance(file, bytes)
+            or isinstance(file, FileIO)
+        ):
+            # bytes or byte-stream-like object received
+            _file = {"file": (filename, file, headers.pop("content-type"))}
+        else:
+            # str or pathlib.path received
+            _file = {
+                "file": (
+                    filename,
+                    open(file, "rb"),
+                    headers.pop("content-type"),
+                )
+            }
+        return await self._request(
+            "PUT",
+            final_url,
+            files=_file,
+            headers=headers,
+        )
 
     async def create_signed_url(
         self, path: str, expires_in: int, options: CreateSignedURLOptions = {}
@@ -256,13 +344,13 @@ class AsyncBucketActionsMixin:
             The File object to be stored in the bucket. or a async generator of chunks
         file_options
             HTTP headers.
-            The expected keys are:
-            `cache-control`: The number of seconds the asset is cached in the browser and in the Supabase CDN.
-            `content-type`: This SHOULD be set properly, otherwise the default value of text/plain will be used.
-            `x-upsert`: If set to true, the file will be updated if it already exists.
         """
         if file_options is None:
             file_options = {}
+        cache_control = file_options.get("cache-control")
+        if cache_control:
+            file_options["cache-control"] = f"max-age={cache_control}"
+
         headers = {
             **self._client.headers,
             **DEFAULT_FILE_OPTIONS,

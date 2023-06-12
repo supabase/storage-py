@@ -39,6 +39,9 @@ Sphinx = "^7.0.1"
 sphinx-press-theme = "^0.8.0"
 unasync-cli = "^0.0.9"
 
+[tool.poetry.group.dev.dependencies]
+sphinx-toolbox = "^3.4.0"
+
 [tool.semantic_release]
 version_variable = "storage3/utils.py:__version__"
 version_toml = "pyproject.toml:tool.poetry.version"
