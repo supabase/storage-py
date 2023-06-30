@@ -5,8 +5,9 @@ from typing import Any, Optional
 from httpx import HTTPError, Response
 
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
-from ..utils import AsyncClient, StorageException
+from ..utils import StorageException
 from .file_api import AsyncBucket
+from supabase_client import SupaAsyncClient
 
 __all__ = ["AsyncStorageBucketAPI"]
 
@@ -14,7 +15,7 @@ __all__ = ["AsyncStorageBucketAPI"]
 class AsyncStorageBucketAPI:
     """This class abstracts access to the endpoint to the Get, List, Empty, and Delete operations on a bucket"""
 
-    def __init__(self, session: AsyncClient) -> None:
+    def __init__(self, session: SupaAsyncClient) -> None:
         self._client = session
 
     async def _request(

@@ -5,8 +5,9 @@ from typing import Any, Optional
 from httpx import HTTPError, Response
 
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
-from ..utils import StorageException, SyncClient
+from ..utils import StorageException
 from .file_api import SyncBucket
+from supabase_client import SupaSyncClient
 
 __all__ = ["SyncStorageBucketAPI"]
 
@@ -14,7 +15,7 @@ __all__ = ["SyncStorageBucketAPI"]
 class SyncStorageBucketAPI:
     """This class abstracts access to the endpoint to the Get, List, Empty, and Delete operations on a bucket"""
 
-    def __init__(self, session: SyncClient) -> None:
+    def __init__(self, session: SupaSyncClient) -> None:
         self._client = session
 
     def _request(

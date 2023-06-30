@@ -10,7 +10,7 @@ from storage3 import SyncStorageClient
 from storage3.utils import StorageException
 
 from .. import SyncBucketProxy
-from ..utils import SyncClient as HttpxClient
+from supabase_client import SupaSyncClient
 from ..utils import SyncFinalizerFactory
 
 if TYPE_CHECKING:
@@ -261,7 +261,7 @@ def test_client_create_signed_url(
         "signedURL"
     ]
 
-    with HttpxClient() as client:
+    with SupaSyncClient() as client:
         response = client.get(signed_url)
     response.raise_for_status()
 
@@ -281,7 +281,7 @@ def test_client_create_signed_urls(
 
     signed_urls = storage_file_client.create_signed_urls(paths, 10)
 
-    with HttpxClient() as client:
+    with SupaSyncClient() as client:
         for url in signed_urls:
             response = client.get(url["signedURL"])
             response.raise_for_status()
@@ -298,7 +298,7 @@ def test_client_get_public_url(
 
     public_url = storage_file_client_public.get_public_url(file.bucket_path)
 
-    with HttpxClient(timeout=None) as client:
+    with SupaSyncClient(timeout=None) as client:
         response = client.get(public_url)
     response.raise_for_status()
 

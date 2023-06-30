@@ -2,9 +2,10 @@ from __future__ import annotations
 
 from storage3.constants import DEFAULT_TIMEOUT
 
-from ..utils import AsyncClient, __version__
+from ..utils import __version__
 from .bucket import AsyncStorageBucketAPI
 from .file_api import AsyncBucketProxy
+from supabase_client import SupaAsyncClient
 
 __all__ = [
     "AsyncStorageClient",
@@ -26,8 +27,8 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
 
     def _create_session(
         self, base_url: str, headers: dict[str, str], timeout: int
-    ) -> AsyncClient:
-        return AsyncClient(base_url=base_url, headers=headers, timeout=timeout)
+    ) -> SupaAsyncClient:
+        return SupaAsyncClient(base_url=base_url, headers=headers, timeout=timeout)
 
     async def __aenter__(self) -> AsyncStorageClient:
         return self

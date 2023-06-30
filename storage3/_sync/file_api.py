@@ -19,7 +19,8 @@ from ..types import (
     SignedUploadURL,
     TransformOptions,
 )
-from ..utils import StorageException, SyncClient
+from ..utils import StorageException
+from supabase_client import SupaSyncClient
 
 __all__ = ["SyncBucket"]
 
@@ -28,7 +29,7 @@ class SyncBucketActionsMixin:
     """Functions needed to access the file API."""
 
     id: str
-    _client: SyncClient
+    _client: SupaSyncClient
 
     def _request(
         self,
@@ -395,7 +396,7 @@ class SyncBucketActionsMixin:
 class SyncBucket(BaseBucket, SyncBucketActionsMixin):
     """Represents a storage bucket."""
 
-    _client: SyncClient = field(repr=False)
+    _client: SupaSyncClient = field(repr=False)
 
 
 @dataclass
@@ -403,4 +404,4 @@ class SyncBucketProxy(SyncBucketActionsMixin):
     """A bucket proxy, this contains the minimum required fields to query the File API."""
 
     id: str
-    _client: SyncClient = field(repr=False)
+    _client: SupaSyncClient = field(repr=False)

@@ -10,7 +10,7 @@ from storage3 import AsyncStorageClient
 from storage3.utils import StorageException
 
 from .. import AsyncBucketProxy
-from ..utils import AsyncClient as HttpxClient
+from supabase_client import SupaAsyncClient
 from ..utils import AsyncFinalizerFactory
 
 if TYPE_CHECKING:
@@ -263,7 +263,7 @@ async def test_client_create_signed_url(
         "signedURL"
     ]
 
-    async with HttpxClient() as client:
+    async with SupaAsyncClient() as client:
         response = await client.get(signed_url)
     response.raise_for_status()
 
@@ -283,7 +283,7 @@ async def test_client_create_signed_urls(
 
     signed_urls = await storage_file_client.create_signed_urls(paths, 10)
 
-    async with HttpxClient() as client:
+    async with SupaAsyncClient() as client:
         for url in signed_urls:
             response = await client.get(url["signedURL"])
             response.raise_for_status()
@@ -300,7 +300,7 @@ async def test_client_get_public_url(
 
     public_url = await storage_file_client_public.get_public_url(file.bucket_path)
 
-    async with HttpxClient(timeout=None) as client:
+    async with SupaAsyncClient(timeout=None) as client:
         response = await client.get(public_url)
     response.raise_for_status()
 
