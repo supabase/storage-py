@@ -4,7 +4,7 @@ import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
 from pathlib import Path
-from typing import Any, Optional, Union, cast
+from typing import Any, Optional, Union
 
 from httpx import HTTPError, Response
 
@@ -167,9 +167,10 @@ class SyncBucketActionsMixin:
             json=json,
         )
         data = response.json()
-        data[
-            "signedURL"
-        ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        if data['signedURL']:
+            data[
+                "signedURL"
+            ] = f"{self._client.base_url}{str, data['signedURL'].lstrip('/')}"
         return data
 
     def create_signed_urls(
@@ -196,9 +197,10 @@ class SyncBucketActionsMixin:
         )
         data = response.json()
         for item in data:
-            item[
-                "signedURL"
-            ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+            if item['signedURL']:
+                item[
+                    "signedURL"
+                ] = f"{self._client.base_url}{str, item['signedURL'].lstrip('/')}"
         return data
 
     def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
