@@ -35,7 +35,7 @@ pytest = "^7.4.0"
 pytest-asyncio = "^0.21.0"
 pytest-cov = "^4.1.0"
 python-dotenv = "^1.0.0"
-Sphinx = "^7.0.1"
+Sphinx = "^7.1.2"
 sphinx-press-theme = "^0.8.0"
 unasync-cli = "^0.0.9"
 
