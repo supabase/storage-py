@@ -19,7 +19,7 @@ from ..types import (
     SignedUploadURL,
     TransformOptions,
 )
-from ..utils import SyncClient, StorageException
+from ..utils import StorageException, SyncClient
 
 __all__ = ["SyncBucket"]
 

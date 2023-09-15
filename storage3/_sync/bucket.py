@@ -5,7 +5,7 @@ from typing import Any, Optional
 from httpx import HTTPError, Response
 
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
-from ..utils import SyncClient, StorageException
+from ..utils import StorageException, SyncClient
 from .file_api import SyncBucket
 
 __all__ = ["SyncStorageBucketAPI"]
