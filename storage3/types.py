@@ -71,6 +71,10 @@ class CreateSignedURLsOptions(TypedDict):
     download: Union[str, bool]
 
 
+class Options(TypedDict):
+    transform: TransformOptions
+
+
 FileOptions = TypedDict(
     "FileOptions",
     {"cache-control": str, "content-type": str, "x-upsert": str},

@@ -15,9 +15,9 @@ from ..types import (
     CreateSignedURLsOptions,
     FileOptions,
     ListBucketFilesOptions,
+    Options,
     RequestMethod,
     SignedUploadURL,
-    TransformOptions,
 )
 from ..utils import StorageException, SyncClient
 
@@ -201,7 +201,7 @@ class SyncBucketActionsMixin:
             ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
         return data
 
-    def get_public_url(self, path: str, options: TransformOptions = {}) -> str:
+    def get_public_url(self, path: str, options: Options = {"transform": {}}) -> str:
         """
         Parameters
         ----------
@@ -209,7 +209,7 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         render_path = "render/image" if options.get("transform") else "object"
-        transformation_query = urllib.parse.urlencode(options)
+        transformation_query = urllib.parse.urlencode(options.get("transform"))
         query_string = f"?{transformation_query}" if transformation_query else ""
         _path = self._get_final_path(path)
         return f"{self._client.base_url}{render_path}/public/{_path}{query_string}"
@@ -304,7 +304,7 @@ class SyncBucketActionsMixin:
         )
         return response.json()
 
-    def download(self, path: str, options: TransformOptions = {}) -> bytes:
+    def download(self, path: str, options: Options = {"transform": {}}) -> bytes:
         """
         Downloads a file.
 
@@ -316,7 +316,7 @@ class SyncBucketActionsMixin:
         render_path = (
             "render/image/authenticated" if options.get("transform") else "object"
         )
-        transformation_query = urllib.parse.urlencode(options)
+        transformation_query = urllib.parse.urlencode(options.get("transform"))
         query_string = f"?{transformation_query}" if transformation_query else ""
 
         _path = self._get_final_path(path)
