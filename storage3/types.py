@@ -62,7 +62,7 @@ class TransformOptions(TypedDict, total=False):
     quality: int
 
 
-class CreateSignedURLOptions(TypedDict, total=False):
+class URLOptions(TypedDict, total=False):
     download: Union[str, bool]
     transform: TransformOptions
 
@@ -71,7 +71,7 @@ class CreateSignedURLsOptions(TypedDict):
     download: Union[str, bool]
 
 
-class Options(TypedDict):
+class DownloadOptions(TypedDict, total=False):
     transform: TransformOptions
 
 
