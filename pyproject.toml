@@ -27,7 +27,7 @@ typing-extensions = "^4.2.0"
 python-dateutil = "^2.8.2"
 
 [tool.poetry.dev-dependencies]
-python-semantic-release = "^8.0.8"
+python-semantic-release = "^8.1.1"
 black = "^23.9.1"
 isort = "^5.12.0"
 pre-commit = "^3.4.0"
@@ -48,7 +48,7 @@ version_toml = ["pyproject.toml:tool.poetry.version"]
 major_on_zero = false
 commit_subject = "chore(release): bump version to v{version}"
 build_command = "curl -sSL https://install.python-poetry.org | python - --preview && export PATH=\"/github/home/.local/bin:$PATH\" && poetry install && poetry build"
-upload_to_repository = true
+upload_to_vcs = true
 branch = "main"
 changelog_components = "semantic_release.changelog.changelog_headers,semantic_release.changelog.compare_url"
 
