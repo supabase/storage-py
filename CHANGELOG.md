@@ -2,9 +2,77 @@
 
 
 
+## v0.6.0 (2023-09-28)
+
+### Chore
+
+* chore: run unasync ([`fc93662`](https://github.com/supabase-community/storage-py/commit/fc936629932271b12bb741b87140744c83d2369b))
+
+### Feature
+
+* feat: bump version ([`10ba8be`](https://github.com/supabase-community/storage-py/commit/10ba8be2e1ef45cfc3a596a88e9a674fe5308b0b))
+
+### Fix
+
+* fix: make download key optional ([`dbf8213`](https://github.com/supabase-community/storage-py/commit/dbf82137eb3c18b8892bf1853072f9e82dd0d57b))
+
+### Unknown
+
+* Merge pull request #153 from supabase-community/fix/remove-required-key
+
+fix: make download key optional ([`d0c47c7`](https://github.com/supabase-community/storage-py/commit/d0c47c7dc72864c7e256f27d5d68ccebaff2c18a))
+
+* Merge pull request #152 from supabase-community/j0/test_workflow
+
+feat: bump version ([`9b227ce`](https://github.com/supabase-community/storage-py/commit/9b227ce01b18093ee4967d4eaf249f43c7a22f60))
+
+* Merge pull request #151 from supabase-community/fix/github-workflow-update
+
+Update python-semantic-release version and ci ([`bf49d51`](https://github.com/supabase-community/storage-py/commit/bf49d514390b86670b61ce2b5cd2b7fd8a92d6c3))
+
+* Update python-semantic-release version and ci ([`ad7fc6d`](https://github.com/supabase-community/storage-py/commit/ad7fc6dab3a5be062598e64f4b287370eafcacd5))
+
+* Merge pull request #150 from supabase-community/fix/github-workflow
+
+Fix semantic releaase workflow ([`e13cb9e`](https://github.com/supabase-community/storage-py/commit/e13cb9e5cbc735635d70a8d6f8c3df5b39eb739b))
+
+* Fix semantic releaase workflow ([`3a00104`](https://github.com/supabase-community/storage-py/commit/3a00104fe5206bb48db9e440d8abfe503a6b505f))
+
+* Merge pull request #149 from supabase-community/fix/correct-option-type-for-transforms
+
+Fix image transforms options ([`64a8ab2`](https://github.com/supabase-community/storage-py/commit/64a8ab21713d3b80c647ab54ef78f553744d5ad8))
+
+* Ran pre-commit hooks ([`f8f7482`](https://github.com/supabase-community/storage-py/commit/f8f7482de2088a5539b3c68f53e4c76578c58a70))
+
+* Rename options typehint
+Add download option to get_public_url ([`4fc7d8d`](https://github.com/supabase-community/storage-py/commit/4fc7d8d9b6dfcfc8068834cfed1fdd5691ae38fc))
+
+* Fix image transforms options ([`f007596`](https://github.com/supabase-community/storage-py/commit/f007596743ce18647cca782f7765716d4779f3a8))
+
+* Merge pull request #136 from supabase-community/dependabot/pip/main/pytest-7.4.2
+
+chore(deps-dev): bump pytest from 7.4.0 to 7.4.2 ([`7229864`](https://github.com/supabase-community/storage-py/commit/72298641ef1e15e54b897e9ff7ccdffffce511f5))
+
+
 ## v0.5.5 (2023-09-15)
 
 ### Chore
+
+* chore(deps-dev): bump pytest from 7.4.0 to 7.4.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.4.0 to 7.4.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/7.4.0...7.4.2)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:development
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`08ea297`](https://github.com/supabase-community/storage-py/commit/08ea297ef0982c70444b0aab8da4072710e7458f))
 
 * chore(deps-dev): bump black from 23.7.0 to 23.9.1
 
