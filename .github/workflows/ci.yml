@@ -42,7 +42,7 @@ jobs:
       contents: write # needed for github actions bot to write to repo
     steps:
       - name: Clone Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
@@ -58,7 +58,8 @@ jobs:
         # See https://github.com/actions/runner/issues/1173
         if: steps.release.outputs.released == 'true'
 
-      - name: Python Semantic Release
+      - name: Publish package distributions to GitHub Releases
         uses: python-semantic-release/upload-to-gh-release@main
+        if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
