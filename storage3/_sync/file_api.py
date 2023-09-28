@@ -187,7 +187,7 @@ class SyncBucketActionsMixin:
         """
         json = {"paths": paths, "expiresIn": str(expires_in)}
         if options.get("download"):
-            json.update({"download": options["download"]})
+            json.update({"download": options.get("download")})
 
         response = self._request(
             "POST",
