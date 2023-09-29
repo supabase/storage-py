@@ -279,7 +279,7 @@ class AsyncBucketActionsMixin:
         )
         return res.json()
 
-    async def remove(self, paths: list) -> list[dict[str, any]]:
+    async def remove(self, paths: list) -> list[dict[str, Any]]:
         """
         Deletes files within the same bucket
 
