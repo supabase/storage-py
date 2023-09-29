@@ -37,13 +37,10 @@ class AsyncBucketActionsMixin:
         headers: Optional[dict[str, Any]] = None,
         json: Optional[dict[Any, Any]] = None,
         files: Optional[Any] = None,
+        **kwargs: Any,
     ) -> Response:
         response = await self._client.request(
-            method,
-            url,
-            headers=headers or {},
-            json=json,
-            files=files,
+            method, url, headers=headers or {}, json=json, files=files, **kwargs
         )
         try:
             response.raise_for_status()
@@ -108,9 +105,12 @@ class AsyncBucketActionsMixin:
             file_options = {}
 
         cache_control = file_options.get("cache-control")
+        # cacheControl is also passed as form data
+        # https://github.com/supabase/storage-js/blob/fa44be8156295ba6320ffeff96bdf91016536a46/src/packages/StorageFileApi.ts#L89
+        _data = {}
         if cache_control:
             file_options["cache-control"] = f"max-age={cache_control}"
-
+            _data = {"cacheControl": cache_control}
         headers = {
             **self._client.headers,
             **DEFAULT_FILE_OPTIONS,
@@ -135,10 +135,7 @@ class AsyncBucketActionsMixin:
                 )
             }
         return await self._request(
-            "PUT",
-            final_url,
-            files=_file,
-            headers=headers,
+            "PUT", final_url, files=_file, headers=headers, data=_data
         )
 
     async def create_signed_url(
@@ -369,8 +366,10 @@ class AsyncBucketActionsMixin:
         if file_options is None:
             file_options = {}
         cache_control = file_options.get("cache-control")
+        _data = {}
         if cache_control:
             file_options["cache-control"] = f"max-age={cache_control}"
+            _data = {"cacheControl": cache_control}
 
         headers = {
             **self._client.headers,
@@ -399,10 +398,7 @@ class AsyncBucketActionsMixin:
         _path = self._get_final_path(path)
 
         return await self._request(
-            "POST",
-            f"/object/{_path}",
-            files=files,
-            headers=headers,
+            "POST", f"/object/{_path}", files=files, headers=headers, data=_data
         )
 
     def _get_final_path(self, path: str) -> str:
