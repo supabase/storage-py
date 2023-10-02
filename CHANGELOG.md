@@ -2,6 +2,27 @@
 
 
 
+## v0.6.1 (2023-10-02)
+
+### Documentation
+
+* docs: fix name of URLOptions type ([`5430e92`](https://github.com/supabase-community/storage-py/commit/5430e920492e6616ce833318daef44176b282401))
+
+### Fix
+
+* fix: make precommit ignore markdown files ([`d2530fe`](https://github.com/supabase-community/storage-py/commit/d2530fe4b661e9b43dc6a0e124ac60ab3ffc64c9))
+
+* fix: pass cache-control as formdata ([`9910fe0`](https://github.com/supabase-community/storage-py/commit/9910fe0d9e88c60798773d42a4449b1df62068ed))
+
+* fix: use correct Any for typehint ([`5ad2ae8`](https://github.com/supabase-community/storage-py/commit/5ad2ae8ed67b6f8fe60ceff8ff6a85d92ac36725))
+
+### Unknown
+
+* Merge pull request #154 from supabase-community/fix/cache-control
+
+fix: send cache-control as form data ([`bab90b6`](https://github.com/supabase-community/storage-py/commit/bab90b67f49631f7a8b2f77998a205b9d9029926))
+
+
 ## v0.6.0 (2023-09-28)
 
 ### Chore
