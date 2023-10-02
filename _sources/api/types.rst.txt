@@ -16,7 +16,7 @@ Options
 
 .. autotypeddict:: storage3.types.TransformOptions
 
-.. autotypeddict:: storage3.types.CreateSignedURLOptions
+.. autotypeddict:: storage3.types.URLOptions
 
 .. autotypeddict:: storage3.types.CreateSignedURLsOptions
 
