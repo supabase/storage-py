@@ -4,7 +4,7 @@ import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
 from pathlib import Path
-from typing import Any, Optional, Union, cast
+from typing import Any, Literal, Optional, Union, cast
 
 from httpx import HTTPError, Response
 
@@ -344,8 +344,9 @@ class AsyncBucketActionsMixin:
         )
         return response.content
 
-    async def upload(
+    async def _upload_or_update(
         self,
+        method: Literal["POST", "PUT"],
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
         file_options: Optional[FileOptions] = None,
@@ -367,9 +368,6 @@ class AsyncBucketActionsMixin:
             file_options = {}
         cache_control = file_options.get("cache-control")
         _data = {}
-        if cache_control:
-            file_options["cache-control"] = f"max-age={cache_control}"
-            _data = {"cacheControl": cache_control}
 
         headers = {
             **self._client.headers,
@@ -377,6 +375,10 @@ class AsyncBucketActionsMixin:
             **file_options,
         }
         filename = path.rsplit("/", maxsplit=1)[-1]
+
+        if cache_control:
+            headers["cache-control"] = f"max-age={cache_control}"
+            _data = {"cacheControl": cache_control}
 
         if (
             isinstance(file, BufferedReader)
@@ -398,8 +400,37 @@ class AsyncBucketActionsMixin:
         _path = self._get_final_path(path)
 
         return await self._request(
-            "POST", f"/object/{_path}", files=files, headers=headers, data=_data
+            method, f"/object/{_path}", files=files, headers=headers, data=_data
         )
+
+    async def upload(
+        self,
+        path: str,
+        file: Union[BufferedReader, bytes, FileIO, str, Path],
+        file_options: Optional[FileOptions] = None,
+    ) -> Response:
+        """
+        Uploads a file to an existing bucket.
+
+        Parameters
+        ----------
+        path
+            The relative file path including the bucket ID. Should be of the format `bucket/folder/subfolder/filename.png`.
+            The bucket must already exist before attempting to upload.
+        file
+            The File object to be stored in the bucket. or a async generator of chunks
+        file_options
+            HTTP headers.
+        """
+        return await self._upload_or_update("POST", path, file, file_options)
+
+    async def update(
+        self,
+        path: str,
+        file: Union[BufferedReader, bytes, FileIO, str, Path],
+        file_options: Optional[FileOptions] = None,
+    ) -> Response:
+        return await self._upload_or_update("PUT", path, file, file_options)
 
     def _get_final_path(self, path: str) -> str:
         return f"{self.id}/{path}"
