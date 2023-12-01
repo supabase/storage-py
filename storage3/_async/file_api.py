@@ -198,7 +198,7 @@ class AsyncBucketActionsMixin:
             ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
         return data
 
-    async def get_public_url(self, path: str, options: URLOptions = {}) -> str:
+    def get_public_url(self, path: str, options: URLOptions = {}) -> str:
         """
         Parameters
         ----------
