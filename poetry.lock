@@ -990,13 +990,13 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.4.0"
+version = "3.5.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "pre_commit-3.4.0-py2.py3-none-any.whl", hash = "sha256:96d529a951f8b677f730a7212442027e8ba53f9b04d217c4c67dc56c393ad945"},
-    {file = "pre_commit-3.4.0.tar.gz", hash = "sha256:6bbd5129a64cad4c0dfaeeb12cd8f7ea7e15b77028d985341478c8af3c759522"},
+    {file = "pre_commit-3.5.0-py2.py3-none-any.whl", hash = "sha256:841dc9aef25daba9a0238cd27984041fa0467b4199fc4852e27950664919f660"},
+    {file = "pre_commit-3.5.0.tar.gz", hash = "sha256:5804465c675b659b0862f07907f96295d490822a450c4c40e747d0b1c6ebcb32"},
 ]
 
 [package.dependencies]
@@ -1264,33 +1264,33 @@ yaml = ["PyYaml (>=5.2)"]
 
 [[package]]
 name = "python-semantic-release"
-version = "8.1.1"
+version = "9.1.1"
 description = "Automatic Semantic Versioning for Python projects"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "python-semantic-release-8.1.1.tar.gz", hash = "sha256:76f180b3981854f9370ef25c10a63487be21c299189b63ad029f13cdb9909ab3"},
-    {file = "python_semantic_release-8.1.1-py3-none-any.whl", hash = "sha256:642fdecac73ddfcbac14ddece3809791229148f0ec13d6cd024bd066e9eccd8e"},
+    {file = "python-semantic-release-9.1.1.tar.gz", hash = "sha256:fe4fc40f52cdddbfe82c710070978306b35e9e4f2c7d98a77db55bf6f5e544f2"},
+    {file = "python_semantic_release-9.1.1-py3-none-any.whl", hash = "sha256:4d45bc6540dd894663636ced5a98cf4d3ea5765a9f1f18f4ffef6ae0733e05a3"},
 ]
 
 [package.dependencies]
 click = ">=8,<9"
 dotty-dict = ">=1.3.0,<2"
 gitpython = ">=3.0.8,<4"
-importlib-resources = ">=5.7,<6"
+importlib-resources = ">=5.7,<7"
 jinja2 = ">=3.1.2,<4"
 pydantic = ">=2,<3"
-python-gitlab = ">=2,<4"
+python-gitlab = ">=2,<5"
 requests = ">=2.25,<3"
 rich = ">=12.5.1"
 shellingham = ">=1.5.0.post1"
-tomlkit = ">=0.10,<1.0"
+tomlkit = ">=0.11,<1.0"
 
 [package.extras]
-dev = ["black", "pre-commit", "ruff (==0.0.290)", "tox"]
+dev = ["pre-commit", "ruff (==0.1.11)", "tox"]
 docs = ["Sphinx (<=6.0.0)", "furo (>=2023.3.27)", "sphinx-autobuild (==2021.03.14)", "sphinxcontrib-apidoc (==0.3.0)"]
 mypy = ["mypy", "types-requests"]
-test = ["coverage[toml] (>=6,<8)", "pytest (>=7,<8)", "pytest-cov (>=4,<5)", "pytest-lazy-fixture (>=0.6.3,<0.7.0)", "pytest-mock (>=3,<4)", "pytest-pretty (>=1.2.0,<2)", "pytest-xdist (>=2,<4)", "requests-mock (>=1.10.0,<2)", "responses (==0.23.3)", "types-pytest-lazy-fixture (>=0.6.3.3)"]
+test = ["coverage[toml] (>=6,<8)", "pytest (>=7,<8)", "pytest-clarity (>=1.0.1)", "pytest-cov (>=4,<5)", "pytest-env (>=1.0,<2.0)", "pytest-lazy-fixture (>=0.6.3,<0.7.0)", "pytest-mock (>=3,<4)", "pytest-pretty (>=1.2.0,<2)", "pytest-xdist (>=2,<4)", "requests-mock (>=1.10.0,<2)", "responses (==0.23.3)", "types-pytest-lazy-fixture (>=0.6.3.3)"]
 
 [[package]]
 name = "pytz"
@@ -1962,4 +1962,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b483b7fa8e3f366cbecada9a62ff8a3e849502b73db175518a8ebfe6595e6da4"
+content-hash = "4561cf4e3ae68ab38ee4d40803260c75630261c5ba80ecef3f3b897e65de9d07"
