@@ -2,6 +2,88 @@
 
 
 
+## v0.7.0 (2023-11-22)
+
+### Chore
+
+* chore: update GitHub workflow for releases ([`72ad275`](https://github.com/supabase-community/storage-py/commit/72ad2752849621446fd1df7ebc0b85dc4d9cf4cd))
+
+* chore: add sync version of the update function ([`18c14a4`](https://github.com/supabase-community/storage-py/commit/18c14a4e7888cd14d09b7cbbd2e8b02f9cef02f0))
+
+* chore(deps-dev): bump pytest from 7.4.2 to 7.4.3
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.4.2 to 7.4.3.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/7.4.2...7.4.3)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:development
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`87125bc`](https://github.com/supabase-community/storage-py/commit/87125bccaee9eeffd136af5ee8c442a4161b4761))
+
+* chore(deps-dev): bump black from 23.9.1 to 23.10.0
+
+Bumps [black](https://github.com/psf/black) from 23.9.1 to 23.10.0.
+- [Release notes](https://github.com/psf/black/releases)
+- [Changelog](https://github.com/psf/black/blob/main/CHANGES.md)
+- [Commits](https://github.com/psf/black/compare/23.9.1...23.10.0)
+
+---
+updated-dependencies:
+- dependency-name: black
+  dependency-type: direct:development
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ac6f901`](https://github.com/supabase-community/storage-py/commit/ac6f9017d8cde34b930b0436af5f413fc589b12f))
+
+* chore(deps-dev): bump urllib3 from 2.0.5 to 2.0.7
+
+Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.0.5 to 2.0.7.
+- [Release notes](https://github.com/urllib3/urllib3/releases)
+- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+- [Commits](https://github.com/urllib3/urllib3/compare/v2.0.5...2.0.7)
+
+---
+updated-dependencies:
+- dependency-name: urllib3
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`79c9ca3`](https://github.com/supabase-community/storage-py/commit/79c9ca3b23e13e7f1d3788edc99d5939f59d0960))
+
+### Feature
+
+* feat: add update existing file function ([`da4d785`](https://github.com/supabase-community/storage-py/commit/da4d785028e86899f1efc23394883836b94cd0d3))
+
+### Unknown
+
+* Merge pull request #166 from supabase-community/chore/update-gh-workflow
+
+chore: update GitHub workflow for releases ([`f42d176`](https://github.com/supabase-community/storage-py/commit/f42d1766d4a8649a995ae474185eb50d0572bf2c))
+
+* Merge pull request #165 from supabase-community/silentworks/file_update
+
+feat: add update existing file function ([`d8139e0`](https://github.com/supabase-community/storage-py/commit/d8139e0e36f5d083262e61809e74313969de7996))
+
+* Merge pull request #158 from supabase-community/dependabot/pip/urllib3-2.0.7
+
+chore(deps-dev): bump urllib3 from 2.0.5 to 2.0.7 ([`fc8cb5d`](https://github.com/supabase-community/storage-py/commit/fc8cb5d60511d3e795614ff17facebe22b6f93f2))
+
+* Merge pull request #162 from supabase-community/dependabot/pip/main/pytest-7.4.3
+
+chore(deps-dev): bump pytest from 7.4.2 to 7.4.3 ([`9b048cb`](https://github.com/supabase-community/storage-py/commit/9b048cbb913b725f326e1c3e8eaa4b9377b6f1d6))
+
+* Merge pull request #159 from supabase-community/dependabot/pip/main/black-23.10.0
+
+chore(deps-dev): bump black from 23.9.1 to 23.10.0 ([`0f332fa`](https://github.com/supabase-community/storage-py/commit/0f332fa714636f343deb390ec58a288563fc81d2))
+
+
 ## v0.6.1 (2023-10-02)
 
 ### Documentation
