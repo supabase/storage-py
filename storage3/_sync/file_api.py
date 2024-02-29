@@ -111,6 +111,10 @@ class SyncBucketActionsMixin:
         if cache_control:
             file_options["cache-control"] = f"max-age={cache_control}"
             _data = {"cacheControl": cache_control}
+        if file_options.get("upsert"):
+            file_options.update({"x-upsert": file_options.get("upsert")})
+            del file_options["upsert"]
+
         headers = {
             **self._client.headers,
             **DEFAULT_FILE_OPTIONS,
@@ -366,6 +370,9 @@ class SyncBucketActionsMixin:
             file_options = {}
         cache_control = file_options.get("cache-control")
         _data = {}
+        if file_options.get("upsert"):
+            file_options.update({"x-upsert": file_options.get("upsert")})
+            del file_options["upsert"]
 
         headers = {
             **self._client.headers,
