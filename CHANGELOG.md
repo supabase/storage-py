@@ -2,6 +2,82 @@
 
 
 
+## v0.7.1 (2024-03-10)
+
+### Chore
+
+* chore(deps-dev): bump pytest from 7.4.4 to 8.1.0 (#200)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`bcb0af7`](https://github.com/supabase-community/storage-py/commit/bcb0af74468868eb5610d4b2e83f248b8baf6a7c))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 8.0.0 to 9.1.1 (#188)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`dd56b26`](https://github.com/supabase-community/storage-py/commit/dd56b26012c6d71a93895ada757f3c1d04e19618))
+
+* chore(deps): bump sphinx-notes/pages from 2 to 3 (#198)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`e592b7d`](https://github.com/supabase-community/storage-py/commit/e592b7dd80976cab138a9b27f45897e43cd07b06))
+
+* chore(deps): bump codecov/codecov-action from 1 to 4 (#197)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`5928a4a`](https://github.com/supabase-community/storage-py/commit/5928a4a4aba43a892fb081c93f219fb5278b665b))
+
+* chore(deps-dev): bump pre-commit from 3.4.0 to 3.5.0 (#156)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt;
+Co-authored-by: Rodrigo Mansueli &lt;rodrigo@mansueli.com&gt; ([`331779f`](https://github.com/supabase-community/storage-py/commit/331779f2d3299d0561aba6db5421cfc233204899))
+
+* chore(deps): bump github/codeql-action from 2 to 3 (#189)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`5db5fd2`](https://github.com/supabase-community/storage-py/commit/5db5fd29cf07fbc145a8e1a784959921a6eb1ba4))
+
+* chore(deps): bump actions/setup-python from 2 to 5 (#190)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`6160615`](https://github.com/supabase-community/storage-py/commit/6160615201c9da59961e8d8016a4244dbe16f571))
+
+* chore(deps): bump abatilo/actions-poetry from 2.2.0 to 3.0.0 (#186)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`1d02c5a`](https://github.com/supabase-community/storage-py/commit/1d02c5a66dde8cf91ef258e2a5db91c9af5eaca1))
+
+* chore(deps): bump actions/checkout from 2 to 4 (#187)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`dd7e0a5`](https://github.com/supabase-community/storage-py/commit/dd7e0a5c7b4652efa85ab6ed76c24f266e4c0e06))
+
+* chore(deps-dev): bump python-semantic-release from 8.1.1 to 9.1.1 (#191)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`504c8b2`](https://github.com/supabase-community/storage-py/commit/504c8b2201c7463126722ec9bb68413165908a92))
+
+### Fix
+
+* fix: handle json decode error when there&#39;s no json response (e.g. on 403) (#203)
+
+Co-authored-by: joel &lt;joel@joels-MacBook-Pro.local&gt; ([`cce5ad4`](https://github.com/supabase-community/storage-py/commit/cce5ad420fa01bc032f55822572aa9e9c0061be0))
+
+### Unknown
+
+* Update poetry.lock (#195) ([`641c24e`](https://github.com/supabase-community/storage-py/commit/641c24ee72865e27526a3e10891a437024b6e9ff))
+
+* Merge branch &#39;main&#39; of https://github.com/supabase-community/storage-py ([`84e26e2`](https://github.com/supabase-community/storage-py/commit/84e26e28179aca2eacc180932e1f49e71d04f713))
+
+* Update poetry.lock ([`1e81c90`](https://github.com/supabase-community/storage-py/commit/1e81c90be16bcbc6f245fa7a9dfc06ded0932206))
+
+* Update dependabot.yml (#185) ([`1f2c2f8`](https://github.com/supabase-community/storage-py/commit/1f2c2f8fdf9e1e1501985f27cddaf61595c8ff5b))
+
+* Update MAINTAINERS.md ([`d3f7e8c`](https://github.com/supabase-community/storage-py/commit/d3f7e8c334815c63a77496d6f4ffef36b729f082))
+
+* Update MAINTAINERS.md (#175) ([`6816f0c`](https://github.com/supabase-community/storage-py/commit/6816f0cf36c5995fb6cbf6e5bf9ad0b16e801bf3))
+
+
 ## v0.7.0 (2023-11-22)
 
 ### Chore
