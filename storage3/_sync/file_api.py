@@ -43,11 +43,16 @@ class SyncBucketActionsMixin:
             method, url, headers=headers or {}, json=json, files=files, **kwargs
         )
         try:
+            response = self._client.request(
+                method, url, headers=headers or {}, json=json, files=files, **kwargs
+            )
             response.raise_for_status()
         except HTTPError:
-            raise StorageException(
-                {**response.json(), "statusCode": response.status_code}
-            )
+            try:
+                resp = response.json()
+                raise StorageException({**resp, "statusCode": response.status_code})
+            except JSONDecodeError:
+                raise StorageException({"statusCode": response.status_code})
 
         return response
 
