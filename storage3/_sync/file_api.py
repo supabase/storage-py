@@ -368,12 +368,20 @@ class SyncBucketActionsMixin:
             file_options = {}
         cache_control = file_options.get("cache-control")
         _data = {}
+        if file_options.get("upsert"):
+            file_options.update({"x-upsert": file_options.get("upsert")})
+            del file_options["upsert"]
 
         headers = {
             **self._client.headers,
             **DEFAULT_FILE_OPTIONS,
             **file_options,
         }
+
+        # Only include x-upsert on a POST method
+        if method != "POST":
+            del headers["x-upsert"]
+
         filename = path.rsplit("/", maxsplit=1)[-1]
 
         if cache_control:

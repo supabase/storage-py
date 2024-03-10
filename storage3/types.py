@@ -77,6 +77,6 @@ class DownloadOptions(TypedDict, total=False):
 
 FileOptions = TypedDict(
     "FileOptions",
-    {"cache-control": str, "content-type": str, "x-upsert": str},
+    {"cache-control": str, "content-type": str, "x-upsert": str, "upsert": str},
     total=False,
 )
