@@ -39,9 +39,6 @@ class SyncBucketActionsMixin:
         files: Optional[Any] = None,
         **kwargs: Any,
     ) -> Response:
-        response = self._client.request(
-            method, url, headers=headers or {}, json=json, files=files, **kwargs
-        )
         try:
             response = self._client.request(
                 method, url, headers=headers or {}, json=json, files=files, **kwargs
