@@ -2,6 +2,20 @@
 
 
 
+## v0.7.2 (2024-03-10)
+
+### Chore
+
+* chore(deps-dev): bump black from 23.10.0 to 24.2.0 (#193)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`4613502`](https://github.com/supabase-community/storage-py/commit/46135021e8a0fcdc4d41c8465831092b13b9b326))
+
+### Fix
+
+* fix: add upsert option to upload/update (#199) ([`db1b66a`](https://github.com/supabase-community/storage-py/commit/db1b66a0f12795e6ed4be1f3adb5776c296f3ede))
+
+
 ## v0.7.1 (2024-03-10)
 
 ### Chore
