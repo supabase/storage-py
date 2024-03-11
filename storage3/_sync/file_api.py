@@ -3,6 +3,7 @@ from __future__ import annotations
 import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
+from json import JSONDecodeError
 from pathlib import Path
 from typing import Any, Literal, Optional, Union, cast
 
