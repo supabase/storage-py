@@ -2,6 +2,17 @@
 
 
 
+## v0.7.3 (2024-03-11)
+
+### Chore
+
+* chore: update CODEOWNERS to use python-maintainers (#204) ([`4dc6a5a`](https://github.com/supabase-community/storage-py/commit/4dc6a5a0944f540a394c4bdda6250d33c40a4758))
+
+### Fix
+
+* fix: add json decode error import (#205) ([`7327175`](https://github.com/supabase-community/storage-py/commit/732717510ed2aab7a2b131861b1a6b65fcb6a0dd))
+
+
 ## v0.7.2 (2024-03-10)
 
 ### Chore
