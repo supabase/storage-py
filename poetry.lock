@@ -1644,13 +1644,13 @@ markupsafe = ">=1"
 
 [[package]]
 name = "sphinx-press-theme"
-version = "0.8.0"
+version = "0.9.0"
 description = "A Sphinx-doc theme based on Vuepress"
 optional = false
 python-versions = "*"
 files = [
-    {file = "sphinx_press_theme-0.8.0-py3-none-any.whl", hash = "sha256:ddf877d414a2c66e13396d726115aa3f0c94d1ac9133b4df028c261bf388ab25"},
-    {file = "sphinx_press_theme-0.8.0.tar.gz", hash = "sha256:2884caab1dc01ecb11d158d4dd6d3179e2dd97cd48516c769cc27360272e62b3"},
+    {file = "sphinx_press_theme-0.9.0-py3-none-any.whl", hash = "sha256:7bc4186f1c74b8c05164143b2eae1b76bbf0411645818f5a0ba7a8a15874cd4a"},
+    {file = "sphinx_press_theme-0.9.0.tar.gz", hash = "sha256:4a61db91f0e5d463b4645e64fbb700f5a976007996934ca94b2bd30c8f11e92d"},
 ]
 
 [package.dependencies]
@@ -1973,4 +1973,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "24937e242cdb9005de721f09077a0fbd1d471865eeb7674274d45cd4b43ce33d"
+content-hash = "e0bb00ff6ab8fb9e64f76e81c3ff3f43d48f55ea0ea63a4810d24110afe04fa9"
