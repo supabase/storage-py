@@ -2,6 +2,60 @@
 
 
 
+## v0.7.4 (2024-03-23)
+
+### Chore
+
+* chore(deps-dev): bump python-semantic-release from 9.1.1 to 9.3.0 (#213)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`e2f594f`](https://github.com/supabase-community/storage-py/commit/e2f594f17b3f3596779b1aa83c60841868657503))
+
+* chore(deps): bump python-dateutil from 2.8.2 to 2.9.0.post0 (#201)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`7471e7a`](https://github.com/supabase-community/storage-py/commit/7471e7a7c36750692b03501805e9059863787f99))
+
+* chore: update ci pipeline to include python 3.12 in tests (#217) ([`dd264f1`](https://github.com/supabase-community/storage-py/commit/dd264f1793f3ca86ad544d5cdc0dcbb786c22904))
+
+* chore(deps): bump httpx from 0.25.0 to 0.27.0 (#192)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`25b2d02`](https://github.com/supabase-community/storage-py/commit/25b2d02c7a7de2cd084a6644d40f7443acacc21c))
+
+* chore(deps-dev): bump jinja2 from 3.1.2 to 3.1.3 (#182)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`3b419f5`](https://github.com/supabase-community/storage-py/commit/3b419f50adb893ce34bced49fc9ed4fe8bd27c6c))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.2.2 to 9.3.0 (#215)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`290442a`](https://github.com/supabase-community/storage-py/commit/290442a13f5143af6db14a4a830ef319cab883e7))
+
+* chore(deps-dev): bump pytest from 8.1.0 to 8.1.1 (#206)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`8bcb7a5`](https://github.com/supabase-community/storage-py/commit/8bcb7a5963d0d694ea20fe7f1da31e2474950809))
+
+* chore(deps-dev): bump black from 24.2.0 to 24.3.0 (#208)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`e19d5c0`](https://github.com/supabase-community/storage-py/commit/e19d5c0311813cccf74a726fa7bbe9aee86a0765))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.1.1 to 9.2.2 (#210)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`c22f449`](https://github.com/supabase-community/storage-py/commit/c22f44936e14aba015da29c2709c8943ed11cef8))
+
+### Fix
+
+* fix: bump sphinx-press-theme from 0.8.0 to 0.9.1 (#216)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`4da4b73`](https://github.com/supabase-community/storage-py/commit/4da4b735e28400967f9303df14c7936a988dcf97))
+
+
 ## v0.7.3 (2024-03-11)
 
 ### Chore
@@ -1403,7 +1457,7 @@ chore(deps-dev): bump python-semantic-release from 7.32.1 to 7.32.2 ([`1f2a4b5`]
 chore(deps-dev): bump pytest-cov from 3.0.0 to 4.0.0 ([`67ad10c`](https://github.com/supabase-community/storage-py/commit/67ad10c92ef234db5551a2f3699e4be8f36fa15c))
 
 
-## v0.3.5 (2022-10-10)
+## v0.3.5 (2022-10-11)
 
 ### Chore
 
