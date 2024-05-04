@@ -15,15 +15,13 @@ __all__ = ["create_client", "__version__"]
 @overload
 def create_client(
     url: str, headers: dict[str, str], *, is_async: Literal[True]
-) -> AsyncStorageClient:
-    ...
+) -> AsyncStorageClient: ...
 
 
 @overload
 def create_client(
     url: str, headers: dict[str, str], *, is_async: Literal[False]
-) -> SyncStorageClient:
-    ...
+) -> SyncStorageClient: ...
 
 
 def create_client(
