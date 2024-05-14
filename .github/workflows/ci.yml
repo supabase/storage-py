@@ -29,6 +29,13 @@ jobs:
         with:
           poetry-version: 1.3.2
 
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Start Supabase local development setup
+        run: supabase start --workdir infra -x studio,gotrue,postgrest,inbucket,realtime,edge-runtime,logflare,vector,pgbouncer,pg_prove
+
       - name: Run Tests
         run: make run_tests
 
