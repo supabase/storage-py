@@ -165,9 +165,9 @@ class SyncBucketActionsMixin:
             json=json,
         )
         data = response.json()
-        data[
-            "signedURL"
-        ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        data["signedURL"] = (
+            f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        )
         return data
 
     def create_signed_urls(
@@ -194,9 +194,9 @@ class SyncBucketActionsMixin:
         )
         data = response.json()
         for item in data:
-            item[
-                "signedURL"
-            ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+            item["signedURL"] = (
+                f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+            )
         return data
 
     def get_public_url(self, path: str, options: URLOptions = {}) -> str:

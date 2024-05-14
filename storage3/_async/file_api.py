@@ -167,9 +167,9 @@ class AsyncBucketActionsMixin:
             json=json,
         )
         data = response.json()
-        data[
-            "signedURL"
-        ] = f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        data["signedURL"] = (
+            f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+        )
         return data
 
     async def create_signed_urls(
@@ -196,9 +196,9 @@ class AsyncBucketActionsMixin:
         )
         data = response.json()
         for item in data:
-            item[
-                "signedURL"
-            ] = f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+            item["signedURL"] = (
+                f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+            )
         return data
 
     async def get_public_url(self, path: str, options: URLOptions = {}) -> str:
