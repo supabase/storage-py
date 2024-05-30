@@ -27,7 +27,9 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
     def _create_session(
         self, base_url: str, headers: dict[str, str], timeout: int
     ) -> AsyncClient:
-        return AsyncClient(base_url=base_url, headers=headers, timeout=timeout)
+        return AsyncClient(
+            base_url=base_url, headers=headers, timeout=timeout, follow_redirects=True
+        )
 
     async def __aenter__(self) -> AsyncStorageClient:
         return self
