@@ -27,7 +27,9 @@ class SyncStorageClient(SyncStorageBucketAPI):
     def _create_session(
         self, base_url: str, headers: dict[str, str], timeout: int
     ) -> SyncClient:
-        return SyncClient(base_url=base_url, headers=headers, timeout=timeout)
+        return SyncClient(
+            base_url=base_url, headers=headers, timeout=timeout, follow_redirects=True
+        )
 
     def __enter__(self) -> SyncStorageClient:
         return self
