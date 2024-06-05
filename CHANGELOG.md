@@ -2,6 +2,13 @@
 
 
 
+## v0.7.6 (2024-06-05)
+
+### Fix
+
+* fix: follow redirects (#257) ([`521fbd9`](https://github.com/supabase-community/storage-py/commit/521fbd924e0633b202fa792d5a52cf241e455060))
+
+
 ## v0.7.5 (2024-06-04)
 
 ### Chore
