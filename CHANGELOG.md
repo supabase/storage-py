@@ -2,6 +2,49 @@
 
 
 
+## v0.7.5 (2024-06-04)
+
+### Chore
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.7.2 to 9.7.3 (#249) ([`ed5ed18`](https://github.com/supabase-community/storage-py/commit/ed5ed1826fdb1ec399e81e6d54b659125321f81e))
+
+* chore(deps-dev): bump python-semantic-release from 9.7.2 to 9.7.3 (#248) ([`da71dd4`](https://github.com/supabase-community/storage-py/commit/da71dd4bf2be866a1642eab17bb78144f0597e85))
+
+* chore(deps-dev): bump python-semantic-release from 9.4.1 to 9.7.2 (#246) ([`eef7b04`](https://github.com/supabase-community/storage-py/commit/eef7b0493e1ec43deb7e183eaadb87fc03ebff49))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.4.1 to 9.7.2 (#247) ([`1527f18`](https://github.com/supabase-community/storage-py/commit/1527f184cd2530a5ec5c294c4eadb811056df0d6))
+
+* chore: update .pre-commit-config.yaml (#240) ([`69ae839`](https://github.com/supabase-community/storage-py/commit/69ae8398328955c4b51a4b7ef4a5e1eb043dace1))
+
+* chore(deps-dev): bump black from 24.3.0 to 24.4.2 (#236) ([`0449382`](https://github.com/supabase-community/storage-py/commit/04493823df2ee691a2cb3c7a4c04206474af4096))
+
+* chore(tests): add supabase cli for tests (#245) ([`b148b09`](https://github.com/supabase-community/storage-py/commit/b148b090831210f06a30a9f08f0cc58728cbe810))
+
+* chore(deps): bump idna from 3.6 to 3.7 (#228) ([`3ff6eed`](https://github.com/supabase-community/storage-py/commit/3ff6eed6e4410b52490cce7b2359dbfd59fb3cf6))
+
+* chore(deps-dev): bump python-semantic-release from 9.3.0 to 9.4.1 (#225) ([`0b6dc6c`](https://github.com/supabase-community/storage-py/commit/0b6dc6cd6f7ef844c4edf485680b9bde57bc4acb))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.4.0 to 9.4.1 (#227) ([`4ce32bc`](https://github.com/supabase-community/storage-py/commit/4ce32bc262c3b2a73df8cb2c08e28ffa2052176e))
+
+* chore(deps): bump typing-extensions from 4.10.0 to 4.11.0 (#226) ([`2650cd8`](https://github.com/supabase-community/storage-py/commit/2650cd8195f17cf5ab11d5315a710bd8ac5ab629))
+
+* chore(deps-dev): bump pytest-cov from 4.1.0 to 5.0.0 (#221) ([`2754a9e`](https://github.com/supabase-community/storage-py/commit/2754a9eaab978275bbfa316bbf3c70da3d61fb74))
+
+* chore(deps): bump actions/cache from 3 to 4 (#219) ([`664519c`](https://github.com/supabase-community/storage-py/commit/664519c714e1a23e07047339d9a307aa630d9552))
+
+* chore(deps): bump abatilo/actions-poetry from 2 to 3 (#218) ([`75e9dba`](https://github.com/supabase-community/storage-py/commit/75e9dba8bcb68010df2dfeb65d48ecb54dc32223))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.3.0 to 9.4.0 (#224) ([`176d0da`](https://github.com/supabase-community/storage-py/commit/176d0da2934e7205982496cedf1c2c03874a0638))
+
+### Fix
+
+* fix: add &#34;verify&#34; flag to the creation of client ([`9ad75b0`](https://github.com/supabase-community/storage-py/commit/9ad75b0a7259dcd21c2a854ca4a498b67afa1611))
+
+### Unknown
+
+* Add stale bot (#237) ([`81935d3`](https://github.com/supabase-community/storage-py/commit/81935d38e1e2eefebe96dc91d8af012e015caf83))
+
+
 ## v0.7.4 (2024-03-23)
 
 ### Chore

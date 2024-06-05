@@ -15,20 +15,24 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
     """Manage storage buckets and files."""
 
     def __init__(
-        self, url: str, headers: dict[str, str], timeout: int = DEFAULT_TIMEOUT
+        self,
+        url: str,
+        headers: dict[str, str],
+        timeout: int = DEFAULT_TIMEOUT,
+        verify: bool = True,
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
-        self.session = self._create_session(url, headers, timeout)
+        self.session = self._create_session(url, headers, timeout, verify)
         super().__init__(self.session)
 
     def _create_session(
-        self, base_url: str, headers: dict[str, str], timeout: int
+        self, base_url: str, headers: dict[str, str], timeout: int, verify: bool = True
     ) -> AsyncClient:
         return AsyncClient(
-            base_url=base_url, headers=headers, timeout=timeout, follow_redirects=True
+            base_url=base_url, headers=headers, timeout=timeout, verify=bool(verify), follow_redirects=True
         )
 
     async def __aenter__(self) -> AsyncStorageClient:
