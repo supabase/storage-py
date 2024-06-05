@@ -32,7 +32,11 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
         self, base_url: str, headers: dict[str, str], timeout: int, verify: bool = True
     ) -> AsyncClient:
         return AsyncClient(
-            base_url=base_url, headers=headers, timeout=timeout, verify=bool(verify), follow_redirects=True
+            base_url=base_url,
+            headers=headers,
+            timeout=timeout,
+            verify=bool(verify),
+            follow_redirects=True,
         )
 
     async def __aenter__(self) -> AsyncStorageClient:
