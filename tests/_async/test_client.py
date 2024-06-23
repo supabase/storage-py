@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, AsyncGenerator, Generator
 from uuid import uuid4
 
 import pytest
@@ -81,7 +81,7 @@ async def bucket(storage: AsyncStorageClient, uuid_factory: Callable[[], str]) -
 @pytest.fixture(scope="module")
 async def public_bucket(
     storage: AsyncStorageClient, uuid_factory: Callable[[], str]
-) -> str:
+) -> AsyncGenerator[str]:
     """Creates a test public bucket which will be used in the whole storage tests run and deleted at the end"""
     bucket_id = uuid_factory()
 
@@ -100,7 +100,9 @@ async def public_bucket(
 
 
 @pytest.fixture(scope="module")
-def storage_file_client(storage: AsyncStorageClient, bucket: str) -> AsyncBucketProxy:
+def storage_file_client(
+    storage: AsyncStorageClient, bucket: str
+) -> Generator[AsyncBucketProxy]:
     """Creates the storage file client for the whole storage tests run"""
     yield storage.from_(bucket)
 
@@ -108,7 +110,7 @@ def storage_file_client(storage: AsyncStorageClient, bucket: str) -> AsyncBucket
 @pytest.fixture(scope="module")
 def storage_file_client_public(
     storage: AsyncStorageClient, public_bucket: str
-) -> AsyncBucketProxy:
+) -> Generator[AsyncBucketProxy]:
     """Creates the storage file client for the whole storage tests run"""
     yield storage.from_(public_bucket)
 

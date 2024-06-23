@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Generator
 from uuid import uuid4
 
 import pytest
@@ -79,7 +79,9 @@ def bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -> str:
 
 
 @pytest.fixture(scope="module")
-def public_bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -> str:
+def public_bucket(
+    storage: SyncStorageClient, uuid_factory: Callable[[], str]
+) -> Generator[str]:
     """Creates a test public bucket which will be used in the whole storage tests run and deleted at the end"""
     bucket_id = uuid_factory()
 
@@ -98,7 +100,9 @@ def public_bucket(storage: SyncStorageClient, uuid_factory: Callable[[], str]) -
 
 
 @pytest.fixture(scope="module")
-def storage_file_client(storage: SyncStorageClient, bucket: str) -> SyncBucketProxy:
+def storage_file_client(
+    storage: SyncStorageClient, bucket: str
+) -> Generator[SyncBucketProxy]:
     """Creates the storage file client for the whole storage tests run"""
     yield storage.from_(bucket)
 
@@ -106,7 +110,7 @@ def storage_file_client(storage: SyncStorageClient, bucket: str) -> SyncBucketPr
 @pytest.fixture(scope="module")
 def storage_file_client_public(
     storage: SyncStorageClient, public_bucket: str
-) -> SyncBucketProxy:
+) -> Generator[SyncBucketProxy]:
     """Creates the storage file client for the whole storage tests run"""
     yield storage.from_(public_bucket)
 
