@@ -37,6 +37,7 @@ class SyncStorageClient(SyncStorageBucketAPI):
             timeout=timeout,
             verify=bool(verify),
             follow_redirects=True,
+            http2=True,
         )
 
     def __enter__(self) -> SyncStorageClient:
