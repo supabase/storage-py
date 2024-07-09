@@ -1751,13 +1751,13 @@ testing = ["bs4", "coverage", "pygments", "pytest (>=7.1,<8)", "pytest-cov", "py
 
 [[package]]
 name = "sphinx-toolbox"
-version = "3.6.0"
+version = "3.7.0"
 description = "Box of handy tools for Sphinx 🧰 📔"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "sphinx_toolbox-3.6.0-py3-none-any.whl", hash = "sha256:33db016958e29bf727fb416b1f17375635b4dfeef2b521e86dfa9b351c068e9d"},
-    {file = "sphinx_toolbox-3.6.0.tar.gz", hash = "sha256:4a124a9fca1d0ad881e57130f38c785196648ba6fd4fa672cffaf4127df954db"},
+    {file = "sphinx_toolbox-3.7.0-py3-none-any.whl", hash = "sha256:9ea800fb6b2ecc5f382ab3547b415029fe9603b0b7eeb4c15c5da77c1eb5f21a"},
+    {file = "sphinx_toolbox-3.7.0.tar.gz", hash = "sha256:045db70e6d73241ff0b922f2e76597e2cc4904dbabef9fc6f3a46718b0e48d51"},
 ]
 
 [package.dependencies]
