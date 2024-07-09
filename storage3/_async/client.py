@@ -37,6 +37,7 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
             timeout=timeout,
             verify=bool(verify),
             follow_redirects=True,
+            http2=True,
         )
 
     async def __aenter__(self) -> AsyncStorageClient:
