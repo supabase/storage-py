@@ -1,13 +1,62 @@
 # CHANGELOG
 
+## v0.7.7 (2024-07-14)
 
+### Chore
+
+* chore(deps-dev): bump python-semantic-release from 9.8.3 to 9.8.5 (#276)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`0676ed6`](https://github.com/supabase-community/storage-py/commit/0676ed68d83f38649b869613b0e903e042248bec))
+
+* chore: bump dependencies ([`89876df`](https://github.com/supabase-community/storage-py/commit/89876dfcf7721fb87d716a61deac596127107368))
+
+* chore(deps-dev): bump sphinx-toolbox from 3.6.0 to 3.7.0 (#273)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`bdcb828`](https://github.com/supabase-community/storage-py/commit/bdcb828a6fe38c7454cab8e16b2d094f105e38c5))
+
+* chore(deps): bump certifi from 2024.2.2 to 2024.7.4 in the pip group across 1 directory (#275)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`867759d`](https://github.com/supabase-community/storage-py/commit/867759dc83a1a1e3aa20c017886425212ba4b024))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.8.3 to 9.8.5 (#277)
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
+Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`fd7a2b0`](https://github.com/supabase-community/storage-py/commit/fd7a2b011c37c52a745a49bdc2d7c8f1a90d6284))
+
+* chore(deps-dev): bump sphinx-toolbox from 3.5.0 to 3.6.0 (#270) ([`a965424`](https://github.com/supabase-community/storage-py/commit/a965424de5200782b021056ce2d8e08b2d0d718a))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.8.1 to 9.8.3 ([`36f45f1`](https://github.com/supabase-community/storage-py/commit/36f45f1b94f275ebebddb7b0df6f40b1b0570796))
+
+* chore(deps-dev): bump python-semantic-release from 9.8.1 to 9.8.3 ([`1fb3885`](https://github.com/supabase-community/storage-py/commit/1fb388562dbafa202f1a9e743e44bea9d68ed726))
+
+* chore(deps-dev): bump urllib3 from 2.2.1 to 2.2.2 in the pip group across 1 directory (#264) ([`af591ee`](https://github.com/supabase-community/storage-py/commit/af591ee9511500a7e6f1a4cb54aec08ad5fa9b65))
+
+* chore(deps): bump typing-extensions from 4.12.1 to 4.12.2 (#263) ([`b22f82b`](https://github.com/supabase-community/storage-py/commit/b22f82bc0b80db2585b009c2dd31f3d27b6989a2))
+
+* chore(deps-dev): bump requests from 2.31.0 to 2.32.2 in the pip group across 1 directory (#262) ([`82e6aed`](https://github.com/supabase-community/storage-py/commit/82e6aed5547cc4d5ee1b369cfc76ad55ba14bf49))
+
+* chore(deps): bump python-semantic-release/python-semantic-release from 9.7.3 to 9.8.1 (#261) ([`fc80cee`](https://github.com/supabase-community/storage-py/commit/fc80ceea43505d7cc3aa6b64eddf3c9eafe81254))
+
+* chore(deps-dev): bump python-semantic-release from 9.7.3 to 9.8.1 (#259) ([`ddad5dd`](https://github.com/supabase-community/storage-py/commit/ddad5dd9089575fdfb0223fdb40c73594fde5f12))
+
+* chore(deps): bump typing-extensions from 4.11.0 to 4.12.1 (#258) ([`a1ec9b1`](https://github.com/supabase-community/storage-py/commit/a1ec9b105c6ffc8989b3ea0fdf6fb4506e4aa842))
+
+### Fix
+
+* fix: version bump (#278) ([`cd12e97`](https://github.com/supabase-community/storage-py/commit/cd12e97f1e61b1d52c10de6b6ccaa3f47c4310a0))
+
+### Unknown
+
+* Enable HTTP2 (#271) ([`f98d565`](https://github.com/supabase-community/storage-py/commit/f98d565e65791103cb9f79da0bbcc4401f127ab2))
 
 ## v0.7.6 (2024-06-05)
 
 ### Fix
 
 * fix: follow redirects (#257) ([`521fbd9`](https://github.com/supabase-community/storage-py/commit/521fbd924e0633b202fa792d5a52cf241e455060))
-
 
 ## v0.7.5 (2024-06-04)
 
@@ -50,7 +99,6 @@
 ### Unknown
 
 * Add stale bot (#237) ([`81935d3`](https://github.com/supabase-community/storage-py/commit/81935d38e1e2eefebe96dc91d8af012e015caf83))
-
 
 ## v0.7.4 (2024-03-23)
 
@@ -105,7 +153,6 @@ Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.githu
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
 Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`4da4b73`](https://github.com/supabase-community/storage-py/commit/4da4b735e28400967f9303df14c7936a988dcf97))
 
-
 ## v0.7.3 (2024-03-11)
 
 ### Chore
@@ -115,7 +162,6 @@ Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.githu
 ### Fix
 
 * fix: add json decode error import (#205) ([`7327175`](https://github.com/supabase-community/storage-py/commit/732717510ed2aab7a2b131861b1a6b65fcb6a0dd))
-
 
 ## v0.7.2 (2024-03-10)
 
@@ -129,7 +175,6 @@ Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.githu
 ### Fix
 
 * fix: add upsert option to upload/update (#199) ([`db1b66a`](https://github.com/supabase-community/storage-py/commit/db1b66a0f12795e6ed4be1f3adb5776c296f3ede))
-
 
 ## v0.7.1 (2024-03-10)
 
@@ -198,14 +243,13 @@ Co-authored-by: joel &lt;joel@joels-MacBook-Pro.local&gt; ([`cce5ad4`](https://g
 
 * Merge branch &#39;main&#39; of https://github.com/supabase-community/storage-py ([`84e26e2`](https://github.com/supabase-community/storage-py/commit/84e26e28179aca2eacc180932e1f49e71d04f713))
 
-* Update poetry.lock ([`1e81c90`](https://github.com/supabase-community/storage-py/commit/1e81c90be16bcbc6f245fa7a9dfc06ded0932206))
-
 * Update dependabot.yml (#185) ([`1f2c2f8`](https://github.com/supabase-community/storage-py/commit/1f2c2f8fdf9e1e1501985f27cddaf61595c8ff5b))
+
+* Update poetry.lock ([`1e81c90`](https://github.com/supabase-community/storage-py/commit/1e81c90be16bcbc6f245fa7a9dfc06ded0932206))
 
 * Update MAINTAINERS.md ([`d3f7e8c`](https://github.com/supabase-community/storage-py/commit/d3f7e8c334815c63a77496d6f4ffef36b729f082))
 
 * Update MAINTAINERS.md (#175) ([`6816f0c`](https://github.com/supabase-community/storage-py/commit/6816f0cf36c5995fb6cbf6e5bf9ad0b16e801bf3))
-
 
 ## v0.7.0 (2023-11-22)
 
@@ -214,6 +258,21 @@ Co-authored-by: joel &lt;joel@joels-MacBook-Pro.local&gt; ([`cce5ad4`](https://g
 * chore: update GitHub workflow for releases ([`72ad275`](https://github.com/supabase-community/storage-py/commit/72ad2752849621446fd1df7ebc0b85dc4d9cf4cd))
 
 * chore: add sync version of the update function ([`18c14a4`](https://github.com/supabase-community/storage-py/commit/18c14a4e7888cd14d09b7cbbd2e8b02f9cef02f0))
+
+* chore(deps-dev): bump urllib3 from 2.0.5 to 2.0.7
+
+Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.0.5 to 2.0.7.
+- [Release notes](https://github.com/urllib3/urllib3/releases)
+- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
+- [Commits](https://github.com/urllib3/urllib3/compare/v2.0.5...2.0.7)
+
+---
+updated-dependencies:
+- dependency-name: urllib3
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`79c9ca3`](https://github.com/supabase-community/storage-py/commit/79c9ca3b23e13e7f1d3788edc99d5939f59d0960))
 
 * chore(deps-dev): bump pytest from 7.4.2 to 7.4.3
 
@@ -247,21 +306,6 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ac6f901`](https://github.com/supabase-community/storage-py/commit/ac6f9017d8cde34b930b0436af5f413fc589b12f))
 
-* chore(deps-dev): bump urllib3 from 2.0.5 to 2.0.7
-
-Bumps [urllib3](https://github.com/urllib3/urllib3) from 2.0.5 to 2.0.7.
-- [Release notes](https://github.com/urllib3/urllib3/releases)
-- [Changelog](https://github.com/urllib3/urllib3/blob/main/CHANGES.rst)
-- [Commits](https://github.com/urllib3/urllib3/compare/v2.0.5...2.0.7)
-
----
-updated-dependencies:
-- dependency-name: urllib3
-  dependency-type: indirect
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`79c9ca3`](https://github.com/supabase-community/storage-py/commit/79c9ca3b23e13e7f1d3788edc99d5939f59d0960))
-
 ### Feature
 
 * feat: add update existing file function ([`da4d785`](https://github.com/supabase-community/storage-py/commit/da4d785028e86899f1efc23394883836b94cd0d3))
@@ -288,7 +332,6 @@ chore(deps-dev): bump pytest from 7.4.2 to 7.4.3 ([`9b048cb`](https://github.com
 
 chore(deps-dev): bump black from 23.9.1 to 23.10.0 ([`0f332fa`](https://github.com/supabase-community/storage-py/commit/0f332fa714636f343deb390ec58a288563fc81d2))
 
-
 ## v0.6.1 (2023-10-02)
 
 ### Documentation
@@ -309,12 +352,27 @@ chore(deps-dev): bump black from 23.9.1 to 23.10.0 ([`0f332fa`](https://github.c
 
 fix: send cache-control as form data ([`bab90b6`](https://github.com/supabase-community/storage-py/commit/bab90b67f49631f7a8b2f77998a205b9d9029926))
 
-
 ## v0.6.0 (2023-09-28)
 
 ### Chore
 
 * chore: run unasync ([`fc93662`](https://github.com/supabase-community/storage-py/commit/fc936629932271b12bb741b87140744c83d2369b))
+
+* chore(deps-dev): bump pytest from 7.4.0 to 7.4.2
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.4.0 to 7.4.2.
+- [Release notes](https://github.com/pytest-dev/pytest/releases)
+- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pytest-dev/pytest/compare/7.4.0...7.4.2)
+
+---
+updated-dependencies:
+- dependency-name: pytest
+  dependency-type: direct:development
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`08ea297`](https://github.com/supabase-community/storage-py/commit/08ea297ef0982c70444b0aab8da4072710e7458f))
 
 ### Feature
 
@@ -361,26 +419,13 @@ Add download option to get_public_url ([`4fc7d8d`](https://github.com/supabase-c
 
 chore(deps-dev): bump pytest from 7.4.0 to 7.4.2 ([`7229864`](https://github.com/supabase-community/storage-py/commit/72298641ef1e15e54b897e9ff7ccdffffce511f5))
 
-
 ## v0.5.5 (2023-09-15)
 
 ### Chore
 
-* chore(deps-dev): bump pytest from 7.4.0 to 7.4.2
+* chore: run black ([`14be266`](https://github.com/supabase-community/storage-py/commit/14be2669e381e3bd3fd3a2b73f8a76a3294f33b1))
 
-Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.4.0 to 7.4.2.
-- [Release notes](https://github.com/pytest-dev/pytest/releases)
-- [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst)
-- [Commits](https://github.com/pytest-dev/pytest/compare/7.4.0...7.4.2)
-
----
-updated-dependencies:
-- dependency-name: pytest
-  dependency-type: direct:development
-  update-type: version-update:semver-patch
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`08ea297`](https://github.com/supabase-community/storage-py/commit/08ea297ef0982c70444b0aab8da4072710e7458f))
+* chore: create CODEOWNERS ([`8077001`](https://github.com/supabase-community/storage-py/commit/8077001711360c1d7ff2084089ee7eff1b1c99f4))
 
 * chore(deps-dev): bump black from 23.7.0 to 23.9.1
 
@@ -398,9 +443,20 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`e789223`](https://github.com/supabase-community/storage-py/commit/e78922316e4189e19ff3a9d8c3ee38644014c42f))
 
-* chore: run black ([`14be266`](https://github.com/supabase-community/storage-py/commit/14be2669e381e3bd3fd3a2b73f8a76a3294f33b1))
+* chore(deps-dev): bump gitpython from 3.1.32 to 3.1.35
 
-* chore: create CODEOWNERS ([`8077001`](https://github.com/supabase-community/storage-py/commit/8077001711360c1d7ff2084089ee7eff1b1c99f4))
+Bumps [gitpython](https://github.com/gitpython-developers/GitPython) from 3.1.32 to 3.1.35.
+- [Release notes](https://github.com/gitpython-developers/GitPython/releases)
+- [Changelog](https://github.com/gitpython-developers/GitPython/blob/main/CHANGES)
+- [Commits](https://github.com/gitpython-developers/GitPython/compare/3.1.32...3.1.35)
+
+---
+updated-dependencies:
+- dependency-name: gitpython
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`0497ef2`](https://github.com/supabase-community/storage-py/commit/0497ef221bb7382170e4f8267f5ea1f768c5619f))
 
 * chore(deps-dev): bump pre-commit from 3.3.3 to 3.4.0
 
@@ -417,21 +473,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`11b2d5a`](https://github.com/supabase-community/storage-py/commit/11b2d5a382d89b850cf6692fd11563422c307321))
-
-* chore(deps-dev): bump gitpython from 3.1.32 to 3.1.35
-
-Bumps [gitpython](https://github.com/gitpython-developers/GitPython) from 3.1.32 to 3.1.35.
-- [Release notes](https://github.com/gitpython-developers/GitPython/releases)
-- [Changelog](https://github.com/gitpython-developers/GitPython/blob/main/CHANGES)
-- [Commits](https://github.com/gitpython-developers/GitPython/compare/3.1.32...3.1.35)
-
----
-updated-dependencies:
-- dependency-name: gitpython
-  dependency-type: indirect
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`0497ef2`](https://github.com/supabase-community/storage-py/commit/0497ef221bb7382170e4f8267f5ea1f768c5619f))
 
 * chore(deps-dev): bump python-semantic-release from 8.0.4 to 8.0.8
 
@@ -479,6 +520,14 @@ fix: patch type on remove ([`8dbd29a`](https://github.com/supabase-community/sto
 
 feat:add semver ([`eaf869a`](https://github.com/supabase-community/storage-py/commit/eaf869a1f03efb9b3f6d0feb1b07b35117581ede))
 
+* Update pyproject.toml ([`b3abdb7`](https://github.com/supabase-community/storage-py/commit/b3abdb79ee28eaeeb9fbff9f5464940f80c3bcdc))
+
+* Update ci.yml
+
+change ref to main ([`1ff3e20`](https://github.com/supabase-community/storage-py/commit/1ff3e20d7fb5c8fa21455e21fd388e66cb96b86c))
+
+* feat:add semver ([`ff91715`](https://github.com/supabase-community/storage-py/commit/ff9171505b99573788879e86aeb897a8461c42ec))
+
 * Merge pull request #141 from supabase-community/J0/add-codeowners
 
 chore: create CODEOWNERS ([`e25c803`](https://github.com/supabase-community/storage-py/commit/e25c8031363cee2c6a62c673ee613329c8fd401f))
@@ -486,8 +535,6 @@ chore: create CODEOWNERS ([`e25c803`](https://github.com/supabase-community/stor
 * Merge pull request #139 from supabase-community/dependabot/pip/main/black-23.9.1
 
 chore(deps-dev): bump black from 23.7.0 to 23.9.1 ([`d8f6584`](https://github.com/supabase-community/storage-py/commit/d8f6584bcd7ae67606b286bdfd9ed9fdf9a6a63a))
-
-* Update pyproject.toml ([`b3abdb7`](https://github.com/supabase-community/storage-py/commit/b3abdb79ee28eaeeb9fbff9f5464940f80c3bcdc))
 
 * Merge pull request #140 from supabase-community/dependabot/pip/gitpython-3.1.35
 
@@ -497,12 +544,6 @@ chore(deps-dev): bump gitpython from 3.1.32 to 3.1.35 ([`b39d082`](https://githu
 
 chore(deps-dev): bump pre-commit from 3.3.3 to 3.4.0 ([`1ae2b4d`](https://github.com/supabase-community/storage-py/commit/1ae2b4de3f2e7ff96c2adb2ccc9687ff3743eea2))
 
-* Update ci.yml
-
-change ref to main ([`1ff3e20`](https://github.com/supabase-community/storage-py/commit/1ff3e20d7fb5c8fa21455e21fd388e66cb96b86c))
-
-* feat:add semver ([`ff91715`](https://github.com/supabase-community/storage-py/commit/ff9171505b99573788879e86aeb897a8461c42ec))
-
 * Merge pull request #132 from supabase-community/dependabot/pip/main/python-semantic-release-8.0.8
 
 chore(deps-dev): bump python-semantic-release from 8.0.4 to 8.0.8 ([`bf90db3`](https://github.com/supabase-community/storage-py/commit/bf90db3fd0eacf0219480e0db3db2fa1501e2c9c))
@@ -510,7 +551,6 @@ chore(deps-dev): bump python-semantic-release from 8.0.4 to 8.0.8 ([`bf90db3`](h
 * Merge pull request #138 from supabase-community/dependabot/pip/main/httpx-0.25.0
 
 chore(deps): bump httpx from 0.24.1 to 0.25.0 ([`f09b35d`](https://github.com/supabase-community/storage-py/commit/f09b35dd46181ec99fdefee3755b4cb0adcfa232))
-
 
 ## v0.5.4 (2023-08-04)
 
@@ -547,6 +587,22 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ec41599`](https://github.com/supabase-community/storage-py/commit/ec415999b10217bda5c1a00f32cd68adcecc6999))
+
+* chore(deps): bump typing-extensions from 4.7.0 to 4.7.1
+
+Bumps [typing-extensions](https://github.com/python/typing_extensions) from 4.7.0 to 4.7.1.
+- [Release notes](https://github.com/python/typing_extensions/releases)
+- [Changelog](https://github.com/python/typing_extensions/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/python/typing_extensions/compare/4.7.0...4.7.1)
+
+---
+updated-dependencies:
+- dependency-name: typing-extensions
+  dependency-type: direct:production
+  update-type: version-update:semver-patch
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`5c4a0e4`](https://github.com/supabase-community/storage-py/commit/5c4a0e4ffaece42cea4ab174751581759343e04e))
 
 * chore(deps-dev): bump cryptography from 41.0.2 to 41.0.3
 
@@ -590,44 +646,11 @@ chore(deps-dev): bump cryptography from 41.0.2 to 41.0.3 ([`950da37`](https://gi
 
 chore: bump httpx to ^0.24 ([`56a7594`](https://github.com/supabase-community/storage-py/commit/56a75941c7b1cc0427d67e9dc3c91b51937b4e40))
 
-
 ## v0.5.3 (2023-07-24)
 
 ### Chore
 
 * chore: bump pyproject ([`2f2b3a6`](https://github.com/supabase-community/storage-py/commit/2f2b3a6f143826c8eb36c96ee679fa5c2adaec10))
-
-* chore(deps): bump typing-extensions from 4.7.0 to 4.7.1
-
-Bumps [typing-extensions](https://github.com/python/typing_extensions) from 4.7.0 to 4.7.1.
-- [Release notes](https://github.com/python/typing_extensions/releases)
-- [Changelog](https://github.com/python/typing_extensions/blob/main/CHANGELOG.md)
-- [Commits](https://github.com/python/typing_extensions/compare/4.7.0...4.7.1)
-
----
-updated-dependencies:
-- dependency-name: typing-extensions
-  dependency-type: direct:production
-  update-type: version-update:semver-patch
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`5c4a0e4`](https://github.com/supabase-community/storage-py/commit/5c4a0e4ffaece42cea4ab174751581759343e04e))
-
-* chore(deps): bump typing-extensions from 4.6.3 to 4.7.0
-
-Bumps [typing-extensions](https://github.com/python/typing_extensions) from 4.6.3 to 4.7.0.
-- [Release notes](https://github.com/python/typing_extensions/releases)
-- [Changelog](https://github.com/python/typing_extensions/blob/main/CHANGELOG.md)
-- [Commits](https://github.com/python/typing_extensions/compare/4.6.3...4.7.0)
-
----
-updated-dependencies:
-- dependency-name: typing-extensions
-  dependency-type: direct:production
-  update-type: version-update:semver-minor
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`a550c7d`](https://github.com/supabase-community/storage-py/commit/a550c7df410be594a0dc0b05fa0f588b4ae67900))
 
 * chore(deps-dev): bump pre-commit from 3.3.2 to 3.3.3
 
@@ -644,6 +667,22 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`5729d3c`](https://github.com/supabase-community/storage-py/commit/5729d3c1877b26ed044cd7ed6a60a91399700a70))
+
+* chore(deps): bump typing-extensions from 4.6.3 to 4.7.0
+
+Bumps [typing-extensions](https://github.com/python/typing_extensions) from 4.6.3 to 4.7.0.
+- [Release notes](https://github.com/python/typing_extensions/releases)
+- [Changelog](https://github.com/python/typing_extensions/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/python/typing_extensions/compare/4.6.3...4.7.0)
+
+---
+updated-dependencies:
+- dependency-name: typing-extensions
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`a550c7d`](https://github.com/supabase-community/storage-py/commit/a550c7df410be594a0dc0b05fa0f588b4ae67900))
 
 * chore(deps-dev): bump pytest from 7.3.2 to 7.4.0
 
@@ -715,6 +754,22 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1eef352`](https://g
 
 * chore: update dependencies (#101) ([`03c5b03`](https://github.com/supabase-community/storage-py/commit/03c5b0378d989384e3f2f6a5a7c2b588929dd321))
 
+* chore(deps): bump httpx from 0.23.3 to 0.24.0
+
+Bumps [httpx](https://github.com/encode/httpx) from 0.23.3 to 0.24.0.
+- [Release notes](https://github.com/encode/httpx/releases)
+- [Changelog](https://github.com/encode/httpx/blob/master/CHANGELOG.md)
+- [Commits](https://github.com/encode/httpx/compare/0.23.3...0.24.0)
+
+---
+updated-dependencies:
+- dependency-name: httpx
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`84335cd`](https://github.com/supabase-community/storage-py/commit/84335cd6f363496898b6a81f405c30d6e64092bb))
+
 * chore(deps-dev): bump pytest from 7.2.2 to 7.3.1 (#88)
 
 Bumps [pytest](https://github.com/pytest-dev/pytest) from 7.2.2 to 7.3.1.
@@ -731,22 +786,6 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
 Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`a95a244`](https://github.com/supabase-community/storage-py/commit/a95a24410be08e9276f3e8214b621f6b82fd81ba))
-
-* chore(deps): bump httpx from 0.23.3 to 0.24.0
-
-Bumps [httpx](https://github.com/encode/httpx) from 0.23.3 to 0.24.0.
-- [Release notes](https://github.com/encode/httpx/releases)
-- [Changelog](https://github.com/encode/httpx/blob/master/CHANGELOG.md)
-- [Commits](https://github.com/encode/httpx/compare/0.23.3...0.24.0)
-
----
-updated-dependencies:
-- dependency-name: httpx
-  dependency-type: direct:production
-  update-type: version-update:semver-minor
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`84335cd`](https://github.com/supabase-community/storage-py/commit/84335cd6f363496898b6a81f405c30d6e64092bb))
 
 * chore(deps-dev): bump pre-commit from 3.1.1 to 3.2.0 (#79)
 
@@ -846,11 +885,11 @@ chore(deps-dev): bump pytest-asyncio from 0.20.3 to 0.21.0 ([`7e86450`](https://
 
 Update .pre-commit-config.yaml ([`27b765c`](https://github.com/supabase-community/storage-py/commit/27b765c2913ca8f0e5d5a1759986f4d0d0566bf9))
 
+* Update .pre-commit-config.yaml ([`a6dca37`](https://github.com/supabase-community/storage-py/commit/a6dca37629f2aef2527a9156fd579f337f45fa13))
+
 * Merge pull request #102 from supabase-community/dependabot/pip/main/httpx-0.24.1
 
 chore(deps): bump httpx from 0.23.3 to 0.24.1 ([`fc18260`](https://github.com/supabase-community/storage-py/commit/fc18260c959323b1a4721d3187febff42020321b))
-
-* Update .pre-commit-config.yaml ([`a6dca37`](https://github.com/supabase-community/storage-py/commit/a6dca37629f2aef2527a9156fd579f337f45fa13))
 
 * Make FileOptions type (#100)
 
@@ -871,18 +910,17 @@ any non-default field. ([`1585e42`](https://github.com/supabase-community/storag
 
 chore(deps): bump httpx from 0.23.3 to 0.24.0 ([`b69a8ba`](https://github.com/supabase-community/storage-py/commit/b69a8bac00c4a4c05ab224b34fd99a21a712b256))
 
+* Merge branch &#39;main&#39; into dependabot/pip/main/httpx-0.24.0 ([`c1b64e1`](https://github.com/supabase-community/storage-py/commit/c1b64e105e06f146499ef7503a958e4f143cd4ed))
+
 * Fix bad typing on upload functions (#89)
 
 * Fix bad typing on upload functions
 
 * Format using black ([`40fc84b`](https://github.com/supabase-community/storage-py/commit/40fc84b7784b37b9da24c09d2eba2d282603c4fb))
 
-* Merge branch &#39;main&#39; into dependabot/pip/main/httpx-0.24.0 ([`c1b64e1`](https://github.com/supabase-community/storage-py/commit/c1b64e105e06f146499ef7503a958e4f143cd4ed))
-
 * Merge pull request #76 from supabase-community/dependabot/pip/main/pytest-7.2.2
 
 chore(deps-dev): bump pytest from 7.2.1 to 7.2.2 ([`eef5524`](https://github.com/supabase-community/storage-py/commit/eef55243385d80905d0186b58bcede2092b6c7e4))
-
 
 ## v0.5.2 (2023-03-05)
 
@@ -974,21 +1012,6 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ec3b46c`](https://g
 
 * chore: run black ([`2edbd6b`](https://github.com/supabase-community/storage-py/commit/2edbd6b74e1cd784b5ef4b39ffdce6e47e5e5e64))
 
-* chore(deps): bump cryptography from 39.0.0 to 39.0.1
-
-Bumps [cryptography](https://github.com/pyca/cryptography) from 39.0.0 to 39.0.1.
-- [Release notes](https://github.com/pyca/cryptography/releases)
-- [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
-- [Commits](https://github.com/pyca/cryptography/compare/39.0.0...39.0.1)
-
----
-updated-dependencies:
-- dependency-name: cryptography
-  dependency-type: indirect
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1b3a638`](https://github.com/supabase-community/storage-py/commit/1b3a638857728a0e1c7854f615a3ab2c89b16c3d))
-
 * chore(deps-dev): bump sphinx from 5.3.0 to 6.1.3
 
 Bumps [sphinx](https://github.com/sphinx-doc/sphinx) from 5.3.0 to 6.1.3.
@@ -1004,6 +1027,21 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`881fd9d`](https://github.com/supabase-community/storage-py/commit/881fd9d6dc4a576fea5a682e54804912d55781a4))
+
+* chore(deps): bump cryptography from 39.0.0 to 39.0.1
+
+Bumps [cryptography](https://github.com/pyca/cryptography) from 39.0.0 to 39.0.1.
+- [Release notes](https://github.com/pyca/cryptography/releases)
+- [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pyca/cryptography/compare/39.0.0...39.0.1)
+
+---
+updated-dependencies:
+- dependency-name: cryptography
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`1b3a638`](https://github.com/supabase-community/storage-py/commit/1b3a638857728a0e1c7854f615a3ab2c89b16c3d))
 
 * chore(deps-dev): bump isort from 5.11.5 to 5.12.0
 
@@ -1051,6 +1089,8 @@ chore(deps-dev): bump python-dotenv from 0.21.1 to 1.0.0 ([`49a7044`](https://gi
 
 fix: added missing types ([`ed0dd37`](https://github.com/supabase-community/storage-py/commit/ed0dd37622ac3d516680d3a4b099c4e113da300b))
 
+* Added missing types allowed_mime_types and file_size_limit ([`64e9e02`](https://github.com/supabase-community/storage-py/commit/64e9e02e8bea3e2b35ca37ed5d14c1197690accc))
+
 * Merge pull request #56 from supabase-community/dependabot/pip/main/black-23.1.0
 
 chore(deps-dev): bump black from 22.12.0 to 23.1.0 ([`7edeff7`](https://github.com/supabase-community/storage-py/commit/7edeff7135e9f3eb35d6016a3eb9ccbbf1351940))
@@ -1058,8 +1098,6 @@ chore(deps-dev): bump black from 22.12.0 to 23.1.0 ([`7edeff7`](https://github.c
 * Merge pull request #74 from supabase-community/dependabot/pip/main/pre-commit-3.1.1
 
 chore(deps-dev): bump pre-commit from 2.21.0 to 3.1.1 ([`0123f8f`](https://github.com/supabase-community/storage-py/commit/0123f8ff1708a8d13e9b436c1af376ab4c71be95))
-
-* Added missing types allowed_mime_types and file_size_limit ([`64e9e02`](https://github.com/supabase-community/storage-py/commit/64e9e02e8bea3e2b35ca37ed5d14c1197690accc))
 
 * Merge pull request #68 from supabase-community/j0/bump_version_0_5_1
 
@@ -1080,7 +1118,6 @@ chore(deps): bump cryptography from 39.0.0 to 39.0.1 ([`728164b`](https://github
 * Merge pull request #60 from supabase-community/dependabot/pip/main/isort-5.12.0
 
 chore(deps-dev): bump isort from 5.11.5 to 5.12.0 ([`eb5be13`](https://github.com/supabase-community/storage-py/commit/eb5be13152e2dcc5d402b2bff1ac5d2e0fb9cde5))
-
 
 ## v0.5.0 (2023-02-05)
 
@@ -1106,6 +1143,21 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`5bdb51d`](https://github.com/supabase-community/storage-py/commit/5bdb51dc86f8ec1529e3cb7bb8470e8a56f37e6c))
 
+* chore(deps): bump wheel from 0.37.1 to 0.38.1
+
+Bumps [wheel](https://github.com/pypa/wheel) from 0.37.1 to 0.38.1.
+- [Release notes](https://github.com/pypa/wheel/releases)
+- [Changelog](https://github.com/pypa/wheel/blob/main/docs/news.rst)
+- [Commits](https://github.com/pypa/wheel/compare/0.37.1...0.38.1)
+
+---
+updated-dependencies:
+- dependency-name: wheel
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ef2e864`](https://github.com/supabase-community/storage-py/commit/ef2e86407027ada25dc361aa7388366baebca38f))
+
 ### Fix
 
 * fix: bump python version ([`4d3a781`](https://github.com/supabase-community/storage-py/commit/4d3a7817ae3fb3ee4f93942406d8cfeb81103c88))
@@ -1126,7 +1178,6 @@ chore(deps-dev): bump python-semantic-release from 7.32.2 to 7.33.1 ([`06fb6f5`]
 
 chore(deps): bump wheel from 0.37.1 to 0.38.1 ([`f39c4fc`](https://github.com/supabase-community/storage-py/commit/f39c4fc66ab457ece68bc0a818d486e7ac775e10))
 
-
 ## v0.4.0 (2023-01-10)
 
 ### Chore
@@ -1135,58 +1186,7 @@ chore(deps): bump wheel from 0.37.1 to 0.38.1 ([`f39c4fc`](https://github.com/su
 
 * chore: set TransformOptions to None ([`ef32ae7`](https://github.com/supabase-community/storage-py/commit/ef32ae7e5137c54c8ea35ad3b8c2f2b965a8aecd))
 
-### Fix
-
-* fix: add stray / ([`27b6bcd`](https://github.com/supabase-community/storage-py/commit/27b6bcd85866a152a1804679cb27f726a50d2bf3))
-
-* fix: remove stray / ([`216cf36`](https://github.com/supabase-community/storage-py/commit/216cf3667479380fb893e16b4bd47d31f5a2b641))
-
-* fix: update render_path for get_public_url ([`0272f1b`](https://github.com/supabase-community/storage-py/commit/0272f1b5dd787b8a51727c1c9de3116c15b124b6))
-
-* fix: run black ([`42a9ed3`](https://github.com/supabase-community/storage-py/commit/42a9ed3f8f4e3d8e66f065f2ec64936a95b422b5))
-
-* fix: handle stray / ([`dd72fd6`](https://github.com/supabase-community/storage-py/commit/dd72fd6758f975e8d1f1ba56765c21ac846cf62c))
-
-* fix: handle stray / ([`604e804`](https://github.com/supabase-community/storage-py/commit/604e804e73583cd396829d41ecb8f3baf789f754))
-
-* fix: remove query params ([`1feb825`](https://github.com/supabase-community/storage-py/commit/1feb82590a9f3ca025da41da82e8089f7835783f))
-
-* fix: add query string param ([`72d299d`](https://github.com/supabase-community/storage-py/commit/72d299d4257265099e44c6b9e821fa3ca86d19ab))
-
-* fix: strip out transformation changes ([`686b7fa`](https://github.com/supabase-community/storage-py/commit/686b7fa03007ee6dddc2bd96492a171bddf7de82))
-
-* fix: remove stray $ ([`f0c8fdc`](https://github.com/supabase-community/storage-py/commit/f0c8fdcf69cd397e31c24091ae10550d65e0cb97))
-
-* fix: switch from | to Union ([`f4005fd`](https://github.com/supabase-community/storage-py/commit/f4005fd672bc86bb694f2ddf50e202be7beb6370))
-
-* fix: import Union, Optional from typing instead of typing-extensions ([`c5e5aba`](https://github.com/supabase-community/storage-py/commit/c5e5abaa8f7830cbfcd1caeafcd5d3c2140f2f0d))
-
-* fix: omit infra changes ([`9b967ce`](https://github.com/supabase-community/storage-py/commit/9b967ce41d3598a68b08cbad45435a26fc0d5f0b))
-
-### Refactor
-
-* refactor: remove create_signed_urls ([`b43434f`](https://github.com/supabase-community/storage-py/commit/b43434f6e947ce8a5251c042c19a90f8b6d86a6b))
-
-### Unknown
-
-* Merge pull request #49 from supabase-community/j0/add_transformation_bindings
-
-feat: add transformation bindings ([`a501d41`](https://github.com/supabase-community/storage-py/commit/a501d4109d570297d4f6c18cce8ef96df6228b1b))
-
-* add 3.11 ([`51de064`](https://github.com/supabase-community/storage-py/commit/51de0644cf3f2b72d88deb04951db4a8e7d0b80d))
-
-* Merge pull request #41 from supabase-community/dependabot/pip/main/pre-commit-2.21.0
-
-chore(deps-dev): bump pre-commit from 2.20.0 to 2.21.0 ([`68bcc7d`](https://github.com/supabase-community/storage-py/commit/68bcc7d073d7a27f45719a6fc7eecccbcf833163))
-
-* Merge pull request #47 from supabase-community/dependabot/pip/gitpython-3.1.30
-
-chore(deps): bump gitpython from 3.1.28 to 3.1.30 ([`8e0452a`](https://github.com/supabase-community/storage-py/commit/8e0452a1b39269514cf5e58dff545a29c783e890))
-
-
-## v0.3.6 (2023-01-05)
-
-### Chore
+* chore: port over infra from storage-js ([`88eb335`](https://github.com/supabase-community/storage-py/commit/88eb33532ff4ba04db740fc868d7ceed9bc0e18f))
 
 * chore(deps-dev): bump pre-commit from 2.20.0 to 2.21.0
 
@@ -1219,6 +1219,66 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`84f48ed`](https://github.com/supabase-community/storage-py/commit/84f48ed47677868963be817c29753902975ef8fe))
 
+### Feature
+
+* feat: add transform options to signed_url,download, and public_url ([`122b2a3`](https://github.com/supabase-community/storage-py/commit/122b2a3403dfa1fa33dd384b2a7c42e9f3094f9e))
+
+* feat: add copy and transform option type ([`6be51ee`](https://github.com/supabase-community/storage-py/commit/6be51ee4a5bedabce6a25d05b9a38ae65f40efef))
+
+### Fix
+
+* fix: add stray / ([`27b6bcd`](https://github.com/supabase-community/storage-py/commit/27b6bcd85866a152a1804679cb27f726a50d2bf3))
+
+* fix: remove stray / ([`216cf36`](https://github.com/supabase-community/storage-py/commit/216cf3667479380fb893e16b4bd47d31f5a2b641))
+
+* fix: update render_path for get_public_url ([`0272f1b`](https://github.com/supabase-community/storage-py/commit/0272f1b5dd787b8a51727c1c9de3116c15b124b6))
+
+* fix: run black ([`42a9ed3`](https://github.com/supabase-community/storage-py/commit/42a9ed3f8f4e3d8e66f065f2ec64936a95b422b5))
+
+* fix: handle stray / ([`dd72fd6`](https://github.com/supabase-community/storage-py/commit/dd72fd6758f975e8d1f1ba56765c21ac846cf62c))
+
+* fix: handle stray / ([`604e804`](https://github.com/supabase-community/storage-py/commit/604e804e73583cd396829d41ecb8f3baf789f754))
+
+* fix: remove query params ([`1feb825`](https://github.com/supabase-community/storage-py/commit/1feb82590a9f3ca025da41da82e8089f7835783f))
+
+* fix: add query string param ([`72d299d`](https://github.com/supabase-community/storage-py/commit/72d299d4257265099e44c6b9e821fa3ca86d19ab))
+
+* fix: strip out transformation changes ([`686b7fa`](https://github.com/supabase-community/storage-py/commit/686b7fa03007ee6dddc2bd96492a171bddf7de82))
+
+* fix: remove stray $ ([`f0c8fdc`](https://github.com/supabase-community/storage-py/commit/f0c8fdcf69cd397e31c24091ae10550d65e0cb97))
+
+* fix: switch from | to Union ([`f4005fd`](https://github.com/supabase-community/storage-py/commit/f4005fd672bc86bb694f2ddf50e202be7beb6370))
+
+* fix: import Union, Optional from typing instead of typing-extensions ([`c5e5aba`](https://github.com/supabase-community/storage-py/commit/c5e5abaa8f7830cbfcd1caeafcd5d3c2140f2f0d))
+
+* fix: omit infra changes ([`9b967ce`](https://github.com/supabase-community/storage-py/commit/9b967ce41d3598a68b08cbad45435a26fc0d5f0b))
+
+* fix: add transform options on public url and download ([`7352f61`](https://github.com/supabase-community/storage-py/commit/7352f6128a1bd52e863dea0cf8db6f53519e6c78))
+
+### Refactor
+
+* refactor: remove create_signed_urls ([`b43434f`](https://github.com/supabase-community/storage-py/commit/b43434f6e947ce8a5251c042c19a90f8b6d86a6b))
+
+### Unknown
+
+* Merge pull request #49 from supabase-community/j0/add_transformation_bindings
+
+feat: add transformation bindings ([`a501d41`](https://github.com/supabase-community/storage-py/commit/a501d4109d570297d4f6c18cce8ef96df6228b1b))
+
+* add 3.11 ([`51de064`](https://github.com/supabase-community/storage-py/commit/51de0644cf3f2b72d88deb04951db4a8e7d0b80d))
+
+* Merge pull request #41 from supabase-community/dependabot/pip/main/pre-commit-2.21.0
+
+chore(deps-dev): bump pre-commit from 2.20.0 to 2.21.0 ([`68bcc7d`](https://github.com/supabase-community/storage-py/commit/68bcc7d073d7a27f45719a6fc7eecccbcf833163))
+
+* Merge pull request #47 from supabase-community/dependabot/pip/gitpython-3.1.30
+
+chore(deps): bump gitpython from 3.1.28 to 3.1.30 ([`8e0452a`](https://github.com/supabase-community/storage-py/commit/8e0452a1b39269514cf5e58dff545a29c783e890))
+
+## v0.3.6 (2023-01-05)
+
+### Chore
+
 * chore(deps): bump httpx from 0.23.0 to 0.23.3
 
 Bumps [httpx](https://github.com/encode/httpx) from 0.23.0 to 0.23.3.
@@ -1234,21 +1294,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`211dd3c`](https://github.com/supabase-community/storage-py/commit/211dd3cd7f22ec8172b31eb8c2557aaed7054a00))
-
-* chore(deps): bump wheel from 0.37.1 to 0.38.1
-
-Bumps [wheel](https://github.com/pypa/wheel) from 0.37.1 to 0.38.1.
-- [Release notes](https://github.com/pypa/wheel/releases)
-- [Changelog](https://github.com/pypa/wheel/blob/main/docs/news.rst)
-- [Commits](https://github.com/pypa/wheel/compare/0.37.1...0.38.1)
-
----
-updated-dependencies:
-- dependency-name: wheel
-  dependency-type: indirect
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`ef2e864`](https://github.com/supabase-community/storage-py/commit/ef2e86407027ada25dc361aa7388366baebca38f))
 
 * chore(deps-dev): bump isort from 5.11.1 to 5.11.4
 
@@ -1298,7 +1343,20 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`87f87f5`](https://github.com/supabase-community/storage-py/commit/87f87f5b15228b8fdc3859ec6d5ef809d5512336))
 
-* chore: port over infra from storage-js ([`88eb335`](https://github.com/supabase-community/storage-py/commit/88eb33532ff4ba04db740fc868d7ceed9bc0e18f))
+* chore(deps): bump cryptography from 38.0.1 to 38.0.3
+
+Bumps [cryptography](https://github.com/pyca/cryptography) from 38.0.1 to 38.0.3.
+- [Release notes](https://github.com/pyca/cryptography/releases)
+- [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
+- [Commits](https://github.com/pyca/cryptography/compare/38.0.1...38.0.3)
+
+---
+updated-dependencies:
+- dependency-name: cryptography
+  dependency-type: indirect
+...
+
+Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`40ba3d6`](https://github.com/supabase-community/storage-py/commit/40ba3d6b622acb5ea8a593f7455acfbbd71efa69))
 
 * chore(deps-dev): bump black from 22.10.0 to 22.12.0
 
@@ -1315,21 +1373,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`5c64886`](https://github.com/supabase-community/storage-py/commit/5c64886d092a83db2bf76ef7a4fb4b9b449622df))
-
-* chore(deps): bump cryptography from 38.0.1 to 38.0.3
-
-Bumps [cryptography](https://github.com/pyca/cryptography) from 38.0.1 to 38.0.3.
-- [Release notes](https://github.com/pyca/cryptography/releases)
-- [Changelog](https://github.com/pyca/cryptography/blob/main/CHANGELOG.rst)
-- [Commits](https://github.com/pyca/cryptography/compare/38.0.1...38.0.3)
-
----
-updated-dependencies:
-- dependency-name: cryptography
-  dependency-type: indirect
-...
-
-Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`40ba3d6`](https://github.com/supabase-community/storage-py/commit/40ba3d6b622acb5ea8a593f7455acfbbd71efa69))
 
 * chore(deps): bump certifi from 2022.9.24 to 2022.12.7
 
@@ -1436,15 +1479,30 @@ Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt;
 Co-authored-by: dependabot[bot] &lt;49699333+dependabot[bot]@users.noreply.github.com&gt; ([`9f7bc01`](https://github.com/supabase-community/storage-py/commit/9f7bc01b135fbdcb1f7767f426011c0630408712))
 
-### Feature
-
-* feat: add transform options to signed_url,download, and public_url ([`122b2a3`](https://github.com/supabase-community/storage-py/commit/122b2a3403dfa1fa33dd384b2a7c42e9f3094f9e))
-
-* feat: add copy and transform option type ([`6be51ee`](https://github.com/supabase-community/storage-py/commit/6be51ee4a5bedabce6a25d05b9a38ae65f40efef))
-
 ### Fix
 
-* fix: add transform options on public url and download ([`7352f61`](https://github.com/supabase-community/storage-py/commit/7352f6128a1bd52e863dea0cf8db6f53519e6c78))
+* fix: remove trailing &#34;/&#34; in `get_public_url`
+
+When using the `get_public_url` methods, you get the following
+responses:
+
+```
+https://SUPABASE_ID.supabase.co/storage/v1//object/public/BUCKET/FILE
+```
+
+Notice the double slash between
+the `v1` and the `object` substrings in the path.
+
+Even though the URL works---as
+captured by the tests--it is a non
+coherent way of rendering the
+URLs.
+
+This commit sets it so that all the
+sub-paths inside the public URL
+have a single slash.
+
+Authored-By: Diego Rodriguez ([`8bf407c`](https://github.com/supabase-community/storage-py/commit/8bf407c5fc2bca401a673d42d0f9a82b7b9e80bb))
 
 * fix: datetime and upload file type (#12)
 
@@ -1506,7 +1564,6 @@ chore(deps-dev): bump python-semantic-release from 7.32.1 to 7.32.2 ([`1f2a4b5`]
 
 chore(deps-dev): bump pytest-cov from 3.0.0 to 4.0.0 ([`67ad10c`](https://github.com/supabase-community/storage-py/commit/67ad10c92ef234db5551a2f3699e4be8f36fa15c))
 
-
 ## v0.3.5 (2022-10-11)
 
 ### Chore
@@ -1545,8 +1602,6 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`6f72dc2`](https://github.com/supabase-community/storage-py/commit/6f72dc267e74c1724ec06014616884cd7745f87b))
 
-* chore: update lock ([`f34e23e`](https://github.com/supabase-community/storage-py/commit/f34e23e750dd37267541d782daae1483187930e9))
-
 * chore(deps): bump typing-extensions from 4.2.0 to 4.4.0
 
 Bumps [typing-extensions](https://github.com/python/typing_extensions) from 4.2.0 to 4.4.0.
@@ -1563,6 +1618,8 @@ updated-dependencies:
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`0b82bb5`](https://github.com/supabase-community/storage-py/commit/0b82bb534e4461e163e9f78b8390d51a889eedf1))
 
+* chore: update lock ([`f34e23e`](https://github.com/supabase-community/storage-py/commit/f34e23e750dd37267541d782daae1483187930e9))
+
 * chore(deps-dev): bump pytest-asyncio from 0.18.3 to 0.19.0
 
 Bumps [pytest-asyncio](https://github.com/pytest-dev/pytest-asyncio) from 0.18.3 to 0.19.0.
@@ -1578,31 +1635,6 @@ updated-dependencies:
 ...
 
 Signed-off-by: dependabot[bot] &lt;support@github.com&gt; ([`8de4e10`](https://github.com/supabase-community/storage-py/commit/8de4e10f3438503c9a263122981ccffbf34b9e9a))
-
-### Fix
-
-* fix: remove trailing &#34;/&#34; in `get_public_url`
-
-When using the `get_public_url` methods, you get the following
-responses:
-
-```
-https://SUPABASE_ID.supabase.co/storage/v1//object/public/BUCKET/FILE
-```
-
-Notice the double slash between
-the `v1` and the `object` substrings in the path.
-
-Even though the URL works---as
-captured by the tests--it is a non
-coherent way of rendering the
-URLs.
-
-This commit sets it so that all the
-sub-paths inside the public URL
-have a single slash.
-
-Authored-By: Diego Rodriguez ([`8bf407c`](https://github.com/supabase-community/storage-py/commit/8bf407c5fc2bca401a673d42d0f9a82b7b9e80bb))
 
 ### Unknown
 
@@ -1640,7 +1672,6 @@ chore(deps-dev): bump pytest-asyncio from 0.18.3 to 0.19.0 ([`31d886c`](https://
 
 * Removed double &#34;/&#34; in get_public_url ([`20de85e`](https://github.com/supabase-community/storage-py/commit/20de85e677e29cd17bb210a402be947f0ad98509))
 
-
 ## v0.3.4 (2022-06-07)
 
 ### Fix
@@ -1652,7 +1683,6 @@ fix: signed_url ([`c8cdf44`](https://github.com/supabase-community/storage-py/co
 * fix: try no timeout as fix instead of sleep ([`68026be`](https://github.com/supabase-community/storage-py/commit/68026be058a5e5a0684d7bc174da674dfc6a137c))
 
 * fix: signed_url ([`bd2e09c`](https://github.com/supabase-community/storage-py/commit/bd2e09c28164b364ca919fd888019e837af3890f))
-
 
 ## v0.3.3 (2022-06-06)
 
@@ -1682,7 +1712,6 @@ fix: upload fixes ([`844561f`](https://github.com/supabase-community/storage-py/
 
 * test: fix tests to check file content ([`7995837`](https://github.com/supabase-community/storage-py/commit/7995837647a3dded939698405aa79d2dc181b299))
 
-
 ## v0.3.2 (2022-05-16)
 
 ### Ci
@@ -1705,13 +1734,11 @@ fix: upload fixes ([`844561f`](https://github.com/supabase-community/storage-py/
 
 * chore: calm pre-commit down ([`0974414`](https://github.com/supabase-community/storage-py/commit/0974414707f3e97fc8e44197d1f59a5699a0b582))
 
-
 ## v0.3.1 (2022-05-01)
 
 ### Fix
 
 * fix: parity with js ([`19f1816`](https://github.com/supabase-community/storage-py/commit/19f1816d23671d576ddf23feab401d51aaf7b3e4))
-
 
 ## v0.3.0 (2022-04-30)
 
@@ -1859,7 +1886,6 @@ Co-authored-by: Anand &lt;40204976+anand2312@users.noreply.github.com&gt; ([`734
 
 * refactor:export env variables to file ([`a9b8faf`](https://github.com/supabase-community/storage-py/commit/a9b8faf028aad56ea5caf598d983654cb8d713e0))
 
-
 ## v0.2.0 (2022-04-11)
 
 ### Chore
@@ -1869,10 +1895,6 @@ Co-authored-by: Anand &lt;40204976+anand2312@users.noreply.github.com&gt; ([`734
 * chore: update versions and publish to PyPI ([`7c754cf`](https://github.com/supabase-community/storage-py/commit/7c754cfe4397ff75cd693ab38d4b37fb2e1dc3f5))
 
 * chore: rename storage to storage3 ([`c62151c`](https://github.com/supabase-community/storage-py/commit/c62151c235e1856ea25faeb68515565b7034eb2c))
-
-* chore: update maintainers in license and pyproject ([`e77112c`](https://github.com/supabase-community/storage-py/commit/e77112c6ae43df258b85525e514903949a53f735))
-
-* chore: update maintainers in license and pyproject ([`1e41913`](https://github.com/supabase-community/storage-py/commit/1e419130639cd2c03bcdf0af9ffd3aea34e81e85))
 
 ### Unknown
 
@@ -1898,10 +1920,13 @@ Co-authored-by: Anand &lt;40204976+anand2312@users.noreply.github.com&gt; ([`734
 
 * Merge branch &#39;main&#39; of github.com:J0/storage-py into main ([`d41b573`](https://github.com/supabase-community/storage-py/commit/d41b57391f04453986f06d564c5c207e4c75b7cc))
 
-
 ## v0.1.0 (2021-12-24)
 
 ### Chore
+
+* chore: update maintainers in license and pyproject ([`e77112c`](https://github.com/supabase-community/storage-py/commit/e77112c6ae43df258b85525e514903949a53f735))
+
+* chore: update maintainers in license and pyproject ([`1e41913`](https://github.com/supabase-community/storage-py/commit/1e419130639cd2c03bcdf0af9ffd3aea34e81e85))
 
 * chore: run pre-commit on all files ([`2654aa4`](https://github.com/supabase-community/storage-py/commit/2654aa4d898b724df11eba28350a6b1cdbb8c0da))
 
