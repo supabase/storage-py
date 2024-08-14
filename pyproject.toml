@@ -12,13 +12,14 @@ classifiers = [
   "Operating System :: OS Independent",
 ]
 description = "Supabase Storage client for Python."
-documentation = "https://supabase-community.github.io/storage-py"
-homepage = "https://supabase-community.github.io/storage-py"
+documentation = "https://supabase.github.io/storage-py"
+homepage = "https://supabase.github.io/storage-py"
 license = "MIT"
 name = "storage3"
 readme = "README.md"
-repository = "https://github.com/supabase-community/storage-py"
-version = "0.7.7"
+repository = "https://github.com/supabase/storage-py"
+version = "0.7.7" # {x-release-please-version}
+
 
 [tool.poetry.dependencies]
 httpx = {version = ">=0.24,<0.28", extras = ["http2"]}
@@ -27,7 +28,6 @@ typing-extensions = "^4.2.0"
 python-dateutil = "^2.8.2"
 
 [tool.poetry.dev-dependencies]
-python-semantic-release = "^9.8.6"
 black = "^24.8.0"
 isort = "^5.12.0"
 pre-commit = "^3.5.0"
@@ -41,16 +41,6 @@ unasync-cli = "^0.0.9"
 
 [tool.poetry.group.dev.dependencies]
 sphinx-toolbox = "^3.4.0"
-
-[tool.semantic_release]
-version_variable = "storage3/utils.py:__version__"
-version_toml = ["pyproject.toml:tool.poetry.version"]
-major_on_zero = false
-commit_subject = "chore(release): bump version to v{version}"
-build_command = "curl -sSL https://install.python-poetry.org | python - --preview && export PATH=\"/github/home/.local/bin:$PATH\" && poetry install && poetry build"
-upload_to_vcs = true
-branch = "main"
-changelog_components = "semantic_release.changelog.changelog_headers,semantic_release.changelog.compare_url"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
