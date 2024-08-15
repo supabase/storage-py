@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from storage3.constants import DEFAULT_TIMEOUT
 
-from ..utils import SyncClient, __version__
+from ..utils import SyncClient
+from ..version import __version__
 from .bucket import SyncStorageBucketAPI
 from .file_api import SyncBucketProxy
 

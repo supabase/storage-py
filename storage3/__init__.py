@@ -7,7 +7,7 @@ from typing_extensions import Literal
 from storage3._async import AsyncStorageClient
 from storage3._sync import SyncStorageClient
 from storage3.constants import DEFAULT_TIMEOUT
-from storage3.utils import __version__
+from storage3.version import __version__
 
 __all__ = ["create_client", "__version__"]
 
