@@ -470,8 +470,11 @@ name = "docutils"
 version = "0.20.1"
 description = "Docutils -- Python Documentation Utilities"
 optional = false
-python-versions = "*"
-files = []
+python-versions = ">=3.7"
+files = [
+    {file = "docutils-0.20.1-py3-none-any.whl", hash = "sha256:96f387a2c5562db4476f09f13bbab2192e764cac08ebbf3a34a95d9b1e4a59d6"},
+    {file = "docutils-0.20.1.tar.gz", hash = "sha256:f08a4e276c3a1583a86dce3e34aba3fe04d02bba2dd51ed16106244e8a923e3b"},
+]
 
 [[package]]
 name = "domdf-python-tools"
@@ -1457,13 +1460,13 @@ testing = ["bs4", "coverage", "pygments", "pytest (>=7.1,<8)", "pytest-cov", "py
 
 [[package]]
 name = "sphinx-toolbox"
-version = "3.7.0"
+version = "3.8.0"
 description = "Box of handy tools for Sphinx 🧰 📔"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "sphinx_toolbox-3.7.0-py3-none-any.whl", hash = "sha256:9ea800fb6b2ecc5f382ab3547b415029fe9603b0b7eeb4c15c5da77c1eb5f21a"},
-    {file = "sphinx_toolbox-3.7.0.tar.gz", hash = "sha256:045db70e6d73241ff0b922f2e76597e2cc4904dbabef9fc6f3a46718b0e48d51"},
+    {file = "sphinx_toolbox-3.8.0-py3-none-any.whl", hash = "sha256:36f484c540569c0fb62b4197187d166443fe0708134b98c88f6ba5418d06b95e"},
+    {file = "sphinx_toolbox-3.8.0.tar.gz", hash = "sha256:f6b62c7800dc2a2e2cbaf7b13ee7c5f06cbf3e1a5ad2c4b2f0744851a05afaee"},
 ]
 
 [package.dependencies]
