@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional, Union
+from typing import Dict, Optional, Union
 
 import dateutil.parser
 from typing_extensions import Literal, TypedDict
@@ -80,3 +80,16 @@ FileOptions = TypedDict(
     {"cache-control": str, "content-type": str, "x-upsert": str, "upsert": str},
     total=False,
 )
+
+
+class UploadMetadata(TypedDict):
+    bucketName: str
+    objectName: str
+
+
+class FileInfo(TypedDict):
+    name: str
+    link: str
+    length: str
+    headers: Dict[str, str]
+    expiration_time: float
