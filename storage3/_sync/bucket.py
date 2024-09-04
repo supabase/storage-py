@@ -9,7 +9,6 @@ from ..types import CreateOrUpdateBucketOptions, RequestMethod
 from ..utils import StorageException, SyncClient
 from .file_api import SyncBucket
 
-
 __all__ = ["SyncStorageBucketAPI"]
 
 
