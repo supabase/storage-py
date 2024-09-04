@@ -4,9 +4,11 @@ from typing import Any, Optional
 
 from httpx import HTTPError, Response
 
+from ..resumable import ResumableUpload
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
 from ..utils import StorageException, SyncClient
 from .file_api import SyncBucket
+
 
 __all__ = ["SyncStorageBucketAPI"]
 
@@ -16,6 +18,7 @@ class SyncStorageBucketAPI:
 
     def __init__(self, session: SyncClient) -> None:
         self._client = session
+        self._resumable = None
 
     def _request(
         self,
@@ -32,6 +35,13 @@ class SyncStorageBucketAPI:
             )
 
         return response
+
+    @property
+    def resumable(self):
+        if self._resumable is None:
+            self._resumable = ResumableUpload(self._client)
+
+        return self._resumable
 
     def list_buckets(self) -> list[SyncBucket]:
         """Retrieves the details of all storage buckets within an existing product."""
