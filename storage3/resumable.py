@@ -186,7 +186,7 @@ class ResumableUpload:
                 )
 
         target_file = objectname if upload_defer else os.path.split(filename)[1]
-        chunk_size = 1048576 * int(mb_size)  # 1024 * 1024 * mb_size
+        chunk_size = 1048576 * int(abs(mb_size))  # 1024 * 1024 * mb_size
         size = None
         self._filestore.update_file_headers(
             target_file, "Content-Type", "application/offset+octet-stream"
