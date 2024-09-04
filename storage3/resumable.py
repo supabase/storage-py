@@ -5,7 +5,6 @@ from datetime import datetime
 from .types import FileInfo, UploadMetadata
 from .utils import StorageException, SyncClient
 
-
 __all__ = ["ResumableUpload"]
 
 
