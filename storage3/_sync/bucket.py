@@ -4,11 +4,11 @@ from typing import Any, Optional
 
 from httpx import HTTPError, Response
 
-from ..resumable import ResumableUpload
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
 from ..utils import StorageException, SyncClient
 from .file_api import SyncBucket
 from .resumable import ResumableUpload
+
 
 __all__ = ("SyncStorageBucketAPI",)
 
