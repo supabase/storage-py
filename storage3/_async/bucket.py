@@ -9,8 +9,7 @@ from ..utils import AsyncClient, StorageException
 from .file_api import AsyncBucket
 from .resumable import AsyncResumableUpload
 
-
-__all__ = ("AsyncStorageBucketAPI", )
+__all__ = ("AsyncStorageBucketAPI",)
 
 
 class AsyncStorageBucketAPI:
