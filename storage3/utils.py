@@ -1,3 +1,7 @@
+import json
+import os
+from hashlib import md5
+
 from httpx import AsyncClient as AsyncClient  # noqa: F401
 from httpx import Client as BaseClient
 
@@ -19,9 +23,29 @@ class FileStore:
     def __init__(self):
         self.storage = {}
 
+    def fingerprint(self, file_info: FileInfo):
+        """Generates a fingerprint based on the content of the file being sent"""
+
+        block_size = 64 * 1024
+        min_size = min(block_size, int(file_info["length"]))
+
+        with open(file_info["name"], "rb") as f:
+            data = f.read(min_size)
+            file_info["fingerprint"] = md5(data).hexdigest()
+
+    def persist(self):
+        with open("resumable_filestore.json", "w") as f:
+            json.dump(self.storage, f)
+
     def mark_file(self, file_info: FileInfo):
         """Store file metadata in a in-memory storage"""
+
+        if len(file_info["length"]) != 0:
+            self.fingerprint(file_info)
+            file_info["mtime"] = os.stat(file_info["name"]).st_mtime
+
         self.storage[file_info["name"]] = file_info
+        self.persist()
 
     def get_file_info(self, filename):
         return self.storage[filename]
