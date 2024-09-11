@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 from hashlib import md5
 
 from httpx import AsyncClient as AsyncClient  # noqa: F401
@@ -22,6 +23,8 @@ class FileStore:
 
     def __init__(self):
         self.storage = {}
+        self.store_name = "resumable_filestore.json"
+        self.reload_storage()
 
     def fingerprint(self, file_info: FileInfo):
         """Generates a fingerprint based on the content of the file being sent"""
@@ -34,8 +37,8 @@ class FileStore:
             file_info["fingerprint"] = md5(data).hexdigest()
 
     def persist(self):
-        with open("resumable_filestore.json", "w") as f:
-            json.dump(self.storage, f)
+        with open(self.store_name, "w") as f:
+            json.dump(self.storage, f, indent=2)
 
     def mark_file(self, file_info: FileInfo):
         """Store file metadata in a in-memory storage"""
@@ -48,17 +51,30 @@ class FileStore:
         self.persist()
 
     def get_file_info(self, filename):
+        self.reload_storage()
         return self.storage[filename]
+
+    def reload_storage(self):
+        with open(self.store_name) as f:
+            self.storage = json.load(f)
 
     def update_file_headers(self, filename, key, value):
         file = self.get_file_info(filename)
-        file["headers"][key] = value
+        is_link_expired = file["expiration_time"] < datetime.now().timestamp()
+
+        if not is_link_expired:
+            file["headers"][key] = value
+            self.storage[filename] = file
+            self.persist()
+        else:
+            self.remove_file(filename)
+            raise StorageException("Upload link is expired")
 
     def get_file_headers(self, filename):
         return self.get_file_info(filename)["headers"]
 
     def get_file_storage_link(self, filename):
-        return self.get_file_info(filename)["headers"]["link"]
+        return self.get_file_headers(filename)["link"]
 
     def open_file(self, filename: str, offset: int):
         """Open file in the specified offset
@@ -78,6 +94,7 @@ class FileStore:
 
     def remove_file(self, filename: str):
         del self.storage[filename]
+        self.persist()
 
     def get_link(self, filename: str):
         return self.storage[filename]["link"]
