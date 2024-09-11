@@ -93,3 +93,5 @@ class FileInfo(TypedDict):
     length: str
     headers: Dict[str, str]
     expiration_time: float
+    fingerprint: str
+    mtime: float
