@@ -10,8 +10,7 @@ from ..utils import StorageException, SyncClient
 from .file_api import SyncBucket
 from .resumable import ResumableUpload
 
-
-__all__ = ("SyncStorageBucketAPI", )
+__all__ = ("SyncStorageBucketAPI",)
 
 
 class SyncStorageBucketAPI:
