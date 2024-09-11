@@ -136,6 +136,8 @@ class AsyncResumableUpload:
         if response.status_code != 204:
             raise StorageException(response.content)
 
+        self._filestore.remove_file(file)
+
     async def upload(
         self, filename, upload_defer=False, link=None, objectname=None, mb_size=1
     ) -> None:
