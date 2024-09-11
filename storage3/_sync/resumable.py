@@ -122,6 +122,20 @@ class ResumableUpload:
         response = self._client.head(link, headers=headers)
         return response.headers["upload-offset"]
 
+    def terminate(self, file: str) -> None:
+        """Drop the link associated with a file
+
+        Parameters
+        ----------
+        file
+            file name used to get its metadata info
+        """
+        info = self._filestore.get_file_info(file)
+        response = self._client.delete(info["link"], headers=info["headers"])
+
+        if response.status_code != 204:
+            raise StorageException(response.content)
+
     def upload(
         self, filename, upload_defer=False, link=None, objectname=None, mb_size=1
     ) -> None:
