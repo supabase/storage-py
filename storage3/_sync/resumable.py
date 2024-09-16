@@ -66,13 +66,8 @@ class ResumableUpload:
         if objectname is None and filename is None:
             raise StorageException("Must specify objectname or filename")
 
-        file = None
+        file = filename if filename else objectname
         upload_mode = None
-
-        if filename:
-            _, file = os.path.split(filename)
-        else:
-            file = objectname
 
         info = FileInfo(
             name=file, link="", length="", headers={"Tus-Resumable": "1.0.0"}
@@ -93,7 +88,8 @@ class ResumableUpload:
             info["headers"][upload_mode] = size
             info["length"] = size
 
-        metadata = UploadMetadata(bucketName=bucketname, objectName=file)
+        obj_name = os.path.split(file)[1]
+        metadata = UploadMetadata(bucketName=bucketname, objectName=obj_name)
 
         info["headers"]["Upload-Metadata"] = self._encode(metadata)
         response = self._client.post(self.url, headers=info["headers"])
@@ -161,7 +157,7 @@ class ResumableUpload:
                     "Upload-Defer mode requires a link and objectname"
                 )
 
-        target_file = objectname if upload_defer else os.path.split(filename)[1]
+        target_file = objectname if upload_defer else filename
         chunk_size = 1048576 * int(abs(mb_size))  # 1024 * 1024 * mb_size
         size = None
         self._filestore.update_file_headers(
@@ -176,6 +172,10 @@ class ResumableUpload:
                 raise StorageException(f"Cannot upload an empty file: {filename}")
 
             self._filestore.update_file_headers(target_file, "Upload-Length", size)
+            self._filestore.update_file_headers(target_file, "Upload-Offset", "0")
+            headers = self._filestore.get_file_headers(target_file)
+            response = self._client.patch(storage_link, headers=headers)
+            self._filestore.delete_file_headers(target_file, "Upload-Length")
 
         while True:
             headers = self._filestore.get_file_headers(target_file)
