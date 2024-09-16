@@ -70,6 +70,13 @@ class FileStore:
             self.remove_file(filename)
             raise StorageException("Upload link is expired")
 
+    def delete_file_headers(self, filename, key):
+        file = self.get_file_info(filename)
+        if key in file["headers"]:
+            del file["headers"][key]
+            self.storage[filename] = file
+            self.persist()
+
     def get_file_headers(self, filename):
         return self.get_file_info(filename)["headers"]
 
