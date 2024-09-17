@@ -1,7 +1,6 @@
 import json
 import os
 import tempfile
-
 from datetime import datetime
 from hashlib import md5
 
@@ -25,7 +24,7 @@ class FileStore:
 
     def __init__(self):
         self.storage = {}
-        self.disk_storage = tempfile.NamedTemporaryFile(mode='w+t', delete=False)
+        self.disk_storage = tempfile.NamedTemporaryFile(mode="w+t", delete=False)
         self.reload_storage()
 
     def fingerprint(self, file_info: FileInfo):
@@ -39,7 +38,7 @@ class FileStore:
             file_info["fingerprint"] = md5(data).hexdigest()
 
     def persist(self):
-        with open(self.disk_storage.name, 'w') as f:
+        with open(self.disk_storage.name, "w") as f:
             f.seek(0)
             f.write(json.dumps(self.storage))
             f.flush()
