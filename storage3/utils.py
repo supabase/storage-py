@@ -3,6 +3,7 @@ import os
 import tempfile
 from datetime import datetime
 from hashlib import md5
+from typing import Dict
 
 from httpx import AsyncClient as AsyncClient  # noqa: F401
 from httpx import Client as BaseClient
@@ -23,7 +24,6 @@ class FileStore:
     """This class serves as storage of files to be sent in the resumable upload workflow"""
 
     def __init__(self):
-        self.storage = {}
         self.disk_storage = tempfile.NamedTemporaryFile(mode="w+t", delete=False)
         self.reload_storage()
 
@@ -37,7 +37,8 @@ class FileStore:
             data = f.read(min_size)
             file_info["fingerprint"] = md5(data).hexdigest()
 
-    def persist(self):
+    def persist(self) -> None:
+        """Save the current state of in-memory storage to disk"""
         with open(self.disk_storage.name, "w") as f:
             f.seek(0)
             f.write(json.dumps(self.storage))
@@ -53,18 +54,37 @@ class FileStore:
         self.storage[file_info["name"]] = file_info
         self.persist()
 
-    def get_file_info(self, filename):
-        self.reload_storage()
-        return self.storage[filename]
-
-    def reload_storage(self):
+    def reload_storage(self) -> None:
+        """Refresh the in-memory storage"""
         self.storage = {}
         size = os.stat(self.disk_storage.name).st_size
         if size > 0:
             with open(self.disk_storage.name) as f:
                 self.storage = json.load(f)
 
-    def update_file_headers(self, filename, key, value):
+    def get_file_info(self, filename) -> FileInfo:
+        """Returns the file info metadata associated with a filename in the storage
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        """
+        self.reload_storage()
+        return self.storage[filename]
+
+    def update_file_headers(self, filename, key, value) -> None:
+        """Update key values from the file info metadata
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        key
+            key name referencing to header attribute to be modified
+        value
+            new value
+        """
         file = self.get_file_info(filename)
         is_link_expired = file["expiration_time"] < datetime.now().timestamp()
 
@@ -76,18 +96,35 @@ class FileStore:
             self.remove_file(filename)
             raise StorageException("Upload link is expired")
 
-    def delete_file_headers(self, filename, key):
+    def delete_file_headers(self, filename, key) -> None:
+        """Remove keys from the file info metadata
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        key
+            key name referencing to header attribute to be removed
+        """
         file = self.get_file_info(filename)
         if key in file["headers"]:
             del file["headers"][key]
             self.storage[filename] = file
             self.persist()
 
-    def get_file_headers(self, filename):
+    def get_file_headers(self, filename) -> Dict[str, str]:
+        """Returns the file's headers used during the upload workflow
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        """
         return self.get_file_info(filename)["headers"]
 
     def open_file(self, filename: str, offset: int):
         """Open file in the specified offset
+
         Parameters
         ----------
         filename
@@ -96,15 +133,29 @@ class FileStore:
             set current the file-pointer
         """
         file = open(filename, "rb")
-        file.seek(int(offset))
+        file.seek(offset)
         return file
 
-    def close_file(self, filename):
+    def close_file(self, filename) -> None:
         filename.close()
 
-    def remove_file(self, filename: str):
+    def remove_file(self, filename: str) -> None:
+        """Remove filename entry in the in-memory storage and then commit the changes into the disk storage
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        """
         del self.storage[filename]
         self.persist()
 
-    def get_link(self, filename: str):
+    def get_link(self, filename: str) -> str:
+        """Returns the filename's link associated with is resumable endpoint
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        """
         return self.storage[filename]["link"]
