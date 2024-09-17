@@ -19,13 +19,6 @@ class SyncStorageBucketAPI:
         self._client = session
         self._resumable = None
 
-    @property
-    def resumable(self):
-        if self._resumable is None:
-            self._resumable = ResumableUpload(self._client)
-
-        return self._resumable
-
     def _request(
         self,
         method: RequestMethod,
@@ -41,6 +34,13 @@ class SyncStorageBucketAPI:
             )
 
         return response
+
+    @property
+    def resumable(self):
+        if self._resumable is None:
+            self._resumable = ResumableUpload(self._client)
+
+        return self._resumable
 
     def list_buckets(self) -> list[SyncBucket]:
         """Retrieves the details of all storage buckets within an existing product."""
