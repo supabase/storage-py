@@ -1,5 +1,7 @@
 import json
 import os
+import tempfile
+
 from datetime import datetime
 from hashlib import md5
 
@@ -23,7 +25,7 @@ class FileStore:
 
     def __init__(self):
         self.storage = {}
-        self.store_name = "resumable_filestore.json"
+        self.disk_storage = tempfile.NamedTemporaryFile(mode='w+t', delete=False)
         self.reload_storage()
 
     def fingerprint(self, file_info: FileInfo):
@@ -37,8 +39,10 @@ class FileStore:
             file_info["fingerprint"] = md5(data).hexdigest()
 
     def persist(self):
-        with open(self.store_name, "w") as f:
-            json.dump(self.storage, f, indent=2)
+        with open(self.disk_storage.name, 'w') as f:
+            f.seek(0)
+            f.write(json.dumps(self.storage))
+            f.flush()
 
     def mark_file(self, file_info: FileInfo):
         """Store file metadata in a in-memory storage"""
@@ -55,8 +59,11 @@ class FileStore:
         return self.storage[filename]
 
     def reload_storage(self):
-        with open(self.store_name) as f:
-            self.storage = json.load(f)
+        self.storage = {}
+        size = os.stat(self.disk_storage.name).st_size
+        if size > 0:
+            with open(self.disk_storage.name) as f:
+                self.storage = json.load(f)
 
     def update_file_headers(self, filename, key, value):
         file = self.get_file_info(filename)
@@ -79,9 +86,6 @@ class FileStore:
 
     def get_file_headers(self, filename):
         return self.get_file_info(filename)["headers"]
-
-    def get_file_storage_link(self, filename):
-        return self.get_file_headers(filename)["link"]
 
     def open_file(self, filename: str, offset: int):
         """Open file in the specified offset
