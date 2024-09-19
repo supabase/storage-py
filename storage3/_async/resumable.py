@@ -15,6 +15,9 @@ class AsyncResumableUpload:
         self.expiration_time_format = "%a, %d %b %Y %X %Z"
         self._filestore = FileStore()
 
+    def _is_valid_arg(self, target):
+        return isinstance(target, str) and len(target.strip()) > 0
+
     def _encode(self, metadata: UploadMetadata) -> str:
         """Generate base64 encoding for Upload-Metadata header
         Parameters
@@ -60,15 +63,17 @@ class AsyncResumableUpload:
         filename
             Local file
         """
-        if bucketname is None:
-            raise StorageException("bucketname cannot be empty")
+        if not self._is_valid_arg(bucketname):
+            raise StorageException("Bucketname cannot be empty")
 
-        if objectname is None and filename is None:
+        if not (self._is_valid_arg(objectname) or self._is_valid_arg(filename)):
             raise StorageException("Must specify objectname or filename")
 
         file = filename if filename else objectname
-        upload_mode = None
+        if not self._is_valid_arg(file):
+            raise StorageException("Must specify objectname or filename")
 
+        upload_mode = None
         info = FileInfo(
             name=file, link="", length="", headers={"Tus-Resumable": "1.0.0"}
         )
@@ -152,10 +157,13 @@ class AsyncResumableUpload:
             Amount of megabytes to be sent in each iteration
         """
         if upload_defer:
-            if link is None or objectname is None:
+            if not (self._is_valid_arg(link) and self._is_valid_arg(objectname)):
                 raise StorageException(
                     "Upload-Defer mode requires a link and objectname"
                 )
+
+        if not self._is_valid_arg(filename):
+            raise StorageException("Must specify a filename")
 
         target_file = objectname if upload_defer else filename
         chunk_size = 1048576 * int(abs(mb_size))  # 1024 * 1024 * mb_size
