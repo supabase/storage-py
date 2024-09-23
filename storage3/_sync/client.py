@@ -21,21 +21,23 @@ class SyncStorageClient(SyncStorageBucketAPI):
         headers: dict[str, str],
         timeout: int = DEFAULT_TIMEOUT,
         verify: bool = True,
+        proxy: str | None = None,
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
-        self.session = self._create_session(url, headers, timeout, verify)
+        self.session = self._create_session(url, headers, timeout, verify, proxy)
         super().__init__(self.session)
 
     def _create_session(
-        self, base_url: str, headers: dict[str, str], timeout: int, verify: bool = True
+        self, base_url: str, headers: dict[str, str], timeout: int, verify: bool = True, proxy: str | None = None,
     ) -> SyncClient:
         return SyncClient(
             base_url=base_url,
             headers=headers,
             timeout=timeout,
+            proxy=proxy,
             verify=bool(verify),
             follow_redirects=True,
             http2=True,
