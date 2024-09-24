@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from typing import Optional
 
 from storage3.constants import DEFAULT_TIMEOUT
@@ -32,7 +33,12 @@ class SyncStorageClient(SyncStorageBucketAPI):
         super().__init__(self.session)
 
     def _create_session(
-        self, base_url: str, headers: dict[str, str], timeout: int, verify: bool = True, proxy: Optional[str] = None,
+        self,
+        base_url: str,
+        headers: dict[str, str],
+        timeout: int,
+        verify: bool = True,
+        proxy: Optional[str] = None,
     ) -> SyncClient:
         return SyncClient(
             base_url=base_url,
