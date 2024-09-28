@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.8.0](https://github.com/supabase/storage-py/compare/v0.7.7...v0.8.0) (2024-09-28)
+
+
+### Features
+
+* Proxy support ([#297](https://github.com/supabase/storage-py/issues/297)) ([59d733a](https://github.com/supabase/storage-py/commit/59d733a33145389b763c33985079257be0e3a8c3))
+
 ## v0.7.7 (2024-07-14)
 
 ### Chore
