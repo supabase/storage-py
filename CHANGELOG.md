@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.8.1](https://github.com/supabase/storage-py/compare/v0.8.0...v0.8.1) (2024-10-02)
+
+
+### Bug Fixes
+
+* httpx minimum version update ([#299](https://github.com/supabase/storage-py/issues/299)) ([90d2436](https://github.com/supabase/storage-py/commit/90d2436900558703129788679b356a21221f5c41))
+
 ## [0.8.0](https://github.com/supabase/storage-py/compare/v0.7.7...v0.8.0) (2024-09-28)
 
 
