@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import os
+import asyncio
 
 import pytest
+import pytest_asyncio
 
 from storage3 import AsyncStorageClient, SyncStorageClient
 
@@ -33,6 +35,12 @@ def file() -> str:
 @pytest.fixture
 def test_bucket() -> str:
     return os.getenv("TEST_BUCKET")
+
+
+@pytest_asyncio.fixture(scope="package")
+def event_loop() -> asyncio.AbstractEventLoop:
+    """Returns an event loop for the current thread"""
+    return asyncio.get_event_loop_policy().get_event_loop()
 
 
 @pytest.fixture(scope="module")
