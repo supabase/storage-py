@@ -48,7 +48,9 @@ def test_deferred_sync_client(sync_client, file, test_bucket):
     assert os.stat(file.name).st_size > 0
 
     """Verify if the file was loaded correctly"""
-    client.resumable.upload(file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name)
+    client.resumable.upload(
+        file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name
+    )
     bucket = client.get_bucket(test_bucket)
     file_loaded = list(filter(lambda e: e["name"] == file.name, bucket.list()))
     assert len(file_loaded) == 1
