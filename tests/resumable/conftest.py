@@ -35,21 +35,21 @@ def test_bucket() -> str:
     return os.getenv("TEST_BUCKET")
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def configure_client():
     url = f'{os.getenv("SUPABASE_URL")}/storage/v1'
     key = os.getenv("SUPABASE_KEY")
     return (url, key)
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def sync_client(configure_client) -> SyncStorageClient:
     url, key = configure_client
     client = SyncStorageClient(url, {"apiKey": key, "Authorization": f"Bearer {key}"})
     return client
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def async_client(configure_client) -> AsyncStorageClient:
     url, key = configure_client
     client = AsyncStorageClient(url, {"apiKey": key, "Authorization": f"Bearer {key}"})
