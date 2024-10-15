@@ -194,7 +194,7 @@ class AsyncResumableUpload:
             chunk = file.read(chunk_size)
             headers = self._filestore.get_file_headers(target_file)
             response = await self._client.patch(
-                storage_link, headers=headers, data=chunk
+                storage_link, headers=headers, content=chunk
             )
             if response.status_code not in {201, 204}:
                 raise StorageException(response.content)
