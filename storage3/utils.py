@@ -41,7 +41,7 @@ class FileStore:
         """Save the current state of in-memory storage to disk"""
         with open(self.disk_storage.name, "w") as f:
             f.seek(0)
-            f.write(json.dumps(self.storage))
+            f.write(json.dumps(self.storage, indent=2))
             f.flush()
 
     def mark_file(self, file_info: FileInfo):
