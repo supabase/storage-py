@@ -32,15 +32,15 @@ def file() -> str:
     return f
 
 
-@pytest.fixture
-def test_bucket() -> str:
-    return os.getenv("TEST_BUCKET")
-
-
 @pytest_asyncio.fixture(scope="package")
 def event_loop() -> asyncio.AbstractEventLoop:
     """Returns an event loop for the current thread"""
     return asyncio.get_event_loop_policy().get_event_loop()
+
+
+@pytest.fixture
+def test_bucket() -> str:
+    return os.getenv("TEST_BUCKET")
 
 
 @pytest.fixture(scope="module")
