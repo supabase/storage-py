@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 import os
+
 import pytest
 
-from storage3 import SyncStorageClient, AsyncStorageClient
+from storage3 import AsyncStorageClient, SyncStorageClient
 
 
 @pytest.fixture
@@ -43,12 +45,12 @@ def configure_client():
 @pytest.fixture
 def sync_client(configure_client) -> SyncStorageClient:
     url, key = configure_client
-    client = SyncStorageClient(url, {'apiKey': key, 'Authorization': f'Bearer {key}'})
+    client = SyncStorageClient(url, {"apiKey": key, "Authorization": f"Bearer {key}"})
     return client
 
 
 @pytest.fixture
 def async_client(configure_client) -> AsyncStorageClient:
     url, key = configure_client
-    client = AsyncStorageClient(url, {'apiKey': key, 'Authorization': f'Bearer {key}'})
+    client = AsyncStorageClient(url, {"apiKey": key, "Authorization": f"Bearer {key}"})
     return client
