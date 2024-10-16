@@ -1,5 +1,7 @@
 import os
 
+from conftest import is_https_url
+
 
 def test_sync_client(sync_client, file, test_bucket):
     client = sync_client
@@ -14,7 +16,7 @@ def test_sync_client(sync_client, file, test_bucket):
     link = client.resumable.get_link(file.name)
 
     """Verify the link was generated as expected"""
-    assert len(link) > 0
+    assert is_https_url(link)
 
     """Check the file is not empty"""
     assert os.stat(file.name).st_size > 0
@@ -42,7 +44,7 @@ def test_deferred_sync_client(sync_client, file, test_bucket):
     link = client.resumable.get_link(file.name)
 
     """Verify the link was generated as expected"""
-    assert len(link) > 0
+    assert is_https_url(link)
 
     """Check the file is not empty"""
     assert os.stat(file.name).st_size > 0
@@ -73,7 +75,7 @@ async def test_async_client(async_client, file, test_bucket):
     link = client.resumable.get_link(file.name)
 
     """Verify the link was generated as expected"""
-    assert len(link) > 0
+    assert is_https_url(link)
 
     """Check the file is not empty"""
     assert os.stat(file.name).st_size > 0
@@ -103,7 +105,7 @@ async def test_deferred_async_client(async_client, file, test_bucket):
     link = client.resumable.get_link(file.name)
 
     """Verify the link was generated as expected"""
-    assert len(link) > 0
+    assert is_https_url(link)
 
     """Check the file is not empty"""
     assert os.stat(file.name).st_size > 0
