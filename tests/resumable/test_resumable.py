@@ -24,8 +24,9 @@ def test_sync_client(sync_client, file, test_bucket):
     """Verify if the file was loaded correctly"""
     client.resumable.upload(file.name)
     bucket = client.get_bucket(test_bucket)
-    file_loaded = list(filter(lambda e: e["name"] == file.name, bucket.list()))
-    assert len(file_loaded) == 1
+
+    is_file_loaded = any(item["name"] == file.name for item in bucket.list())
+    assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
 
     bucket.remove(file.name)
 
@@ -54,8 +55,9 @@ def test_deferred_sync_client(sync_client, file, test_bucket):
         file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name
     )
     bucket = client.get_bucket(test_bucket)
-    file_loaded = list(filter(lambda e: e["name"] == file.name, bucket.list()))
-    assert len(file_loaded) == 1
+
+    is_file_loaded = any(item["name"] == file.name for item in bucket.list())
+    assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
 
     bucket.remove(file.name)
 
@@ -83,8 +85,9 @@ async def test_async_client(async_client, file, test_bucket):
     """Verify if the file was loaded correctly"""
     await client.resumable.upload(file.name)
     bucket = await client.get_bucket(test_bucket)
-    file_loaded = list(filter(lambda e: e["name"] == file.name, await bucket.list()))
-    assert len(file_loaded) == 1
+
+    is_file_loaded = any(item["name"] == file.name for item in await bucket.list())
+    assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
 
     await bucket.remove(file.name)
 
@@ -115,7 +118,8 @@ async def test_deferred_async_client(async_client, file, test_bucket):
         file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name
     )
     bucket = await client.get_bucket(test_bucket)
-    file_loaded = list(filter(lambda e: e["name"] == file.name, await bucket.list()))
-    assert len(file_loaded) == 1
+
+    is_file_loaded = any(item["name"] == file.name for item in await bucket.list())
+    assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
 
     await bucket.remove(file.name)
