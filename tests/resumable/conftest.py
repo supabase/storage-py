@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import asyncio
 import os
+from urllib.parse import urlparse
 
 import pytest
 import pytest_asyncio
 
 from storage3 import AsyncStorageClient, SyncStorageClient
+
+
+def is_https_url(url: str) -> bool:
+    """Simple helper for testing purposes."""
+    return urlparse(url).scheme == "https"
 
 
 @pytest.fixture
