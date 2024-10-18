@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.8.2](https://github.com/supabase/storage-py/compare/v0.8.1...v0.8.2) (2024-10-18)
+
+
+### Bug Fixes
+
+* bump minimal version of Python to 3.9 ([#302](https://github.com/supabase/storage-py/issues/302)) ([b0811b2](https://github.com/supabase/storage-py/commit/b0811b2b38d712d8cd136301663b0a5de20bf890))
+
 ## [0.8.1](https://github.com/supabase/storage-py/compare/v0.8.0...v0.8.1) (2024-10-02)
 
 
