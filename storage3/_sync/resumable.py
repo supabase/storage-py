@@ -16,7 +16,9 @@ class ResumableUpload:
         self._filestore = FileStore()
 
     def is_valid_arg(self, target):
-        return target is not None and isinstance(target, str) and len(target.strip()) != 0
+        return (
+            target is not None and isinstance(target, str) and len(target.strip()) != 0
+        )
 
     def _encode(self, metadata: UploadMetadata) -> str:
         """Generate base64 encoding for Upload-Metadata header
