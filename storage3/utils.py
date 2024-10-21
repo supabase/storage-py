@@ -62,6 +62,17 @@ class FileStore:
             with open(self.disk_storage.name) as f:
                 self.storage = json.load(f)
 
+    def file_exists(self, filename: str) -> bool:
+        """Verify if the file exists in the storage
+
+        Parameters
+        ----------
+        filename
+            This could be the local filename or objectname in the storage
+        """
+        self.reload_storage()
+        return filename in self.storage
+
     def get_file_info(self, filename) -> FileInfo:
         """Returns the file info metadata associated with a filename in the storage
 
@@ -70,7 +81,9 @@ class FileStore:
         filename
             key name referencing to filename attributes.
         """
-        self.reload_storage()
+        if not self.file_exists(filename):
+            raise StorageException(f"There is no entry for {filename} in FileStore")
+
         return self.storage[filename]
 
     def update_file_headers(self, filename, key, value) -> None:
@@ -147,15 +160,33 @@ class FileStore:
         filename
             key name referencing to filename attributes.
         """
+
+        if not self.file_exists(filename):
+            raise StorageException(f"There is no entry for {filename} in FileStore")
+
         del self.storage[filename]
         self.persist()
 
     def get_link(self, filename: str) -> str:
-        """Returns the filename's link associated with is resumable endpoint
+        """Returns the filename's link associated with its resumable endpoint
 
         Parameters
         ----------
         filename
             key name referencing to filename attributes.
         """
+
+        if not self.file_exists(filename):
+            raise StorageException(f"There is no entry for {filename} in FileStore")
+
         return self.storage[filename]["link"]
+
+    def link_exists(self, link: str) -> bool:
+        """Check if the link is already in the storage
+
+        Parameters
+        ----------
+        link:
+           link associated with a resumable endpoint
+        """
+        return any(self.get_link(obj) == link for obj in self.storage.keys())
