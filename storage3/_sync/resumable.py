@@ -5,7 +5,8 @@ from datetime import datetime
 from ..types import FileInfo, UploadMetadata
 from ..utils import FileStore, StorageException, SyncClient
 
-__all__ = ["ResumableUpload"]
+
+__all__ = ("ResumableUpload", )
 
 
 class ResumableUpload:
