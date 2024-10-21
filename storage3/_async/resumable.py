@@ -41,7 +41,9 @@ class AsyncResumableUpload:
         return self._filestore.get_link(objectname)
 
     def is_valid_arg(self, target):
-        return target is not None and isinstance(target, str) and len(target.strip()) != 0
+        return (
+            target is not None and isinstance(target, str) and len(target.strip()) != 0
+        )
 
     async def create_unique_link(
         self, bucketname=None, objectname=None, filename=None
