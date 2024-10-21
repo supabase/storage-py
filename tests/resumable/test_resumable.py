@@ -2,6 +2,46 @@ import os
 
 from conftest import is_https_url
 
+from storage3.utils import StorageException
+
+
+def test_non_valid_resumable_options(sync_client):
+    client = sync_client
+
+    """Raise an exception when argument is not a string"""
+    try:
+        client.resumable.resumable_offset(1, {})
+    except Exception as e:
+        assert isinstance(e, StorageException)
+
+    """Raise an exception when argument is an empty string"""
+    try:
+        client.resumable.resumable_offset("https://random_bucket_id_link", {})
+    except Exception as e:
+        assert isinstance(e, StorageException)
+
+
+def test_non_valid_terminate_options(sync_client):
+    client = sync_client
+
+    """Raise an exception when argument is not a string"""
+    try:
+        client.resumable.terminate(1)
+    except Exception as e:
+        assert isinstance(e, StorageException)
+
+    """Raise an exception when argument is an empty string"""
+    try:
+        client.resumable.terminate("       ")
+    except Exception as e:
+        assert isinstance(e, StorageException)
+
+    """Raise an exception when there's no a fileinfo associated with the argument passed"""
+    try:
+        client.resumable.terminate("random_🐍.log")
+    except Exception as e:
+        assert isinstance(e, StorageException)
+
 
 def test_sync_client(sync_client, file, test_bucket):
     client = sync_client
@@ -27,6 +67,11 @@ def test_sync_client(sync_client, file, test_bucket):
 
     is_file_loaded = any(item["name"] == file.name for item in bucket.list())
     assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
+
+    try:
+        client.resumable.terminate("")
+    except Exception as e:
+        assert isinstance(e, StorageException)
 
     bucket.remove(file.name)
 
