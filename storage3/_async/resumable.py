@@ -5,8 +5,7 @@ from datetime import datetime
 from ..types import FileInfo, UploadMetadata
 from ..utils import AsyncClient, FileStore, StorageException
 
-
-__all__ = ("AsyncResumableUpload", )
+__all__ = ("AsyncResumableUpload",)
 
 
 class AsyncResumableUpload:
