@@ -150,6 +150,13 @@ class FileStore:
         return file
 
     def close_file(self, filename) -> None:
+        """Close the file.
+
+        Parameters
+        ----------
+        filename
+            key name referencing to filename attributes.
+        """
         filename.close()
 
     def remove_file(self, filename: str) -> None:
@@ -187,6 +194,6 @@ class FileStore:
         Parameters
         ----------
         link:
-           link associated with a resumable endpoint
+            link associated with a resumable endpoint
         """
         return any(self.get_link(obj) == link for obj in self.storage.keys())
