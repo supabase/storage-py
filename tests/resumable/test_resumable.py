@@ -36,7 +36,7 @@ def test_non_valid_terminate_options(sync_client):
     except Exception as e:
         assert isinstance(e, StorageException)
 
-    """Raise an exception when there's no a fileinfo associated with the argument passed"""
+    """Raise an exception when there's no fileinfo associated with the argument passed"""
     try:
         client.resumable.terminate("random_🐍.log")
     except Exception as e:
