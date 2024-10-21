@@ -54,7 +54,7 @@ def test_bucket() -> str:
 
 @pytest.fixture(scope="module")
 def configure_client():
-    """Get URL and API Key from env args."""
+    """Get API URL and API Key from env args."""
     url = f'{os.getenv("SUPABASE_URL")}/storage/v1'
     key = os.getenv("SUPABASE_KEY")
     return (url, key)
