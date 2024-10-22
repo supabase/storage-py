@@ -1,9 +1,14 @@
 import os
-from base64 import b64encode
 from datetime import datetime
 
 from ..types import FileInfo, UploadMetadata
-from ..utils import AsyncClient, FileStore, StorageException
+from ..utils import (
+    AsyncClient,
+    FileStore,
+    StorageException,
+    base64encode_metadata,
+    is_valid_arg,
+)
 
 __all__ = ("AsyncResumableUpload",)
 
@@ -15,19 +20,6 @@ class AsyncResumableUpload:
         self.expiration_time_format = "%a, %d %b %Y %X %Z"
         self._filestore = FileStore()
 
-    def _encode(self, metadata: UploadMetadata) -> str:
-        """Generate base64 encoding for Upload-Metadata header
-
-        Parameters
-        ----------
-        metadata
-            Bucket and object pair representing the resulting file in the storage
-        """
-        res = [
-            f"{k} {b64encode(bytes(v, 'utf-8')).decode()}" for k, v in metadata.items()
-        ]
-        return ",".join(res)
-
     def get_link(self, objectname) -> str:
         """Get the link associated with objectname in the bucket
 
@@ -36,14 +28,9 @@ class AsyncResumableUpload:
         objectname
             This could be the local filename or objectname in the storage
         """
-        if not self.is_valid_arg(objectname):
+        if not is_valid_arg(objectname):
             raise StorageException("Bucketname cannot be empty")
         return self._filestore.get_link(objectname)
-
-    def is_valid_arg(self, target):
-        return (
-            target is not None and isinstance(target, str) and len(target.strip()) != 0
-        )
 
     async def create_unique_link(
         self, bucketname=None, objectname=None, filename=None
@@ -59,15 +46,15 @@ class AsyncResumableUpload:
         filename
             Local file
         """
-        if not self.is_valid_arg(bucketname):
+        if not is_valid_arg(bucketname):
             raise StorageException("Bucketname cannot be empty")
 
-        if not (self.is_valid_arg(objectname) or self.is_valid_arg(filename)):
+        if not (is_valid_arg(objectname) or is_valid_arg(filename)):
             raise StorageException("Must specify objectname or filename")
 
         file = filename if filename else objectname
 
-        if not self.is_valid_arg(file):
+        if not is_valid_arg(file):
             raise StorageException("Must specify objectname or filename")
 
         upload_mode = None
@@ -94,7 +81,7 @@ class AsyncResumableUpload:
         obj_name = os.path.split(file)[1]
         metadata = UploadMetadata(bucketName=bucketname, objectName=obj_name)
 
-        info["headers"]["Upload-Metadata"] = self._encode(metadata)
+        info["headers"]["Upload-Metadata"] = base64encode_metadata(metadata)
         response = await self._client.post(self.url, headers=info["headers"])
 
         if response.status_code != 201:
@@ -138,7 +125,7 @@ class AsyncResumableUpload:
         file
             file name used to get its metadata info
         """
-        if not self.is_valid_arg(file):
+        if not is_valid_arg(file):
             raise StorageException("File argument cannot be empty")
 
         info = self._filestore.get_file_info(file)
@@ -168,12 +155,12 @@ class AsyncResumableUpload:
             Amount of megabytes to be sent in each iteration
         """
         if upload_defer:
-            if not (self.is_valid_arg(link) and self.is_valid_arg(objectname)):
+            if not (is_valid_arg(link) and is_valid_arg(objectname)):
                 raise StorageException(
                     "Upload-Defer mode requires a link and objectname"
                 )
 
-        if not self.is_valid_arg(filename):
+        if not is_valid_arg(filename):
             raise StorageException("Must specify a filename")
 
         target_file = objectname if upload_defer else filename
