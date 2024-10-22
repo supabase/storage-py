@@ -42,7 +42,7 @@ class ResumableUpload:
             This could be the local filename or objectname in the storage
         """
         if not self.is_valid_arg(objectname):
-            raise StorageException("bucketname cannot be empty")
+            raise StorageException("Bucketname cannot be empty")
         return self._filestore.get_link(objectname)
 
     def create_unique_link(
@@ -60,7 +60,7 @@ class ResumableUpload:
             Local file
         """
         if not self.is_valid_arg(bucketname):
-            raise StorageException("bucketname cannot be empty")
+            raise StorageException("Bucketname cannot be empty")
 
         if not (self.is_valid_arg(objectname) or self.is_valid_arg(filename)):
             raise StorageException("Must specify objectname or filename")
@@ -139,7 +139,7 @@ class ResumableUpload:
             file name used to get its metadata info
         """
         if not self.is_valid_arg(file):
-            raise StorageException("file argument cannot be empty")
+            raise StorageException("File argument cannot be empty")
 
         info = self._filestore.get_file_info(file)
         response = self._client.delete(info["link"], headers=info["headers"])
@@ -178,7 +178,7 @@ class ResumableUpload:
             raise StorageException("Must specify a filename")
 
         target_file = objectname if upload_defer else filename
-        chunk_size = 1048576 * mb_size
+        chunk_size = 1048576 * int(abs(mb_size))  # 1024 * 1024 * mb_size
         size = None
         self._filestore.update_file_headers(
             target_file, "Content-Type", "application/offset+octet-stream"
