@@ -1,6 +1,7 @@
 import json
 import os
 import tempfile
+from base64 import b64encode
 from datetime import datetime
 from hashlib import md5
 from typing import Dict
@@ -8,7 +9,7 @@ from typing import Dict
 from httpx import AsyncClient as AsyncClient  # noqa: F401
 from httpx import Client as BaseClient
 
-from .types import FileInfo
+from .types import FileInfo, UploadMetadata
 
 
 class SyncClient(BaseClient):
@@ -197,3 +198,19 @@ class FileStore:
             link associated with a resumable endpoint
         """
         return any(self.get_link(obj) == link for obj in self.storage.keys())
+
+
+def is_valid_arg(target: str) -> bool:
+    return target is not None and isinstance(target, str) and len(target.strip()) != 0
+
+
+def base64encode_metadata(metadata: UploadMetadata) -> str:
+    """Generate base64 encoding for Upload-Metadata header
+
+    Parameters
+    ----------
+    metadata
+        Bucket and object pair representing the resulting file in the storage
+    """
+    res = [f"{k} {b64encode(bytes(v, 'utf-8')).decode()}" for k, v in metadata.items()]
+    return ",".join(res)
