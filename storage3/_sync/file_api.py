@@ -445,9 +445,6 @@ class SyncBucketActionsMixin:
         return f"{self.id}/{path}"
 
 
-# this class is returned by methods that fetch buckets, for example StorageBucketAPI.get_bucket
-# adding this mixin on the BaseBucket means that those bucket objects can also be used to
-# run methods like `upload` and `download`
 @dataclass(repr=False)
 class SyncBucket(BaseBucket):
     """Represents a storage bucket."""
