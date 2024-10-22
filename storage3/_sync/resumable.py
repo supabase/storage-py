@@ -165,7 +165,7 @@ class ResumableUpload:
             raise StorageException("Must specify a filename")
 
         target_file = objectname if upload_defer else filename
-        chunk_size = 1048576 * int(abs(mb_size))  # 1024 * 1024 * mb_size
+        chunk_size = 1048576 * int(max(1, mb_size))  # 1024 * 1024 * mb_size
         size = None
         self._filestore.update_file_headers(
             target_file, "Content-Type", "application/offset+octet-stream"
