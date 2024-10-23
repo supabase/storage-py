@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.9.0](https://github.com/supabase/storage-py/compare/v0.8.2...v0.9.0) (2024-10-23)
+
+
+### Features
+
+* remove methods from the bucket object ([#305](https://github.com/supabase/storage-py/issues/305)) ([faa914d](https://github.com/supabase/storage-py/commit/faa914dfc460bdc6a63955e8affbb1275f1e984f))
+
 ## [0.8.2](https://github.com/supabase/storage-py/compare/v0.8.1...v0.8.2) (2024-10-18)
 
 
