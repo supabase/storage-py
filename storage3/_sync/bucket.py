@@ -37,7 +37,7 @@ class SyncStorageBucketAPI:
         """Retrieves the details of all storage buckets within an existing product."""
         # if the request doesn't error, it is assured to return a list
         res = self._request("GET", "/bucket")
-        return [SyncBucket(**bucket, _client=self._client) for bucket in res.json()]
+        return [SyncBucket(**bucket) for bucket in res.json()]
 
     def get_bucket(self, id: str) -> SyncBucket:
         """Retrieves the details of an existing storage bucket.
@@ -49,7 +49,7 @@ class SyncStorageBucketAPI:
         """
         res = self._request("GET", f"/bucket/{id}")
         json = res.json()
-        return SyncBucket(**json, _client=self._client)
+        return SyncBucket(**json)
 
     def create_bucket(
         self,

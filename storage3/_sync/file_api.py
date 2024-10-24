@@ -18,6 +18,8 @@ from ..types import (
     ListBucketFilesOptions,
     RequestMethod,
     SignedUploadURL,
+    UploadData,
+    UploadResponse,
     URLOptions,
 )
 from ..utils import StorageException, SyncClient
@@ -351,7 +353,7 @@ class SyncBucketActionsMixin:
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
         file_options: Optional[FileOptions] = None,
-    ) -> Response:
+    ) -> UploadResponse:
         """
         Uploads a file to an existing bucket.
 
@@ -408,9 +410,13 @@ class SyncBucketActionsMixin:
 
         _path = self._get_final_path(path)
 
-        return self._request(
+        response = self._request(
             method, f"/object/{_path}", files=files, headers=headers, data=_data
         )
+
+        data: UploadData = response.json()
+
+        return UploadResponse(path=path, Key=data.get("Key"))
 
     def upload(
         self,
@@ -438,7 +444,7 @@ class SyncBucketActionsMixin:
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
         file_options: Optional[FileOptions] = None,
-    ) -> Response:
+    ) -> UploadResponse:
         return self._upload_or_update("PUT", path, file, file_options)
 
     def _get_final_path(self, path: str) -> str:
