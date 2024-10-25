@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Union, overload
-
-from typing_extensions import Literal
+from typing import Literal, Union, overload
 
 from storage3._async import AsyncStorageClient
 from storage3._sync import SyncStorageClient

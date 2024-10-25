@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Dict, Optional, Union
+from typing import Dict, Literal, Optional, TypedDict, Union
 
 import dateutil.parser
-from typing_extensions import Literal, TypedDict
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
@@ -95,3 +94,20 @@ class FileInfo(TypedDict):
     expiration_time: float
     fingerprint: str
     mtime: float
+
+
+class UploadData(TypedDict, total=False):
+    Id: str
+    Key: str
+
+
+@dataclass
+class UploadResponse:
+    path: str
+    full_path: str
+
+    def __init__(self, path, Key):
+        self.path = path
+        self.full_path = Key
+
+    dict = asdict
