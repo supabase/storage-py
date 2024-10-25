@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Optional, Union
+from typing import Literal, Optional, TypedDict, Union
 
 import dateutil.parser
-from typing_extensions import Literal, TypedDict
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
@@ -80,3 +79,20 @@ FileOptions = TypedDict(
     {"cache-control": str, "content-type": str, "x-upsert": str, "upsert": str},
     total=False,
 )
+
+
+class UploadData(TypedDict, total=False):
+    Id: str
+    Key: str
+
+
+@dataclass
+class UploadResponse:
+    path: str
+    full_path: str
+
+    def __init__(self, path, Key):
+        self.path = path
+        self.full_path = Key
+
+    dict = asdict
