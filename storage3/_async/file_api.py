@@ -157,7 +157,7 @@ class AsyncBucketActionsMixin:
             options to be passed for downloading or transforming the file.
         """
         json = {"expiresIn": str(expires_in)}
-        download_query = None
+        download_query = ""
         if options.get("download"):
             json.update({"download": options["download"]})
 
@@ -195,7 +195,7 @@ class AsyncBucketActionsMixin:
             options to be passed for downloading the file.
         """
         json = {"paths": paths, "expiresIn": str(expires_in)}
-        download_query = None
+        download_query = ""
         if options.get("download"):
             json.update({"download": options.get("download")})
 
@@ -225,7 +225,7 @@ class AsyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _query_string = []
-        download_query = None
+        download_query = ""
         if options.get("download"):
             download_query = (
                 "&download="

@@ -155,14 +155,14 @@ class SyncBucketActionsMixin:
             options to be passed for downloading or transforming the file.
         """
         json = {"expiresIn": str(expires_in)}
-        download_query = None
+        download_query = ""
         if options.get("download"):
             json.update({"download": options["download"]})
 
             download_query = (
-                "download="
+                "&download="
                 if options.get("download") is True
-                else f"download={options.get('download')}"
+                else f"&download={options.get('download')}"
             )
         if options.get("transform"):
             json.update({"transform": options["transform"]})
@@ -193,14 +193,14 @@ class SyncBucketActionsMixin:
             options to be passed for downloading the file.
         """
         json = {"paths": paths, "expiresIn": str(expires_in)}
-        download_query = None
+        download_query = ""
         if options.get("download"):
             json.update({"download": options.get("download")})
 
             download_query = (
-                "download="
+                "&download="
                 if options.get("download") is True
-                else f"download={options.get('download')}"
+                else f"&download={options.get('download')}"
             )
 
         response = self._request(
@@ -223,12 +223,12 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _query_string = []
-        download_query = None
+        download_query = ""
         if options.get("download"):
             download_query = (
-                "download="
+                "&download="
                 if options.get("download") is True
-                else f"download={options.get('download')}"
+                else f"&download={options.get('download')}"
             )
 
         if download_query:
