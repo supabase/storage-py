@@ -30,7 +30,7 @@ class BaseBucket:
 
 
 # used in bucket.list method's option parameter
-class _sortByType(TypedDict):
+class _sortByType(TypedDict, total=False):
     column: str
     order: Literal["asc", "desc"]
 
@@ -47,10 +47,11 @@ class CreateOrUpdateBucketOptions(TypedDict, total=False):
     allowed_mime_types: list[str]
 
 
-class ListBucketFilesOptions(TypedDict):
+class ListBucketFilesOptions(TypedDict, total=False):
     limit: int
     offset: int
     sortBy: _sortByType
+    search: str
 
 
 class TransformOptions(TypedDict, total=False):
