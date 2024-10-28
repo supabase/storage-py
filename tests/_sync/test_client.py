@@ -329,12 +329,15 @@ def test_client_upload_to_signed_url(
     """Ensure we can upload to a signed URL"""
     data = storage_file_client.create_signed_upload_url(file.bucket_path)
     assert data["path"]
-    upload_result = storage_file_client.upload_to_signed_url(
+    storage_file_client.upload_to_signed_url(
         data["path"], data["token"], file.file_content, {"content-type": file.mime_type}
     )
-    upload_data = upload_result.json()
-    assert upload_data
-    assert upload_data.get("error") is None
+    image = storage_file_client.download(file.bucket_path)
+    files = storage_file_client.list(file.bucket_folder)
+    image_info = next((f for f in files if f.get("name") == file.name), None)
+
+    assert image == file.file_content
+    assert image_info.get("metadata", {}).get("mimetype") == file.mime_type
 
 
 def test_client_create_signed_url(

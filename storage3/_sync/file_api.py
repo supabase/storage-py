@@ -86,7 +86,7 @@ class SyncBucketActionsMixin:
         token: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
         file_options: Optional[FileOptions] = None,
-    ) -> Response:
+    ) -> UploadResponse:
         """
         Upload a file with a token generated from :meth:`.create_signed_url`
 
@@ -139,7 +139,12 @@ class SyncBucketActionsMixin:
                     headers.pop("content-type"),
                 )
             }
-        return self._request("PUT", final_url, files=_file, headers=headers, data=_data)
+        response = self._request(
+            "PUT", final_url, files=_file, headers=headers, data=_data
+        )
+        data: UploadData = response.json()
+
+        return UploadResponse(path=path, Key=data.get("Key"))
 
     def create_signed_url(
         self, path: str, expires_in: int, options: URLOptions = {}
