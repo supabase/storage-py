@@ -63,7 +63,7 @@ def test_sync_client(sync_client, file, test_bucket):
 
     """Verify if the file was loaded correctly"""
     client.resumable.upload(file.name)
-    bucket = client.get_bucket(test_bucket)
+    bucket = client.from_(test_bucket)
 
     is_file_loaded = any(item["name"] == file.name for item in bucket.list())
     assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
@@ -99,7 +99,7 @@ def test_deferred_sync_client(sync_client, file, test_bucket):
     client.resumable.upload(
         file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name
     )
-    bucket = client.get_bucket(test_bucket)
+    bucket = client.from_(test_bucket)
 
     is_file_loaded = any(item["name"] == file.name for item in bucket.list())
     assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
@@ -129,7 +129,7 @@ async def test_async_client(async_client, file, test_bucket):
 
     """Verify if the file was loaded correctly"""
     await client.resumable.upload(file.name)
-    bucket = await client.get_bucket(test_bucket)
+    bucket = client.from_(test_bucket)
 
     is_file_loaded = any(item["name"] == file.name for item in await bucket.list())
     assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
@@ -162,7 +162,7 @@ async def test_deferred_async_client(async_client, file, test_bucket):
     await client.resumable.upload(
         file.name, mb_size=10, upload_defer=True, link=link, objectname=file.name
     )
-    bucket = await client.get_bucket(test_bucket)
+    bucket = client.from_(test_bucket)
 
     is_file_loaded = any(item["name"] == file.name for item in await bucket.list())
     assert is_file_loaded, f"File not loaded:\n{bucket.list()}"
