@@ -155,8 +155,15 @@ class SyncBucketActionsMixin:
             options to be passed for downloading or transforming the file.
         """
         json = {"expiresIn": str(expires_in)}
+        download_query = ""
         if options.get("download"):
             json.update({"download": options["download"]})
+
+            download_query = (
+                "&download="
+                if options.get("download") is True
+                else f"&download={options.get('download')}"
+            )
         if options.get("transform"):
             json.update({"transform": options["transform"]})
 
@@ -168,7 +175,7 @@ class SyncBucketActionsMixin:
         )
         data = response.json()
         data["signedURL"] = (
-            f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}"
+            f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}{download_query}"
         )
         return data
 
@@ -186,8 +193,15 @@ class SyncBucketActionsMixin:
             options to be passed for downloading the file.
         """
         json = {"paths": paths, "expiresIn": str(expires_in)}
+        download_query = ""
         if options.get("download"):
             json.update({"download": options.get("download")})
+
+            download_query = (
+                "&download="
+                if options.get("download") is True
+                else f"&download={options.get('download')}"
+            )
 
         response = self._request(
             "POST",
@@ -197,7 +211,7 @@ class SyncBucketActionsMixin:
         data = response.json()
         for item in data:
             item["signedURL"] = (
-                f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}"
+                f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}{download_query}"
             )
         return data
 
@@ -209,12 +223,12 @@ class SyncBucketActionsMixin:
             file path, including the path and file name. For example `folder/image.png`.
         """
         _query_string = []
-        download_query = None
+        download_query = ""
         if options.get("download"):
             download_query = (
-                "download="
+                "&download="
                 if options.get("download") is True
-                else f"download={options.get('download')}"
+                else f"&download={options.get('download')}"
             )
 
         if download_query:
@@ -308,7 +322,7 @@ class SyncBucketActionsMixin:
         path
             The folder path.
         options
-            Search options, including `limit`, `offset`, and `sortBy`.
+            Search options, including `limit`, `offset`, `sortBy` and `search`.
         """
         extra_options = options or {}
         extra_headers = {"Content-Type": "application/json"}
