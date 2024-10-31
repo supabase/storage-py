@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## [0.9.0](https://github.com/supabase/storage-py/compare/v0.8.2...v0.9.0) (2024-10-28)
+
+
+### Features
+
+* remove methods from the bucket object ([#305](https://github.com/supabase/storage-py/issues/305)) ([faa914d](https://github.com/supabase/storage-py/commit/faa914dfc460bdc6a63955e8affbb1275f1e984f))
+
+
+### Bug Fixes
+
+* add correct return data for upload to signed url ([#309](https://github.com/supabase/storage-py/issues/309)) ([748067f](https://github.com/supabase/storage-py/commit/748067f791a86a4298dd9075227a1be98c0ca4cc))
+* add search params to list buckets method ([#308](https://github.com/supabase/storage-py/issues/308)) ([fca2f00](https://github.com/supabase/storage-py/commit/fca2f005f3857e0f96b0505ab83474e3cf5e5e18))
+* upload and update method returns correct response body ([#307](https://github.com/supabase/storage-py/issues/307)) ([a9e874a](https://github.com/supabase/storage-py/commit/a9e874a12fd448d2eb3e48df2a80e187b9f41fbb))
+
 ## [0.8.2](https://github.com/supabase/storage-py/compare/v0.8.1...v0.8.2) (2024-10-18)
 
 
