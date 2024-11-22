@@ -18,7 +18,7 @@ license = "MIT"
 name = "storage3"
 readme = "README.md"
 repository = "https://github.com/supabase/storage-py"
-version = "0.9.0" # {x-release-please-version}
+version = "0.10.0" # {x-release-please-version}
 
 
 [tool.poetry.dependencies]
