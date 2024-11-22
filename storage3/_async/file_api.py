@@ -3,13 +3,13 @@ from __future__ import annotations
 import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
-from json import JSONDecodeError
 from pathlib import Path
 from typing import Any, Literal, Optional, Union, cast
 
-from httpx import HTTPError, Response
+from httpx import HTTPStatusError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
+from ..exceptions import StorageApiError
 from ..types import (
     BaseBucket,
     CreateSignedURLsOptions,
@@ -47,12 +47,9 @@ class AsyncBucketActionsMixin:
                 method, url, headers=headers or {}, json=json, files=files, **kwargs
             )
             response.raise_for_status()
-        except HTTPError:
-            try:
-                resp = response.json()
-                raise StorageException({**resp, "statusCode": response.status_code})
-            except JSONDecodeError:
-                raise StorageException({"statusCode": response.status_code})
+        except HTTPStatusError as exc:
+            resp = exc.response.json()
+            raise StorageApiError(resp["message"], resp["error"], resp["statusCode"])
 
         return response
 

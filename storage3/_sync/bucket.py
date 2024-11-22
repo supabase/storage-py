@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from httpx import HTTPError, Response
+from httpx import HTTPStatusError, Response
 
+from ..exceptions import StorageApiError
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
-from ..utils import StorageException, SyncClient
+from ..utils import SyncClient
 from .file_api import SyncBucket
 
 __all__ = ["SyncStorageBucketAPI"]
@@ -23,13 +24,12 @@ class SyncStorageBucketAPI:
         url: str,
         json: Optional[dict[Any, Any]] = None,
     ) -> Response:
-        response = self._client.request(method, url, json=json)
         try:
+            response = self._client.request(method, url, json=json)
             response.raise_for_status()
-        except HTTPError:
-            raise StorageException(
-                {**response.json(), "statusCode": response.status_code}
-            )
+        except HTTPStatusError as exc:
+            resp = exc.response.json()
+            raise StorageApiError(resp["message"], resp["error"], resp["statusCode"])
 
         return response
 
