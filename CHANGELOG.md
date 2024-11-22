@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.10.0](https://github.com/supabase/storage-py/compare/v0.9.0...v0.10.0) (2024-11-22)
+
+
+### Features
+
+* add new storage error class ([#313](https://github.com/supabase/storage-py/issues/313)) ([f040f10](https://github.com/supabase/storage-py/commit/f040f10c3a17deec3aa96203c1629174c75b9b00))
+
 ## [0.9.0](https://github.com/supabase/storage-py/compare/v0.8.2...v0.9.0) (2024-10-28)
 
 
