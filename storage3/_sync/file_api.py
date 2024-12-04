@@ -311,6 +311,45 @@ class SyncBucketActionsMixin:
         )
         return response.json()
 
+
+    def info(
+        self,
+        path: str,
+    ) -> list[dict[str, str]]:
+        """
+        Lists info for a particular file.
+
+        Parameters
+        ----------
+        path
+            The path to the file.
+        """
+        response = self._request(
+            "GET",
+            f"/object/info/{self.id}/{path}",
+        )
+        return response.json()
+
+
+    def exists(
+        self,
+        path: str,
+    ) -> bool:
+        """
+        Returns True if the file exists, False otherwise.
+
+        Parameters
+        ----------
+        path
+            The path to the file.
+        """
+        response = self._request(
+            "HEAD",
+            f"/object/info/{self.id}/{path}",
+        )
+        return response.status_code == 200
+
+
     def list(
         self,
         path: Optional[str] = None,
