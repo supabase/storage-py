@@ -52,8 +52,8 @@ class AsyncBucketActionsMixin:
             raise StorageApiError(resp["message"], resp["error"], resp["statusCode"])
 
         # close the resource before returning the response
-        if files and 'file' in files and isinstance(files['file'][1], BufferedReader):
-            files['file'][1].close()
+        if files and "file" in files and isinstance(files["file"][1], BufferedReader):
+            files["file"][1].close()
 
         return response
 
