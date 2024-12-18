@@ -178,7 +178,7 @@ class AsyncBucketActionsMixin:
         data = response.json()
 
         # Prepare URL
-        url = urllib.parse.urlparse(data['signedURL'])
+        url = urllib.parse.urlparse(data["signedURL"])
         url = urllib.parse.quote(url.path) + f"?{url.query}"
 
         data["signedURL"] = (
@@ -219,7 +219,7 @@ class AsyncBucketActionsMixin:
         for item in data:
 
             # Prepare URL
-            url = urllib.parse.urlparse(item['signedURL'])
+            url = urllib.parse.urlparse(item["signedURL"])
             url = urllib.parse.quote(url.path) + f"?{url.query}"
 
             item["signedURL"] = (
