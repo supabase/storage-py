@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## [0.11.0](https://github.com/supabase/storage-py/compare/v0.10.0...v0.11.0) (2024-12-24)
+
+
+### Features
+
+* Implement info and exists file API methods ([#318](https://github.com/supabase/storage-py/issues/318)) ([0100ff1](https://github.com/supabase/storage-py/commit/0100ff10af7fc86cb6286269a7b91195e0393d3a))
+
+
+### Bug Fixes
+
+* file name in signed URLs is not URI-encoded ([#324](https://github.com/supabase/storage-py/issues/324)) ([c58fbb0](https://github.com/supabase/storage-py/commit/c58fbb0afcff087616d5913c3953e849bb2f6885))
+* upload doesn't close file handle ([#323](https://github.com/supabase/storage-py/issues/323)) ([02ae7fc](https://github.com/supabase/storage-py/commit/02ae7fca681d3f73211c3a500145ed395a159ec3))
+
 ## [0.10.0](https://github.com/supabase/storage-py/compare/v0.9.0...v0.10.0) (2024-11-22)
 
 
