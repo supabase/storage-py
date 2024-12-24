@@ -394,3 +394,30 @@ def test_client_get_public_url(
     response.raise_for_status()
 
     assert response.content == file.file_content
+
+
+def test_client_info(
+    storage_file_client_public: SyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can get the public url of a file in a bucket"""
+    storage_file_client_public.upload(
+        file.bucket_path, file.local_path, {"content-type": file.mime_type}
+    )
+
+    info = storage_file_client_public.info(file.bucket_path)
+    assert "metadata" in info.keys()
+    assert info["name"] == file.bucket_path
+    assert info["content_type"] == file.mime_type
+
+
+def test_client_exists(
+    storage_file_client_public: SyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can get the public url of a file in a bucket"""
+    storage_file_client_public.upload(
+        file.bucket_path, file.local_path, {"content-type": file.mime_type}
+    )
+
+    exists = storage_file_client_public.exists(file.bucket_path)
+
+    assert exists
