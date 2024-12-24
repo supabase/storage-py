@@ -180,8 +180,13 @@ class AsyncBucketActionsMixin:
             json=json,
         )
         data = response.json()
+
+        # Prepare URL
+        url = urllib.parse.urlparse(data["signedURL"])
+        url = urllib.parse.quote(url.path) + f"?{url.query}"
+
         data["signedURL"] = (
-            f"{self._client.base_url}{cast(str, data['signedURL']).lstrip('/')}{download_query}"
+            f"{self._client.base_url}{cast(str, url).lstrip('/')}{download_query}"
         )
         return data
 
@@ -216,8 +221,13 @@ class AsyncBucketActionsMixin:
         )
         data = response.json()
         for item in data:
+
+            # Prepare URL
+            url = urllib.parse.urlparse(item["signedURL"])
+            url = urllib.parse.quote(url.path) + f"?{url.query}"
+
             item["signedURL"] = (
-                f"{self._client.base_url}{cast(str, item['signedURL']).lstrip('/')}{download_query}"
+                f"{self._client.base_url}{cast(str, url).lstrip('/')}{download_query}"
             )
         return data
 
