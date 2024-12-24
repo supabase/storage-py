@@ -311,7 +311,6 @@ class AsyncBucketActionsMixin:
         )
         return response.json()
 
-
     async def info(
         self,
         path: str,
@@ -330,7 +329,6 @@ class AsyncBucketActionsMixin:
         )
         return response.json()
 
-
     async def exists(
         self,
         path: str,
@@ -348,7 +346,6 @@ class AsyncBucketActionsMixin:
             f"/object/info/{self.id}/{path}",
         )
         return response.status_code == 200
-
 
     async def list(
         self,

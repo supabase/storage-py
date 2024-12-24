@@ -407,9 +407,9 @@ async def test_client_info(
     )
 
     info = await storage_file_client_public.info(file.bucket_path)
-    assert 'metadata' in info.keys()
-    assert info['name'] == file.bucket_path
-    assert info['content_type'] == file.mime_type
+    assert "metadata" in info.keys()
+    assert info["name"] == file.bucket_path
+    assert info["content_type"] == file.mime_type
 
 
 async def test_client_exists(

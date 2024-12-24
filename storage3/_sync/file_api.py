@@ -311,7 +311,6 @@ class SyncBucketActionsMixin:
         )
         return response.json()
 
-
     def info(
         self,
         path: str,
@@ -330,7 +329,6 @@ class SyncBucketActionsMixin:
         )
         return response.json()
 
-
     def exists(
         self,
         path: str,
@@ -348,7 +346,6 @@ class SyncBucketActionsMixin:
             f"/object/info/{self.id}/{path}",
         )
         return response.status_code == 200
-
 
     def list(
         self,
