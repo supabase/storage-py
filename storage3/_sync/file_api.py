@@ -489,7 +489,7 @@ class SyncBucketActionsMixin:
         path: str,
         file: Union[BufferedReader, bytes, FileIO, str, Path],
         file_options: Optional[FileOptions] = None,
-    ) -> Response:
+    ) -> UploadResponse:
         """
         Uploads a file to an existing bucket.
 
