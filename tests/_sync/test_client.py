@@ -396,6 +396,29 @@ def test_client_get_public_url(
     assert response.content == file.file_content
 
 
+def test_client_upload_with_custom_metadata(
+    storage_file_client_public: SyncBucketProxy, file: FileForTesting
+) -> None:
+    """Ensure we can get the public url of a file in a bucket"""
+    storage_file_client_public.upload(
+        file.bucket_path,
+        file.local_path,
+        {
+            "content-type": file.mime_type,
+            "metadata": {"custom": "metadata", "second": "second", "third": "third"},
+        },
+    )
+
+    info = storage_file_client_public.info(file.bucket_path)
+    assert "metadata" in info.keys()
+    assert info["name"] == file.bucket_path
+    assert info["metadata"] == {
+        "custom": "metadata",
+        "second": "second",
+        "third": "third",
+    }
+
+
 def test_client_info(
     storage_file_client_public: SyncBucketProxy, file: FileForTesting
 ) -> None:

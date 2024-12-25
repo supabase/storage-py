@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Literal, Optional, TypedDict, Union
+from typing import Any, Dict, Literal, Optional, TypedDict, Union
 
 import dateutil.parser
 
@@ -77,7 +77,14 @@ class DownloadOptions(TypedDict, total=False):
 
 FileOptions = TypedDict(
     "FileOptions",
-    {"cache-control": str, "content-type": str, "x-upsert": str, "upsert": str},
+    {
+        "cache-control": str,
+        "content-type": str,
+        "x-upsert": str,
+        "upsert": str,
+        "metadata": Dict[str, Any],
+        "headers": Dict[str, str],
+    },
     total=False,
 )
 
