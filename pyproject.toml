@@ -37,12 +37,14 @@ python-dotenv = "^1.0.0"
 Sphinx = "^7.1.2"
 sphinx-press-theme = "^0.9.1"
 unasync-cli = "^0.0.9"
+coveralls = "^1.8.0"
 
 [tool.poetry.group.dev.dependencies]
 sphinx-toolbox = "^3.4.0"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+addopts = "tests"
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
