@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import base64
+import json
 import urllib.parse
 from dataclasses import dataclass, field
 from io import BufferedReader, FileIO
@@ -435,17 +437,29 @@ class AsyncBucketActionsMixin:
         """
         if file_options is None:
             file_options = {}
-        cache_control = file_options.get("cache-control")
+        cache_control = file_options.pop("cache-control", None)
         _data = {}
-        if file_options.get("upsert"):
-            file_options.update({"x-upsert": file_options.get("upsert")})
-            del file_options["upsert"]
+
+        upsert = file_options.pop("upsert", None)
+        if upsert:
+            file_options.update({"x-upsert": upsert})
+
+        metadata = file_options.pop("metadata", None)
+        file_opts_headers = file_options.pop("headers", None)
 
         headers = {
             **self._client.headers,
             **DEFAULT_FILE_OPTIONS,
             **file_options,
         }
+
+        if metadata:
+            metadata_str = json.dumps(metadata)
+            headers["x-metadata"] = base64.b64encode(metadata_str.encode())
+            _data.update({"metadata": metadata_str})
+
+        if file_opts_headers:
+            headers.update({**file_opts_headers})
 
         # Only include x-upsert on a POST method
         if method != "POST":
@@ -455,7 +469,7 @@ class AsyncBucketActionsMixin:
 
         if cache_control:
             headers["cache-control"] = f"max-age={cache_control}"
-            _data = {"cacheControl": cache_control}
+            _data.update({"cacheControl": cache_control})
 
         if (
             isinstance(file, BufferedReader)
