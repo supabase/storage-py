@@ -25,6 +25,8 @@ tests_only:
 
 build_sync:
 	poetry run unasync storage3 tests
+	sed -i '0,/SyncMock, /{s/SyncMock, //}' tests/_sync/test_bucket.py tests/_sync/test_client.py
+	sed -i 's/SyncMock/Mock/g' tests/_sync/test_bucket.py tests/_sync/test_client.py
 
 sleep:
 	sleep 2
