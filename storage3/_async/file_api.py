@@ -357,11 +357,14 @@ class AsyncBucketActionsMixin:
         path
             The path to the file.
         """
-        response = await self._request(
-            "HEAD",
-            f"/object/info/{self.id}/{path}",
-        )
-        return response.status_code == 200
+        try:
+            response = await self._request(
+                "HEAD",
+                f"/object/{self.id}/{path}",
+            )
+            return response.status_code == 200
+        except json.JSONDecodeError:
+            return False
 
     async def list(
         self,
