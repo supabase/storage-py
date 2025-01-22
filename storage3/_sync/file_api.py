@@ -357,11 +357,14 @@ class SyncBucketActionsMixin:
         path
             The path to the file.
         """
-        response = self._request(
-            "HEAD",
-            f"/object/info/{self.id}/{path}",
-        )
-        return response.status_code == 200
+        try:
+            response = self._request(
+                "HEAD",
+                f"/object/{self.id}/{path}",
+            )
+            return response.status_code == 200
+        except json.JSONDecodeError:
+            return False
 
     def list(
         self,
