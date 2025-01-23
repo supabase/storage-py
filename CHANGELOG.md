@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.11.1](https://github.com/supabase/storage-py/compare/v0.11.0...v0.11.1) (2025-01-23)
+
+
+### Bug Fixes
+
+* exists method raises error when no file found ([#335](https://github.com/supabase/storage-py/issues/335)) ([cc37894](https://github.com/supabase/storage-py/commit/cc378944d97e61718cfa31e5667e7ed52c07e428))
+
 ## [0.11.0](https://github.com/supabase/storage-py/compare/v0.10.0...v0.11.0) (2024-12-30)
 
 
