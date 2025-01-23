@@ -1,4 +1,3 @@
-import pytest
 from storage3.exceptions import StorageApiError
 
 
@@ -16,7 +15,10 @@ def test_storage_api_error_initialization():
     assert error.code == code
     assert error.status == status
     assert error.name == "StorageApiError"
-    assert str(error) == "{'statusCode': 400, 'error': TEST_ERROR, 'message': Test error message}"
+    assert (
+        str(error)
+        == "{'statusCode': 400, 'error': TEST_ERROR, 'message': Test error message}"
+    )
 
 
 def test_storage_api_error_to_dict():
@@ -31,7 +33,7 @@ def test_storage_api_error_to_dict():
         "name": "StorageApiError",
         "code": "TEST_CODE",
         "message": "Test message",
-        "status": 404
+        "status": 404,
     }
 
 
@@ -41,4 +43,5 @@ def test_storage_api_error_inheritance():
 
     # Assert
     from storage3.utils import StorageException
-    assert isinstance(error, StorageException) 
+
+    assert isinstance(error, StorageException)
