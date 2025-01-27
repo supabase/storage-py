@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Any, Dict, Literal, Optional, TypedDict, Union
+from typing import Any, Dict, Literal, NotRequired, Optional, TypedDict, Union
 
 import dateutil.parser
 
@@ -37,6 +37,7 @@ class _sortByType(TypedDict, total=False):
 
 class SignedUploadURL(TypedDict):
     signed_url: str
+    signedUrl: str
     token: str
     path: str
 
@@ -98,9 +99,23 @@ class UploadData(TypedDict, total=False):
 class UploadResponse:
     path: str
     full_path: str
+    fullPath: str
 
     def __init__(self, path, Key):
         self.path = path
         self.full_path = Key
+        self.fullPath = Key
 
     dict = asdict
+
+
+class SignedUrlResponse(TypedDict):
+    signedURL: str
+    signedUrl: str
+
+
+class CreateSignedUrlResponse(TypedDict):
+    error: NotRequired[str]
+    path: str
+    signedURL: str
+    signedUrl: str
