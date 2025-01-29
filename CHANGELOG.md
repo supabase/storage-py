@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.11.2](https://github.com/supabase/storage-py/compare/v0.11.1...v0.11.2) (2025-01-29)
+
+
+### Bug Fixes
+
+* add correct naming for returned data keys ([#339](https://github.com/supabase/storage-py/issues/339)) ([4527da6](https://github.com/supabase/storage-py/commit/4527da69a87da08a13f6630bbdd919d721beef4a))
+
 ## [0.11.1](https://github.com/supabase/storage-py/compare/v0.11.0...v0.11.1) (2025-01-23)
 
 
