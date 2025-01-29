@@ -25,9 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Set up Poetry
-        uses: abatilo/actions-poetry@v4
-        with:
-          poetry-version: 1.8.4
+        run: pipx install poetry --python python${{ matrix.python-version }}
 
       - uses: supabase/setup-cli@v1
         with:
@@ -82,9 +80,7 @@ jobs:
           fetch-depth: 0
 
       - name: Set up Poetry
-        uses: abatilo/actions-poetry@v4
-        with:
-          poetry-version: 1.8.4
+        run: pipx install poetry --python python3.11
 
       - name: Install dependencies
         run: poetry install
