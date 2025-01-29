@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import Any, Dict, Literal, NotRequired, Optional, TypedDict, Union
+from typing import Any, Dict, Literal, Optional, TypedDict, Union
 
 import dateutil.parser
 
@@ -115,7 +115,7 @@ class SignedUrlResponse(TypedDict):
 
 
 class CreateSignedUrlResponse(TypedDict):
-    error: NotRequired[str]
+    error: Optional[str]
     path: str
     signedURL: str
     signedUrl: str
