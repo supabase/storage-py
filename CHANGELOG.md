@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.11.3](https://github.com/supabase/storage-py/compare/v0.11.2...v0.11.3) (2025-01-29)
+
+
+### Bug Fixes
+
+* older python versions are broken due to NotRequired ([#344](https://github.com/supabase/storage-py/issues/344)) ([ca567e9](https://github.com/supabase/storage-py/commit/ca567e9982a2f29cbc69c3e476ffcd8dad03abf5))
+
 ## [0.11.2](https://github.com/supabase/storage-py/compare/v0.11.1...v0.11.2) (2025-01-29)
 
 
