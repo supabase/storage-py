@@ -19,14 +19,13 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@v4
 
-      - name: Set up Poetry
-        run: pipx install poetry --python python${{ matrix.python-version }}
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'poetry'
+
+      - name: Set up Poetry
+        run: pipx install poetry --python python${{ matrix.python-version }}
 
       - uses: supabase/setup-cli@v1
         with:
