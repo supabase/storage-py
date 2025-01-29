@@ -14,12 +14,14 @@ from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..exceptions import StorageApiError
 from ..types import (
     BaseBucket,
+    CreateSignedUrlResponse,
     CreateSignedURLsOptions,
     DownloadOptions,
     FileOptions,
     ListBucketFilesOptions,
     RequestMethod,
     SignedUploadURL,
+    SignedUrlResponse,
     UploadData,
     UploadResponse,
     URLOptions,
@@ -72,13 +74,14 @@ class SyncBucketActionsMixin:
         response = self._request("POST", f"/object/upload/sign/{_path}")
         data = response.json()
         full_url: urllib.parse.ParseResult = urllib.parse.urlparse(
-            str(self._client.base_url) + data["url"]
+            str(self._client.base_url) + cast(str, data["url"]).lstrip("/")
         )
         query_params = urllib.parse.parse_qs(full_url.query)
         if not query_params.get("token"):
             raise StorageException("No token sent by the API")
         return {
             "signed_url": full_url.geturl(),
+            "signedUrl": full_url.geturl(),
             "token": query_params["token"][0],
             "path": path,
         }
@@ -151,7 +154,7 @@ class SyncBucketActionsMixin:
 
     def create_signed_url(
         self, path: str, expires_in: int, options: URLOptions = {}
-    ) -> dict[str, str]:
+    ) -> SignedUrlResponse:
         """
         Parameters
         ----------
@@ -187,14 +190,15 @@ class SyncBucketActionsMixin:
         url = urllib.parse.urlparse(data["signedURL"])
         url = urllib.parse.quote(url.path) + f"?{url.query}"
 
-        data["signedURL"] = (
+        signedURL = (
             f"{self._client.base_url}{cast(str, url).lstrip('/')}{download_query}"
         )
+        data: SignedUrlResponse = {"signedURL": signedURL, "signedUrl": signedURL}
         return data
 
     def create_signed_urls(
         self, paths: list[str], expires_in: int, options: CreateSignedURLsOptions = {}
-    ) -> list[dict[str, str]]:
+    ) -> list[CreateSignedUrlResponse]:
         """
         Parameters
         ----------
@@ -222,16 +226,24 @@ class SyncBucketActionsMixin:
             json=json,
         )
         data = response.json()
+        signed_urls = []
         for item in data:
 
             # Prepare URL
             url = urllib.parse.urlparse(item["signedURL"])
             url = urllib.parse.quote(url.path) + f"?{url.query}"
 
-            item["signedURL"] = (
+            signedURL = (
                 f"{self._client.base_url}{cast(str, url).lstrip('/')}{download_query}"
             )
-        return data
+            signed_item: CreateSignedUrlResponse = {
+                "error": item["error"],
+                "path": item["path"],
+                "signedURL": signedURL,
+                "signedUrl": signedURL,
+            }
+            signed_urls.append(signed_item)
+        return signed_urls
 
     def get_public_url(self, path: str, options: URLOptions = {}) -> str:
         """
