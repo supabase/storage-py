@@ -5,8 +5,8 @@ on:
     - docs
 
 permissions:
-  contents: write 
-  pages: write 
+  contents: write
+  pages: write
 
 jobs:
   build:
