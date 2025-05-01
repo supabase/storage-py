@@ -24,12 +24,15 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
         timeout: int = DEFAULT_TIMEOUT,
         verify: bool = True,
         proxy: Optional[str] = None,
+        http_client: Optional[AsyncClient] = None,
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
-        self.session = self._create_session(url, headers, timeout, verify, proxy)
+        self.session = self._create_session(
+            url, headers, timeout, verify, proxy, http_client
+        )
         super().__init__(self.session)
 
     def _create_session(
@@ -39,7 +42,13 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
         timeout: int,
         verify: bool = True,
         proxy: Optional[str] = None,
+        http_client: Optional[AsyncClient] = None,
     ) -> AsyncClient:
+        if http_client is not None:
+            http_client.base_url = base_url
+            http_client.headers = headers
+            return http_client
+
         return AsyncClient(
             base_url=base_url,
             headers=headers,
