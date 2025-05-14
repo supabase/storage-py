@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from warnings import warn
 
 from storage3.constants import DEFAULT_TIMEOUT
 
@@ -21,8 +22,8 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
         self,
         url: str,
         headers: dict[str, str],
-        timeout: int = DEFAULT_TIMEOUT,
-        verify: bool = True,
+        timeout: Optional[int] = None,
+        verify: Optional[bool] = None,
         proxy: Optional[str] = None,
         http_client: Optional[AsyncClient] = None,
     ) -> None:
@@ -30,8 +31,36 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
             "User-Agent": f"supabase-py/storage3 v{__version__}",
             **headers,
         }
+
+        if timeout is not None:
+            warn(
+                "The 'timeout' parameter is deprecated. Please configure it in the http client instead.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+        if verify is not None:
+            warn(
+                "The 'verify' parameter is deprecated. Please configure it in the http client instead.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+        if proxy is not None:
+            warn(
+                "The 'proxy' parameter is deprecated. Please configure it in the http client instead.",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+
+        self.verify = bool(verify) if verify is not None else True
+        self.timeout = int(abs(timeout)) if timeout is not None else DEFAULT_TIMEOUT
+
         self.session = self._create_session(
-            url, headers, timeout, verify, proxy, http_client
+            base_url=url,
+            headers=headers,
+            timeout=self.timeout,
+            verify=self.verify,
+            proxy=proxy,
+            http_client=http_client,
         )
         super().__init__(self.session)
 
@@ -54,7 +83,7 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
             headers=headers,
             timeout=timeout,
             proxy=proxy,
-            verify=bool(verify),
+            verify=verify,
             follow_redirects=True,
             http2=True,
         )
