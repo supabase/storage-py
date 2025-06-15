@@ -36,7 +36,7 @@ jobs:
           version: latest
 
       - name: Start Supabase local development setup
-        run: supabase start --workdir infra -x studio,gotrue,postgrest,inbucket,realtime,edge-runtime,logflare,vector,pgbouncer,pg_prove
+        run: supabase start --workdir infra -x studio,gotrue,postgrest,mailpit,realtime,edge-runtime,logflare,vector,supavisor
 
       - name: Run Tests
         run: make run_tests

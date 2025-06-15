@@ -45,6 +45,9 @@ sphinx-toolbox = "^3.4.0"
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 addopts = "tests"
+filterwarnings = [
+    "ignore::DeprecationWarning", # ignore deprecation warnings globally
+]
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
