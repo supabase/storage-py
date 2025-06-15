@@ -5,7 +5,7 @@ from warnings import warn
 
 from storage3.constants import DEFAULT_TIMEOUT
 
-from ..utils import SyncClient
+from ..utils import Client
 from ..version import __version__
 from .bucket import SyncStorageBucketAPI
 from .file_api import SyncBucketProxy
@@ -25,7 +25,7 @@ class SyncStorageClient(SyncStorageBucketAPI):
         timeout: Optional[int] = None,
         verify: Optional[bool] = None,
         proxy: Optional[str] = None,
-        http_client: Optional[SyncClient] = None,
+        http_client: Optional[Client] = None,
     ) -> None:
         headers = {
             "User-Agent": f"supabase-py/storage3 v{__version__}",
@@ -71,14 +71,14 @@ class SyncStorageClient(SyncStorageBucketAPI):
         timeout: int,
         verify: bool = True,
         proxy: Optional[str] = None,
-        http_client: Optional[SyncClient] = None,
-    ) -> SyncClient:
+        http_client: Optional[Client] = None,
+    ) -> Client:
         if http_client is not None:
             http_client.base_url = base_url
             http_client.headers.update({**headers})
             return http_client
 
-        return SyncClient(
+        return Client(
             base_url=base_url,
             headers=headers,
             timeout=timeout,
@@ -92,10 +92,7 @@ class SyncStorageClient(SyncStorageBucketAPI):
         return self
 
     def __exit__(self, exc_type, exc, tb) -> None:
-        self.aclose()
-
-    def aclose(self) -> None:
-        self.session.aclose()
+        self.session.close()
 
     def from_(self, id: str) -> SyncBucketProxy:
         """Run a storage file operation.

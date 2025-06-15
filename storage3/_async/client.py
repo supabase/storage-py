@@ -92,9 +92,6 @@ class AsyncStorageClient(AsyncStorageBucketAPI):
         return self
 
     async def __aexit__(self, exc_type, exc, tb) -> None:
-        await self.aclose()
-
-    async def aclose(self) -> None:
         await self.session.aclose()
 
     def from_(self, id: str) -> AsyncBucketProxy:
