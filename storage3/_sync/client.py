@@ -3,9 +3,10 @@ from __future__ import annotations
 from typing import Optional
 from warnings import warn
 
+from httpx import Client
+
 from storage3.constants import DEFAULT_TIMEOUT
 
-from ..utils import Client
 from ..version import __version__
 from .bucket import SyncStorageBucketAPI
 from .file_api import SyncBucketProxy

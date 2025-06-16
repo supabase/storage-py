@@ -6,6 +6,7 @@ from unittest.mock import Mock, patch
 from uuid import uuid4
 
 import pytest
+from httpx import Client as HttpxClient
 from httpx import HTTPStatusError, Response
 
 from storage3 import SyncStorageClient
@@ -13,7 +14,6 @@ from storage3.exceptions import StorageApiError
 from storage3.utils import StorageException
 
 from .. import SyncBucketProxy
-from ..utils import SyncClient as HttpxClient
 from ..utils import SyncFinalizerFactory
 
 if TYPE_CHECKING:

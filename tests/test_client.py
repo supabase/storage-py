@@ -1,9 +1,7 @@
 from typing import Dict
 
 import pytest
-from httpx import AsyncClient
-from httpx import Client as SyncClient
-from httpx import Timeout
+from httpx import AsyncClient, Client, Timeout
 
 from storage3 import AsyncStorageClient, SyncStorageClient
 from storage3.constants import DEFAULT_TIMEOUT
@@ -56,7 +54,7 @@ def test_async_storage_client(valid_url, valid_headers):
 
 def test_sync_storage_client(valid_url, valid_headers):
     headers = {"x-user-agent": "my-app/0.0.1"}
-    http_client = SyncClient(headers=headers)
+    http_client = Client(headers=headers)
     client = SyncStorageClient(
         url=valid_url, headers=valid_headers, http_client=http_client
     )
