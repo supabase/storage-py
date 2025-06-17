@@ -6,6 +6,7 @@ from unittest.mock import AsyncMock, Mock, patch
 from uuid import uuid4
 
 import pytest
+from httpx import AsyncClient as HttpxClient
 from httpx import HTTPStatusError, Response
 
 from storage3 import AsyncStorageClient
@@ -13,7 +14,6 @@ from storage3.exceptions import StorageApiError
 from storage3.utils import StorageException
 
 from .. import AsyncBucketProxy
-from ..utils import AsyncClient as HttpxClient
 from ..utils import AsyncFinalizerFactory
 
 if TYPE_CHECKING:

@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from httpx import HTTPStatusError, Response
+from httpx import AsyncClient, HTTPStatusError, Response
 
 from ..exceptions import StorageApiError
 from ..types import CreateOrUpdateBucketOptions, RequestMethod
-from ..utils import AsyncClient
 from .file_api import AsyncBucket
 
 __all__ = ["AsyncStorageBucketAPI"]

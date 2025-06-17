@@ -8,7 +8,7 @@ from io import BufferedReader, FileIO
 from pathlib import Path
 from typing import Any, Literal, Optional, Union, cast
 
-from httpx import HTTPStatusError, Response
+from httpx import Client, HTTPStatusError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..exceptions import StorageApiError
@@ -26,7 +26,7 @@ from ..types import (
     UploadResponse,
     URLOptions,
 )
-from ..utils import StorageException, SyncClient
+from ..utils import StorageException
 
 __all__ = ["SyncBucket"]
 
@@ -35,7 +35,7 @@ class SyncBucketActionsMixin:
     """Functions needed to access the file API."""
 
     id: str
-    _client: SyncClient
+    _client: Client
 
     def _request(
         self,
@@ -556,4 +556,4 @@ class SyncBucketProxy(SyncBucketActionsMixin):
     """A bucket proxy, this contains the minimum required fields to query the File API."""
 
     id: str
-    _client: SyncClient = field(repr=False)
+    _client: Client = field(repr=False)

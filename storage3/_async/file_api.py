@@ -8,7 +8,7 @@ from io import BufferedReader, FileIO
 from pathlib import Path
 from typing import Any, Literal, Optional, Union, cast
 
-from httpx import HTTPStatusError, Response
+from httpx import AsyncClient, HTTPStatusError, Response
 
 from ..constants import DEFAULT_FILE_OPTIONS, DEFAULT_SEARCH_OPTIONS
 from ..exceptions import StorageApiError
@@ -26,7 +26,7 @@ from ..types import (
     UploadResponse,
     URLOptions,
 )
-from ..utils import AsyncClient, StorageException
+from ..utils import StorageException
 
 __all__ = ["AsyncBucket"]
 
