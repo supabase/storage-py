@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.12.0](https://github.com/supabase/storage-py/compare/v0.11.3...v0.12.0) (2025-06-19)
+
+
+### Features
+
+* allow injection of httpx client ([#363](https://github.com/supabase/storage-py/issues/363)) ([b04be02](https://github.com/supabase/storage-py/commit/b04be02edaaa09801b1fd90e755c9ae0eedbb187))
+
 ## [0.11.3](https://github.com/supabase/storage-py/compare/v0.11.2...v0.11.3) (2025-01-29)
 
 
