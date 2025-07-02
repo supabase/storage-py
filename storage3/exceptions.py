@@ -13,10 +13,8 @@ class StorageApiError(StorageException):
     """Error raised when an operation on the storage API fails."""
 
     def __init__(self, message: str, code: str, status: int) -> None:
-        error_message = "{{'statusCode': {}, 'error': {}, 'message': {}}}".format(
-            status,
-            code,
-            message,
+        error_message = (
+            f"{{'statusCode': {status}, 'error': {code}, 'message': {message}}}"
         )
         super().__init__(error_message)
         self.name = "StorageApiError"

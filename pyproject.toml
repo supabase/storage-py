@@ -28,8 +28,6 @@ python-dateutil = "^2.8.2"
 deprecation = "^2.1.0"
 
 [tool.poetry.group.dev.dependencies]
-black = "^25.1.0"
-isort = "^6.0.1"
 pre-commit = "^4.2.0"
 pytest = "^8.3.5"
 pytest-asyncio = "^0.21.0"
@@ -38,8 +36,30 @@ python-dotenv = "^1.1.0"
 Sphinx = "^7.1.2"
 sphinx-press-theme = "^0.9.1"
 unasync-cli = "^0.0.9"
-coveralls = "^1.8.0"
 sphinx-toolbox = "^3.4.0"
+ruff = "^0.12.1"
+
+[tool.ruff.lint]
+select = [
+  # pycodestyle
+  "E",
+  # Pyflakes
+  "F",
+  # pyupgrade
+  "UP",
+  # flake8-bugbear
+  # "B",
+  # flake8-simplify
+  # "SIM",
+  # isort
+  "I",
+]
+ignore = ["F401", "F403", "F841", "E712", "E501", "E402", "UP006", "UP035"]
+# isort.required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
