@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.12.1](https://github.com/supabase/storage-py/compare/v0.12.0...v0.12.1) (2025-08-05)
+
+
+### Bug Fixes
+
+* add optional type field to bucket metadata ([#380](https://github.com/supabase/storage-py/issues/380)) ([ce48f6c](https://github.com/supabase/storage-py/commit/ce48f6c353453f9971e3c5614b56d02c9af40645))
+
 ## [0.12.0](https://github.com/supabase/storage-py/compare/v0.11.3...v0.12.0) (2025-06-19)
 
 
