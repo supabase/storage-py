@@ -1,20 +1,22 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from pydantic import BaseModel, ConfigDict, with_config
 from datetime import datetime
 from typing import Any, Dict, Literal, Optional, TypedDict, Union
 
 import dateutil.parser
+from pydantic import BaseModel, ConfigDict
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
-config = ConfigDict(extra='ignore')
+config = ConfigDict(extra="ignore")
+
 
 class BaseBucket(BaseModel):
     """Represents a file storage bucket."""
+
     model_config = config
-   
+
     id: str
     name: str
     owner: str
@@ -24,13 +26,6 @@ class BaseBucket(BaseModel):
     file_size_limit: Optional[int]
     allowed_mime_types: Optional[list[str]]
     type: Optional[str] = None
-
-    def __post_init__(self) -> None:
-        # created_at and updated_at are returned by the API as ISO timestamps
-        # so we convert them to datetime objects
-        self.created_at = dateutil.parser.isoparse(self.created_at)  # type: ignore
-        self.updated_at = dateutil.parser.isoparse(self.updated_at)  # type: ignore
-
 
 # used in bucket.list method's option parameter
 class _sortByType(TypedDict, total=False):

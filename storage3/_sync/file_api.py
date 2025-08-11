@@ -544,6 +544,7 @@ class SyncBucketActionsMixin:
     def _get_final_path(self, path: str) -> str:
         return f"{self.id}/{path}"
 
+
 class SyncBucket(BaseBucket):
     """Represents a storage bucket."""
 
