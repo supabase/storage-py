@@ -545,7 +545,6 @@ class AsyncBucketActionsMixin:
         return f"{self.id}/{path}"
 
 
-@dataclass(repr=False)
 class AsyncBucket(BaseBucket):
     """Represents a storage bucket."""
 

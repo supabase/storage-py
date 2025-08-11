@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+from pydantic import BaseModel, ConfigDict, with_config
 from datetime import datetime
 from typing import Any, Dict, Literal, Optional, TypedDict, Union
 
@@ -8,11 +9,12 @@ import dateutil.parser
 
 RequestMethod = Literal["GET", "POST", "DELETE", "PUT", "HEAD"]
 
+config = ConfigDict(extra='ignore')
 
-@dataclass
-class BaseBucket:
+class BaseBucket(BaseModel):
     """Represents a file storage bucket."""
-
+    model_config = config
+   
     id: str
     name: str
     owner: str
