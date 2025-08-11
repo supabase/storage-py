@@ -26,6 +26,7 @@ class BaseBucket(BaseModel):
     allowed_mime_types: Optional[list[str]]
     type: Optional[str] = None
 
+
 # used in bucket.list method's option parameter
 class _sortByType(TypedDict, total=False):
     column: str
