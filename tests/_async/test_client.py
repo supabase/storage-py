@@ -386,7 +386,7 @@ async def test_client_create_signed_url(
     response.raise_for_status()
     assert (
         response.headers["content-disposition"]
-        == "attachment; filename=custom_download.svg; filename*=UTF-8''custom_download.svg;"
+        == "attachment; filename=custom_download.svg; filename*=UTF-8''custom_download.svg"
     )
     assert response.content == file.file_content
 
@@ -449,7 +449,7 @@ async def test_client_get_public_url(
     response.raise_for_status()
     assert (
         response.headers["content-disposition"]
-        == "attachment; filename=custom_name.svg; filename*=UTF-8''custom_name.svg;"
+        == "attachment; filename=custom_name.svg; filename*=UTF-8''custom_name.svg"
     )
     assert response.content == file.file_content
 
