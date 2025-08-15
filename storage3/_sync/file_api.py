@@ -545,7 +545,6 @@ class SyncBucketActionsMixin:
         return f"{self.id}/{path}"
 
 
-@dataclass(repr=False)
 class SyncBucket(BaseBucket):
     """Represents a storage bucket."""
 
