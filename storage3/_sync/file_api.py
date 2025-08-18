@@ -150,7 +150,7 @@ class SyncBucketActionsMixin:
         )
         data: UploadData = response.json()
 
-        return UploadResponse(path=path, Key=data.get("Key"))
+        return UploadResponse(path=path, Key=data.get("Key"), Id=data.get("Id"))
 
     def create_signed_url(
         self, path: str, expires_in: int, options: URLOptions = {}
@@ -510,7 +510,7 @@ class SyncBucketActionsMixin:
 
         data: UploadData = response.json()
 
-        return UploadResponse(path=path, Key=data.get("Key"))
+        return UploadResponse(path=path, Key=data.get("Key"), Id=data.get("Id"))
 
     def upload(
         self,

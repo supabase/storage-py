@@ -95,14 +95,16 @@ class UploadData(TypedDict, total=False):
 
 @dataclass
 class UploadResponse:
+    object_id: str
     path: str
     full_path: str
     fullPath: str
 
-    def __init__(self, path, Key):
+    def __init__(self, path, Key, Id):
         self.path = path
         self.full_path = Key
         self.fullPath = Key
+        self.object_id = Id
 
     dict = asdict
 
