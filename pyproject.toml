@@ -25,7 +25,7 @@ version = "0.12.2" # {x-release-please-version}
 httpx = {version = ">=0.26,<0.29", extras = ["http2"]}
 python = "^3.9"
 deprecation = "^2.1.0"
-pydantic = "2.11.7"
+pydantic = "^2.11.7"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.2.0"
